@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, Georgia, Helvetica, sans-serif;
+    background: url(../images/bg.png);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.app-wrapper {
+    position: relative;
+    top: 0;
+    margin: 50px auto;
+    max-width: 1220px;
+    min-width: 560px;
+    padding: 20px;
+    border: 4px solid black;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.app-wrapper .b-header {
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    text-align: right;
+    background: url(../images/logo.png) no-repeat 10px 0;
+}
+
+.app-wrapper .b-header .user {
+    text-decoration: underline;
+    padding-right: 20px;
+}
+
+/*_______________________________________________________*/
+
+.app-wrapper .b-sidebar {
+    float: left;
+    width: 200px;
+    height: 300px;
+}
+
+.app-wrapper .b-sidebar .title {
+    padding: 0 0 10px 20px;
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+    font-size: 24px;
+}
+
+.app-wrapper .b-sidebar .info {
+    padding: 20px;
+}
+
+
+/*_________________________________________________________*/
+
+.app-wrapper .b-main {
+    height: 600px;
+    margin-left: 240px;
+}
+
+.app-wrapper .b-main .title {
+    padding: 0 0 10px 20px;
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+    font-size: 24px;
+}
+
+.app-wrapper .b-main .title .actions {
+    float: right;
+}
+
+.app-wrapper .b-main .content {
+    height: 90%;
+    padding: 20px 0 0 20px;
+    overflow-y: auto;
+}
+
+
+
+/*Project list board
+________________________________________________*/
+.app-wrapper .b-main .content .box {
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    margin: 0 20px 20px 0;
+    border: 2px solid rgba(0,0,0,0.6);
+    border-radius: 5px;
+    background-color: #bdb;
+}
+
+.app-wrapper .b-main .content .box:hover {
+    box-shadow: 0 0 20px rgba(20,100,20,0.9);
+}
+
+.app-wrapper .b-main .content .box .name {
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+}
+
+
+
+/*Planing block
+________________________________________________*/
+.app-wrapper .b-main .content .backlog-box {
+    width: 40%;
+    border: 2px solid rgba(0,0,0,0.6);
+    border-radius: 5px;
+    background-color: #bdb;
+}
+
+.app-wrapper .b-main .content .product {
+    float: left;
+}
+
+.app-wrapper .b-main .content .sprint {
+    float: right;
+
+}
+
+.app-wrapper .b-main .content .backlog-box-name{ 
+    
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+}
+
+.app-wrapper .b-main .content .backlog-box-actions{
+    float: right;
+}
+
+/*SCRUM-board block
+________________________________________________*/
