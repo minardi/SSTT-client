@@ -3,6 +3,7 @@
 (function(module) {
 
         module.ModelView = Backbone.View.extend({
+
 		
 	            model: module.Model,
                 tagName: "li",

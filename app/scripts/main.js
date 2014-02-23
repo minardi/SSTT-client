@@ -16,6 +16,7 @@ $(function() {
             // 'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
         }
     });
+
       user = new app.User.ModelView({
         el: $('.user')
     });
@@ -32,7 +33,6 @@ $(function() {
 	var sprint_backlog_stories = new app.SprintBacklogStories.CollectionView({
            el: $(".content")
           });
-		
 
     
 });

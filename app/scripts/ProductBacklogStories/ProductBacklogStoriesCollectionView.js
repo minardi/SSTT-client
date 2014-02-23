@@ -30,6 +30,7 @@
                         var story = new module.ModelView({
                                 model: StoryModel
                         });
+
                         this.$el.find(".backlog-box ul").append(story.render().el);
                 }
 
