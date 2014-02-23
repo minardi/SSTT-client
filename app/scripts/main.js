@@ -17,7 +17,7 @@ $(function() {
         }
     });
 
-      user = new app.User.ModelView({
+    user = new app.User.ModelView({
         el: $('.user')
     });
 	
@@ -26,13 +26,13 @@ $(function() {
         var my_project = new app.Projects.CollectionView({
                             el: $(".content")})});
 
-	var product_backlog_stories = new app.ProductBacklogStories.CollectionView({
-           el: $(".content")
-          });
+    var product_backlog_stories = new app.ProductBacklogStories.CollectionView({
+          el: $(".content")
+        }),
  
-	var sprint_backlog_stories = new app.SprintBacklogStories.CollectionView({
-           el: $(".content")
-          });
+	sprint_backlog_stories = new app.SprintBacklogStories.CollectionView({
+          el: $(".content")
+        });
 
     
 });
