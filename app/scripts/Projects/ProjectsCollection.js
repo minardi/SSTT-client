@@ -11,7 +11,7 @@
 		initialize: function() {
 		// 	this.fetch();
 		this.url = "projects/for/" + user.getId();
-		 	console.log(user.getId()); 
+		 	
         }		 
 		 
 	});

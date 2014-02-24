@@ -8,21 +8,19 @@
         
     initialize: function() {
         this.projectsCollection = new module.Collection();
-        this.listenTo(this.projectsCollection, "sync", this.render);
         this.projectsCollection.fetch();
+        this.listenTo(this.projectsCollection, "sync", this.render);
     },
 
     events: {
     },
 
     subscriptions: {
-    },  
+    },
 
     render: function() {
-        //user.getId();
         this.$el.html(this.template());
         this.projectsCollection.each(this.renderOne, this);
-        
         return this;
     },
 
@@ -30,7 +28,7 @@
         var project = new module.ModelView({
             model: ProjectModel
         });
-        this.$el.append(project.render().el);
+        this.$el.find(".content").append(project.render().el);
     }       
      
 });

@@ -402,7 +402,7 @@ module.exports = function(grunt) {
         'concat', // таска вообще не описана - без нее папка /scripts не создается
         'cssmin', // cжимает CSS (делает из файла 1 строку убирает лишнии пробелы) + копирует на сервер
         'copy', //копирует папку с шрифтами для бутстрапа \bower_components\sass-bootstrap\fonts
-        // 'rev',  // делает: main.js -> 02as22as.main.js
+        'rev',  // делает: main.js -> 02as22as.main.js
         'usemin', // редактирует application.html.erb (изменяет ссылки скриптов на новосгенерированные и объеденные)
         'replace', // редактирует application.html.erb (корректирует путь к нашим script-ам, а кокнертно дописывает в пути папку app/)
         'copy:view' // копирует application.html.erb из public/app/.. в app/views/layouts

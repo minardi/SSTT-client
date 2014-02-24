@@ -14,7 +14,7 @@
         },
 
         events: {
-		  "click":"pubChoosenProjectId"
+            "click": "pubChoosenProjectId"
         },
 
         subscriptions: {
@@ -24,10 +24,9 @@
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
-		
-		pubChoosenProjectId: function() {
-			$(".content").html("");
-			Backbone.Mediator.pub("ScrumPage:PlanBoardSelected", this.model.id)
+
+        pubChoosenProjectId: function() {
+            Backbone.Mediator.pub("ScrumPageDefault:Open", this.model.id);
         }
      
     });
