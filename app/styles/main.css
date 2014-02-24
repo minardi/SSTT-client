@@ -142,5 +142,24 @@ ________________________________________________*/
 	align:center;
 }
 
+/*Scrum page block
+______________________________________*/
+a {
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.myhidden {
+	display: none;
+}
+
+.myshown {
+	display: block;
+}
+
+.container {
+	padding: 100px;
+}
+
 /*SCRUM-board block
 ________________________________________________*/
