@@ -2,36 +2,33 @@
 
 (function(module) {
 
-        module.ModelView = Backbone.View.extend({
+    module.ModelView = Backbone.View.extend({
 
-		
-	            model: module.Model,
-                tagName: "li",
-                className: "",
+        model: module.Model,
+        tagName: "li",
+        className: "",
 
-                template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],   
+        template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],   
 
-                initialize: function() {
+        initialize: function() {
+        },
 
-                },
+        events: {
+        "click" : "moveToSprintstory"
+        },
 
-                events: {
-			      "click" : "moveToSprintstory"
-				},
+        subscriptions: {},
 
-                subscriptions: {},
+        render: function() {
+        this.$el.html(this.template({name:this.model.toJSON().title}));
+        return this;
+        },
 
-                render: function() {
-                      this.$el.html(this.template({name:this.model.toJSON().title}));
-                      return this;
-                },
-	
-			moveToSprintstory: function() {
-			  Backbone.Mediator.pub("ProductBacklogStory:moveProductstoryToSprintstory", this.model);
-			  this.$el.remove();
-			  this.model.destroy();	
-			}	
+        moveToSprintstory: function() {
+        Backbone.Mediator.pub("Story:moveToSprint", this.model);
+        this.$el.remove();
+    }
 
-        });
+    });
 
 })(app.ProductBacklogStories);

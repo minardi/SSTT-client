@@ -8,6 +8,7 @@ html, body {
     width: 100%;
 }
 
+
 .app-wrapper {
     position: relative;
     top: 0;
@@ -101,7 +102,7 @@ ________________________________________________*/
 
 
 
-/*Planing block
+/*Planing&Sprint block
 ________________________________________________*/
 .app-wrapper .b-main .content .backlog-box {
     width: 40%;
@@ -131,15 +132,14 @@ ________________________________________________*/
 }
 
 .app-wrapper .b-main .content .backlog-box.product {
-    height: 50%;
+    min-height: 50%;
 	margin: 0px 30px;
 }
 
 .app-wrapper .b-main .content .backlog-box.sprint {
-    height: 50%;
+    min-height: 50%;
 	margin: 0px 30px;
     padding: 0px 20px 0px 20px;
-	align:center;
 }
 
 /*Scrum page block
@@ -149,16 +149,19 @@ a {
 	font-size: 20px;
 }
 
-.myhidden {
-	display: none;
+.app-wrapper .b-main .scam-page-header {
+    height: 48px;
+    font-size: 24px;
 }
 
-.myshown {
-	display: block;
+.app-wrapper .b-main .tab {
+    cursor: pointer;
+    text-align: center;
+    background-color: rgba(255,255,255,0.4);
 }
 
-.container {
-	padding: 100px;
+.app-wrapper .b-main .tab:hover {
+    background-color: rgba(255,255,255,0.8);
 }
 /*SCRUM-board block
 ________________________________________________*/
