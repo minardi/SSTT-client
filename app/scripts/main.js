@@ -4,6 +4,7 @@ var user,
     Projects: {},
     User: {},
     SprintBacklogStories: {},
+	ScrumPage:{},
     empty: {}
 };
 
@@ -32,5 +33,7 @@ $(function() {
  
 	sprint_backlog_stories = new app.SprintBacklogStories.CollectionView({
           el: $(".content")
-        });
+        }),
+		
+	scrum_page_view = new app.ScrumPage.ModelView({el: $(".content")});
 });

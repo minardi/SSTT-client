@@ -5,12 +5,9 @@
 	module.ModelView = Backbone.View.extend({	     
 		
     template: JST['app/scripts/ScrumPage/ScrumPageTpl.ejs'],        
- 		
-	//template: _.template($('#scrum-board').html()),
 	
 	initialize: function() {
-		this.render();
-		this.showPlan();
+	
 	},
 	
 	events: {
@@ -20,26 +17,25 @@
 	},
 	
 	subscriptions: {
-		//'some_channel': 'render';
+		"ScrumPageDefault:Open" : "render"
 	},
 	
 	render: function() {
 		this.$el.html(this.template());
+		this.showPlan($('#my_content'));
 		return this;
 	},
 	
-	showPlan: function() {
-		var ProductBacklogStory = new app.ProductBacklogStory.CollectionView({el: $(".content")});
-		var SprintBacklogStory = new app.SprintBacklogStory.CollectionView({el: $(".content")});
-		Backbone.Mediator.publish('ScrumPage:PlanBoardSelected', $('#tab-plan'));
+	showPlan: function(element) {
+		Backbone.Mediator.publish('ScrumPage:PlanBoardSelected', element);
 	},
 	
 	showScrum: function() {
-		Backbone.Mediator.publish('ScrumPage:ScrumBoardSelected', $('#tab-scrum'));
+		Backbone.Mediator.publish('ScrumPage:ScrumBoardSelected', element);
 	},
 	
 	showStat: function() {
-		Backbone.Mediator.publish('ScrumPage:StatBoardSelected', $('#tab-stat'));
+		Backbone.Mediator.publish('ScrumPage:StatBoardSelected', element);
 	}
 		 
 	});

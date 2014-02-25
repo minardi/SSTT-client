@@ -27,7 +27,7 @@
 		
 		pubChoosenProjectId: function() {
 			$(".content").html("");
-			Backbone.Mediator.pub("ScrumPage:PlanBoardSelected", this.model.id)
+			Backbone.Mediator.pub("ScrumPage:PlanBoardSelected", this.model.id);
         }
      
     });
