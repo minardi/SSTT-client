@@ -6,13 +6,14 @@
       
         template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesCollectionTpl.ejs'],
 
-        initialize: function() {
-        },
-
-        events: {},
-
         subscriptions: {
             "ScrumPage:PlanBoardSelected" : "initPlanBoard"
+        },
+
+        initPlanBoard: function(project_id) {
+            this.$el.append(this.template());
+            this.collection = new module.Collection(project_id),
+            this.collection.on('sync', this.render, this);
         },
 
         render: function() {
@@ -26,12 +27,7 @@
             });
 
             this.$el.find(".backlog-box ul").append(story.render().el);
-        },
 
-        initPlanBoard: function(project_id) {
-            this.$el.html(this.template());
-            this.collection = new module.Collection(project_id),
-            this.collection.on('sync', this.render, this);
         }
 
     });

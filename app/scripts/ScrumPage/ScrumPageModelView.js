@@ -6,11 +6,11 @@
     module.ModelView = Backbone.View.extend({
 
         template: JST['app/scripts/ScrumPage/ScrumPageTpl.ejs'],
-
-        initialize: function() {
-
+        
+        /*initialize: function() {
+            Backbone.Mediator.pub('ScrumPage:ProjectSelected', project_id);
         },
-
+        */
         events: {
             'click #planning': 'showPlan',
             'click #scrumboard': 'showScrum',
@@ -20,33 +20,27 @@
         subscriptions: {
             'ScrumPageDefault:Open': 'renderDefaultTab'
         },
-
+        
+        renderDefaultTab: function(project_id) {
+            this.render();
+            Backbone.Mediator.pub('ScrumPage:ProjectSelected', project_id);
+        },
+        
         render: function() {
             this.$el.html(this.template());
             return this;
         },
-
-        showPlan: function(project_id) {
-            var ProductBacklogStory = new app.ProductBacklogStories.CollectionView({el: $(".content")}),
-                SprintBacklogStory = new app.SprintBacklogStories.CollectionView({el: $(".content")});
-
-            Backbone.Mediator.pub('ScrumPage:PlanBoardSelected', project_id);
+        
+        showPlan: function() {
+            Backbone.Mediator.pub('ScrumPage:PlanBoardSelected', $(".content"));
         },
 
         showScrum: function() {
-            Backbone.Mediator.pub('ScrumPage:ScrumBoardSelected');
+            Backbone.Mediator.pub('ScrumPage:ScrumBoardSelected', $(".content"));
         },
 
         showStat: function() {
-            Backbone.Mediator.pub('ScrumPage:StatBoardSelected');
-        },
-
-        renderDefaultTab: function(project_id) {
-            this.render();
-            this.showPlan(project_id);
+            Backbone.Mediator.pub('ScrumPage:StatBoardSelected', $(".content"));
         }
-
     });
-
-
 })(app.ScrumPage);
