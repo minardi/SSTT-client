@@ -54,13 +54,13 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
+                    '<%= yeoman.app %>/scripts/*/*.{ejs,mustache,hbs}',
                     'test/spec/**/*.js'
                 ]
             },
             jst: {
                 files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
+                    '<%= yeoman.app %>/scripts/*/*.ejs'
                 ],
                 tasks: ['jst']
             },
@@ -277,7 +277,7 @@ module.exports = function (grunt) {
         jst: {
             compile: {
                 files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
+                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/*/*.ejs']
                 }
             }
         },
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('createDefaultTemplate', function () {
-        grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
+        grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');		
     });
 
     grunt.registerTask('server', function () {
@@ -357,8 +357,9 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', [       
+	grunt.registerTask('build', [
         'coffee',
+		'clean',
         'createDefaultTemplate',
         'jst',
         'compass:dist',
@@ -367,13 +368,30 @@ module.exports = function (grunt) {
         'htmlmin',
         'concat',
         'cssmin',
-        'uglify',
         'copy',
         'rev',
         'usemin',
 		'replace',
 		'copy:view'
     ]);
+	
+    grunt.registerTask('debug', [   
+        //'coffee',// ??
+		'clean', // чистит наш public/app
+        'createDefaultTemplate', // создает будущую заготовку для наших JST вставок
+        'jst', // вставляет в templates.js все наши .ejs темплейты, которые в будущем будет добавлены в наш main.js
+        //'compass:dist', // ничего не делает, т.к. :dist пустой
+        'useminPrepare', // SCRIPTS/***.js
+        'imagemin',// немного сжимает картикни + копирует папку на сервер
+        'htmlmin', // сжимает applictation.html.erb (убирает пробелы и тому подобное)  + копирует на сервер
+        'concat',  // таска вообще не описана - без нее папка /scripts не создается
+        'cssmin',  // cжимает CSS (делает из файла 1 строку убирает лишнии пробелы) + копирует на сервер
+        'copy',    //копирует папку с шрифтами для бутстрапа \bower_components\sass-bootstrap\fonts
+        // 'rev',  // делает: main.js -> 02as22as.main.js
+        'usemin',  // редактирует application.html.erb (изменяет ссылки скриптов на новосгенерированные и объеденные)
+		'replace', // редактирует application.html.erb (корректирует путь к нашим script-ам, а кокнертно дописывает в пути папку app/)
+		'copy:view' // копирует application.html.erb из public/app/.. в app/views/layouts
+        ]);
 
     grunt.registerTask('default', [
         'jshint',
