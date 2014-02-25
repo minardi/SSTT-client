@@ -6,10 +6,6 @@
 
         template: JST['app/scripts/ScrumPage/ScrumPageTpl.ejs'],
 
-        nitialize: function() {
-
-        },
-
         events: {
             'click #planning': 'showPlan',
             'click #scrumboard': 'showScrum',
@@ -20,12 +16,19 @@
             'ScrumPageDefault:Open': 'renderDefaultTab'
         },
 
+        renderDefaultTab: function(project_id) {
+            this.render();
+            this.showPlan(project_id);
+        },
+
         render: function() {
-            this.$el.html(this.template());
+            this.$el.append(this.template());
             return this;
         },
 
         showPlan: function(project_id) {
+            //убрать var в мейн\
+            //элемент передать через медиатор (саб)
             var ProductBacklogStory = new app.ProductBacklogStories.CollectionView({el: $(".content")}),
                 SprintBacklogStory = new app.SprintBacklogStories.CollectionView({el: $(".content")});
 
@@ -38,11 +41,6 @@
 
         showStat: function() {
             Backbone.Mediator.pub('ScrumPage:StatBoardSelected', $('#tab-stat'));
-        },
-
-        renderDefaultTab: function(project_id) {
-            this.render();
-            this.showPlan(project_id);
         }
 
     });

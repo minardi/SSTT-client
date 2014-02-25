@@ -11,12 +11,6 @@ var user,
 $(function() {
     'use strict';
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     user = new app.User.ModelView({
         el: $('.user')
     });
@@ -28,6 +22,7 @@ $(function() {
     var scrum_page = new app.ScrumPage.ModelView({
         el: $(".b-main")
     })
+    //перенсти создание ProductBacklog and SprintBacklog в main
 });
 
 

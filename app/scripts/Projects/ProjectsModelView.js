@@ -10,24 +10,18 @@
         
         template: JST['app/scripts/Projects/ProjectsTpl.ejs'],        
         
-        initialize: function() {
-        },
-
         events: {
-            "click": "pubChoosenProjectId"
+            "dblclick": "selectProject"
         },
-
-        subscriptions: {
-        },  
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
 
-        pubChoosenProjectId: function() {
+        selectProject: function() {
             Backbone.Mediator.pub("ScrumPageDefault:Open", this.model.id);
-        }
+        }//переименовать канал
      
     });
 
