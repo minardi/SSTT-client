@@ -5,13 +5,10 @@
     module.ModelView = Backbone.View.extend({
 
         model: module.Model,
-        tagName: "li",
-        className: "",
+        tagName: "div",
+        className: "story-box",
 
-        template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],   
-
-        initialize: function() {
-        },
+        template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],
 
         events: {
         "click" : "moveToSprintstory"

@@ -8,17 +8,15 @@
 
         initialize: function() {
             this.collection = new module.Collection();
-        },
-
-        events: {
+            Backbone.Mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
         },
 
         subscriptions: {
-            "Story:moveToSprint" : "moveToSprintstory",
-            "ScrumPage:PlanBoardSelected" : "choosePlanningBoard"
+            "Story:moveToSprint": "moveToSprintstory",
         },
 
-        choosePlanningBoard: function() {
+        initSprintBacklog: function(el_content) {
+            this.setElement(el_content);
             this.render();
         },
 
@@ -29,7 +27,8 @@
 
         renderOne: function(story_model) {
             var story = new module.ModelView({model: story_model});
-            this.$el.find(".sprint.backlog-box table").append(story.render().el);
+
+            this.$el.find(".sprint .story-list").append(story.render().el);
             return this;
         },
 

@@ -2,29 +2,21 @@
 
 ;(function(module) {
         
-	module.ModelView = Backbone.View.extend({	     
+    module.ModelView = Backbone.View.extend({        
 
-		tagName: "tr",
-        className: "",
+        tagName: "div",
+        className: "story-box",
     
         template: JST['app/scripts/SprintBacklogStories/SprintBacklogStoriesTpl.ejs'],        
- 		
-		initialize: function() {
+        
+        initialize: function() {
         },
-
-        events: {
-
-        },
-
-        subscriptions: {
-
-        },	
 
         render: function() {
-		  this.$el.html(this.template({model:this.model.toJSON()}));
-    	  return this;
+            this.$el.html(this.template({model:this.model.toJSON()}));
+            return this;
         }
 
     })
-	
+    
 })(app.SprintBacklogStories);

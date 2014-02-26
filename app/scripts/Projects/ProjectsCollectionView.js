@@ -13,7 +13,7 @@
         },
 
         subscriptions: {
-            "ScrumPageDefault": "hide"
+            "Project:Selected": "hide"
         },
 
         render: function() {

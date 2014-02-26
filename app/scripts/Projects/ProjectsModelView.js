@@ -20,9 +20,8 @@
         },
 
         selectProject: function() {
-            Backbone.Mediator.pub("ScrumPageDefault:Open", this.model.id);
-        }//переименовать канал
-
+            Backbone.Mediator.pub("Project:Selected", this.model.id);
+        }
      
     });
 

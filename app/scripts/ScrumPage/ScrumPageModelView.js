@@ -2,45 +2,46 @@
 
 (function(module) {
         
-
     module.ModelView = Backbone.View.extend({
 
-        template: JST['app/scripts/ScrumPage/ScrumPageTpl.ejs'],
+        project_id: "",
+
+        template: JST["app/scripts/ScrumPage/ScrumPageTpl.ejs"],
         
-        /*initialize: function() {
-            Backbone.Mediator.pub('ScrumPage:ProjectSelected', project_id);
-        },
-        */
         events: {
-            'click #planning': 'showPlan',
-            'click #scrumboard': 'showScrum',
-            'click #stat': 'showStat'
+            "click #planning": "showPlanning",
+            "click #scrumboard": "showScrum",
+            "click #stat": "showStat"
         },
 
         subscriptions: {
-            'ScrumPageDefault:Open': 'renderDefaultTab'
+            "Project:Selected": "renderDefaultTab"
         },
         
         renderDefaultTab: function(project_id) {
+            this.project_id = project_id;
             this.render();
-            Backbone.Mediator.pub('ScrumPage:ProjectSelected', project_id);
+            this.showPlanning();
         },
         
         render: function() {
-            this.$el.html(this.template());
+            this.$el.append(this.template());
             return this;
         },
         
-        showPlan: function() {
-            Backbone.Mediator.pub('ScrumPage:PlanBoardSelected', $(".content"));
+        showPlanning: function() {
+            this.$el.find("#ScrumPage").html("");
+            Backbone.Mediator.pub("ScrumPage:PlanningBoardSelected", this.$el.find("#ScrumPage"), this.project_id);
         },
 
         showScrum: function() {
-            Backbone.Mediator.pub('ScrumPage:ScrumBoardSelected', $(".content"));
+            Backbone.Mediator.pub("ScrumPage:ScrumBoardSelected", $("#ScrumPage"));
         },
 
         showStat: function() {
-            Backbone.Mediator.pub('ScrumPage:StatBoardSelected', $(".content"));
+            Backbone.Mediator.pub("ScrumPage:StatBoardSelected", $("#ScrumPage"));
         }
+        
     });
+
 })(app.ScrumPage);
