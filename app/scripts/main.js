@@ -6,6 +6,7 @@ var user,
     ProductBacklogStories: {},
     SprintBacklogStories: {},
 	ScrumPage:{},
+    Projectinfo: {},
     empty: {}
 };
 
@@ -23,9 +24,14 @@ $(function() {
     });
 
 	var SSTT = {
-        scrum_page: new app.ScrumPage.ModelView({el: $(".b-main")}),
+        scrum_page: new app.ScrumPage.ModelView({
+            el: $(".b-main")
+        }),
         product_backlog: new app.ProductBacklogStories.CollectionView(),
-        sprint_backlog: new app.SprintBacklogStories.CollectionView()
+        sprint_backlog: new app.SprintBacklogStories.CollectionView(),
+        project_info: new app.Projectinfo.ModelView({
+            el: $(".b-sidebar")
+        })
     };
 
 });
