@@ -8,11 +8,11 @@
          
         initialize: function() {
             this.model = new module.Model();
-            this.model.on('sync', this.render, this);
-            
-            this.model.on('sync', function() {
-                Backbone.Mediator.pub("!user_load");
-            }, this);
+
+            this.render();
+            this.model.on('change', this.render, this); // ??????
+
+            //this.model.on('sync', this.render, this); // ??????
         },
 
         render: function() {
