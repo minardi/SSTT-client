@@ -4,7 +4,7 @@
         
     module.Model = Backbone.Model.extend({       
         
-        url: 'users/3.json',
+        url: 'users/1.json',
         
         defaults: {
             first_name: '',

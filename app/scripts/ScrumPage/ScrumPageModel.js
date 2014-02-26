@@ -5,6 +5,7 @@
 	module.Model = Backbone.Model.extend({	     
 		 
 		 defaults: {
+			id_of_project: ""
          }		 
 		 
 	});

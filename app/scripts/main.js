@@ -25,7 +25,8 @@ $(function() {
 
 	var SSTT = {
         scrum_page: new app.ScrumPage.ModelView({
-            el: $(".b-main")
+            el: $(".b-main"),
+			model: new app.ScrumPage.Model()
         }),
         product_backlog: new app.ProductBacklogStories.CollectionView(),
         sprint_backlog: new app.SprintBacklogStories.CollectionView(),
@@ -34,5 +35,3 @@ $(function() {
         })
     };
 });
-
-
