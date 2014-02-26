@@ -3,10 +3,8 @@
 (function(module) {
     module.ModelView = Backbone.View.extend({
 
-        project_id: "",
-
         template: JST["app/scripts/ScrumPage/ScrumPageTpl.ejs"],
-        
+		
         events: {
             "click #planning": "showPlanning",
             "click #scrumboard": "showScrum",
@@ -18,8 +16,9 @@
         },
         
         renderDefaultTab: function(project_id) {
-            this.project_id = project_id;
+            this.model.set({id_of_project: project_id});
             this.render();
+            this.element = this.$el.find("#ScrumPage"),
             this.showPlanning();
         },
         
@@ -27,19 +26,18 @@
             this.$el.append(this.template());
             return this;
         },
-        
+		
         showPlanning: function() {
-            this.$el.find("#ScrumPage").html("");
-            Backbone.Mediator.pub("ScrumPage:PlanningBoardSelected", this.$el.find("#ScrumPage"), this.project_id);
+            this.element.html("");
+            Backbone.Mediator.pub("ScrumPage:PlanningBoardSelected", this.element, this.model.get("id_of_project"));
         },
 
         showScrum: function() {
-            Backbone.Mediator.pub("ScrumPage:ScrumBoardSelected", $("#ScrumPage"));
+            Backbone.Mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
         },
 
         showStat: function() {
-            Backbone.Mediator.pub("ScrumPage:StatBoardSelected", $("#ScrumPage"));
+            Backbone.Mediator.pub("ScrumPage:StatBoardSelected", this.element);
         }
-        
     });
 })(app.ScrumPage);
