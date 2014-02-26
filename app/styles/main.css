@@ -1,0 +1,21 @@
+body {
+	color: white;
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.myhidden {
+	display: none;
+}
+
+.myshown {
+	display: block;
+}
+
+.container {
+	padding: 100px;
+}
