@@ -13,7 +13,8 @@
         },
 
         setUrl: function (project_id) {
-        	this.url = 'tasks/for-project/' + project_id + '.json';         	
+        	this.url = 'tasks/for-project/' + project_id + '.json';
+            this.fetch();         	
         }
 
     });

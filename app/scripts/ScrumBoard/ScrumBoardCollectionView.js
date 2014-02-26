@@ -12,27 +12,27 @@
         },       
         
 
-        subscriptions: {
-            'ScrumPage:ScrumBoardSelected': 'init'
-        },  
-
-        init: function(content_el) {            
-            this.collection.fetch();            
-            this.setElement(content_el);
-            this.$el.html(this.template());          
-            this.listenTo(this.collection, 'sync', this.render);              
+        subscriptions: {           
+            'ScrumPage:ScrumBoardSelected': 'setElementAndRender'
+        },
+        
+        setElementAndRender: function(content_el) {
+            this.collection.fetch();
+            this.setElement(content_el);                                 
+            this.render();       
         },
 
-        render: function () {            
+        render: function () {
+            this.$el.html(this.template()); 
             this.collection.each(this.renderModel,this);
             return this;
         },
 
-        renderModel: function (task_model) {            
+        renderModel: function (task_model) {         
             var task = new module.ModelView({
                     model: task_model
-            });
-            this.$el.find('.' + task_model.get('status')).html(task.render().el);            
+            });           
+            this.$el.find('.' + task_model.get('status')).append(task.render().el);            
         }
 
     });
