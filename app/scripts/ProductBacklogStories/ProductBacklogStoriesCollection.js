@@ -7,8 +7,7 @@
         model: module.Model,
 
         initialize: function(project_id) {
-            this.url = "projects/" + project_id + "/stories";
-            //изменить руты
+            this.url = "/stories/for-projects/" + project_id;
             this.fetch();
         }
 
