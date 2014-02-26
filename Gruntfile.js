@@ -1,8 +1,10 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var SERVER_PORT = 9000;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
-var mountFolder = function (connect, dir) {
+var lrSnippet = require('connect-livereload')({
+    port: LIVERELOAD_PORT
+});
+var mountFolder = function(connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
@@ -13,7 +15,8 @@ var mountFolder = function (connect, dir) {
 // 'test/spec/**/*.js'
 // templateFramework: 'lodash'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
+
     // show elapsed time at the end
     require('time-grunt')(grunt);
     // load all grunt tasks
@@ -22,8 +25,10 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-		dist: '../../server/SSTT/public/app',        
-        view: '../../server/SSTT/app/views/layouts' 
+
+        dist: '../../server/SSTT/public/app',
+        view: '../../server/SSTT/app/views/layouts'
+
     };
 
     grunt.initConfig({
@@ -77,7 +82,8 @@ module.exports = function (grunt) {
             },
             livereload: {
                 options: {
-                    middleware: function (connect) {
+
+                    middleware: function(connect) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
@@ -89,7 +95,7 @@ module.exports = function (grunt) {
             test: {
                 options: {
                     port: 9001,
-                    middleware: function (connect) {
+                    middleware: function(connect) {
                         return [
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
@@ -101,7 +107,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
-                    middleware: function (connect) {
+                    middleware: function(connect) {
                         return [
                             mountFolder(connect, yeomanConfig.dist)
                         ];
@@ -186,16 +192,23 @@ module.exports = function (grunt) {
         /*uglify: {
             dist: {}
         },*/
-		replace: {
+
+
+        replace: {
             useapp: {
-                 src: ['<%= yeoman.dist %>/application.html.erb'],                              
-                 overwrite: true,             
-                 replacements: [{ 
-                     from: 'scripts/',           
-                     to: 'app/scripts/' 
-                }]           
+                src: ['<%= yeoman.dist %>/application.html.erb'],
+                overwrite: true,
+                replacements: [{
+                    from: 'scripts/',
+                    to: 'app/scripts/'
+                    /*CHANGE CSS PATH*/
+                }, {
+                    from: 'styles/',
+                    to: 'app/styles/'
+                }]
             }
-        },   	
+        },
+
         useminPrepare: {
             html: '<%= yeoman.app %>/application.html.erb',
             options: {
@@ -224,6 +237,9 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
+                        /* ADD BOOTSTRAP*/
+                        '<%= yeoman.app %>/bower_components/sass-bootstrap/dist/css/bootstrap.min.css',
+
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
                 }
@@ -260,11 +276,19 @@ module.exports = function (grunt) {
                     src: [
                         'images/{,*/}*.{webp,gif}',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
+                    ]
+                }, {
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/bower_components/sass-bootstrap/',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        'fonts/*.*'
                     ]
                 }]
             },
-			view: {
+            view: {
+
                 files: [{
                     expand: true,
                     dot: true,
@@ -272,7 +296,9 @@ module.exports = function (grunt) {
                     dest: '<%= yeoman.view %>',
                     src: 'application.html.erb'
                 }]
-            }			
+
+            }
+
         },
         jst: {
             compile: {
@@ -296,16 +322,19 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('createDefaultTemplate', function () {
-        grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');		
+    grunt.registerTask('createDefaultTemplate', function() {
+        grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });
 
-    grunt.registerTask('server', function () {
+    grunt.registerTask('server', function() {
+
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
 
-    grunt.registerTask('serve', function (target) {
+
+    grunt.registerTask('serve', function(target) {
+
         if (target === 'dist') {
             return grunt.task.run(['build', 'open:server', 'connect:dist:keepalive']);
         }
@@ -335,20 +364,21 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('test', function (isConnected) {
+    grunt.registerTask('test', function(isConnected) {
         isConnected = Boolean(isConnected);
         var testTasks = [
-                'clean:server',
-                'coffee',
-                'createDefaultTemplate',
-                'jst',
-                'compass',
-                'connect:test',
-                'mocha',
-                'watch:test'
-            ];
-            
-        if(!isConnected) {
+            'clean:server',
+            'coffee',
+            'createDefaultTemplate',
+            'jst',
+            'compass',
+            'connect:test',
+            'mocha',
+            'watch:test'
+        ];
+
+        if (!isConnected) {
+
             return grunt.task.run(testTasks);
         } else {
             // already connected so not going to connect again, remove the connect:test task
@@ -357,9 +387,9 @@ module.exports = function (grunt) {
         }
     });
 
-	grunt.registerTask('build', [       
+    grunt.registerTask('build', [
         'coffee',
-		'clean',
+        'clean',
         'createDefaultTemplate',
         'jst',
         'compass:dist',
@@ -371,26 +401,27 @@ module.exports = function (grunt) {
         'copy',
         'rev',
         'usemin',
-		'replace',
-		'copy:view'
+        'replace',
+        'copy:view'
     ]);
-	
-    grunt.registerTask('debug', [       
-        'coffee',
-		'clean',
-        'createDefaultTemplate',
-        'jst',
-        'compass:dist',
-        'useminPrepare',
-        'imagemin',
-        'htmlmin',
-        'concat',
-        'cssmin',
-        'copy',
-        'rev',
-        'usemin',
-		'replace',
-		'copy:view'
+
+    grunt.registerTask('debug', [
+        //'coffee',// ??
+        'clean', // чистит наш public/app
+        'createDefaultTemplate', // создает будущую заготовку для наших JST вставок
+        'jst', // вставляет в templates.js все наши .ejs темплейты, которые в будущем будет добавлены в наш main.js
+        //'compass:dist', // ничего не делает, т.к. :dist пустой
+        'useminPrepare', // SCRIPTS/***.js
+        'imagemin', // немного сжимает картикни + копирует папку на сервер
+        'htmlmin', // сжимает applictation.html.erb (убирает пробелы и тому подобное)  + копирует на сервер
+        'concat', // таска вообще не описана - без нее папка /scripts не создается
+        'cssmin', // cжимает CSS (делает из файла 1 строку убирает лишнии пробелы) + копирует на сервер
+        'copy', //копирует папку с шрифтами для бутстрапа \bower_components\sass-bootstrap\fonts
+        'rev',  // делает: main.js -> 02as22as.main.js
+        'usemin', // редактирует application.html.erb (изменяет ссылки скриптов на новосгенерированные и объеденные)
+        'replace', // редактирует application.html.erb (корректирует путь к нашим script-ам, а кокнертно дописывает в пути папку app/)
+        'copy:view' // копирует application.html.erb из public/app/.. в app/views/layouts
+
     ]);
 
     grunt.registerTask('default', [
@@ -399,3 +430,4 @@ module.exports = function (grunt) {
         'build'
     ]);
 };
+
