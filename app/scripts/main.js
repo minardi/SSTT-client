@@ -8,6 +8,7 @@ var user,
 	ScrumPage:{},
     Projectinfo: {},
     DashBoard: {},
+    ScrumBoard: {},
     empty: {}
 };
 
@@ -18,11 +19,9 @@ $(function() {
         el: $('.user')
     });
     
-    Backbone.Mediator.sub("!user_load", function() {
-        var my_project = new app.Projects.CollectionView({
+    var project = new app.Projects.CollectionView({
             el: $(".b-main")
-        })
-    });
+        });
 
 	var SSTT = {
         scrum_page: new app.ScrumPage.ModelView({
@@ -36,6 +35,7 @@ $(function() {
         }),
         dashboard: new app.DashBoard.ModelView({
             model: new app.DashBoard.Model()
-        })
+        }),
+        scrum_board: new app.ScrumBoard.CollectionView()
     };
 });
