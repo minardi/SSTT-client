@@ -18,11 +18,9 @@ $(function() {
         el: $('.user')
     });
     
-    Backbone.Mediator.sub("!user_load", function() {
-        var my_project = new app.Projects.CollectionView({
+    var project = new app.Projects.CollectionView({
             el: $(".b-main")
-        })
-    });
+        });
 
 	var SSTT = {
         scrum_page: new app.ScrumPage.ModelView({
