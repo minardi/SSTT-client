@@ -7,6 +7,7 @@ var user,
     SprintBacklogStories: {},
 	ScrumPage:{},
     Projectinfo: {},
+    ScrumBoard: {},
     empty: {}
 };
 
@@ -31,7 +32,8 @@ $(function() {
         sprint_backlog: new app.SprintBacklogStories.CollectionView(),
         project_info: new app.Projectinfo.ModelView({
             el: $(".b-sidebar")
-        })
+        }),
+        scrum_board: new app.ScrumBoard.CollectionView()
     };
 
 });
