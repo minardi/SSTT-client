@@ -6,6 +6,7 @@ var user,
     ProductBacklogStories: {},
     SprintBacklogStories: {},
 	ScrumPage:{},
+    Projectinfo: {},
     empty: {}
 };
 
@@ -24,7 +25,10 @@ $(function() {
         el: $(".b-main")
     }),
 	    ProductBacklogStory = new app.ProductBacklogStories.CollectionView(),
-        SprintBacklogStory = new app.SprintBacklogStories.CollectionView();
+        SprintBacklogStory = new app.SprintBacklogStories.CollectionView(),
+        project_info = new app.Projectinfo.ModelView({
+          el: $(".b-sidebar")
+        });
 });
 
 

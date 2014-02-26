@@ -1,4 +1,4 @@
-/* Projects */
+/* Projectinfo */
 
 (function(module) {
         
@@ -14,4 +14,4 @@
 		 
 	});
 
-})(app.Projects);
+})(app.Projectinfo);

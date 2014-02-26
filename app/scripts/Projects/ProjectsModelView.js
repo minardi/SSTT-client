@@ -11,7 +11,8 @@
         template: JST['app/scripts/Projects/ProjectsTpl.ejs'],        
         
         events: {
-            "dblclick": "selectProject"
+            "dblclick": "selectProject",
+            "click": "getProjectInfo"
         },
 
         render: function() {
@@ -21,9 +22,12 @@
 
         selectProject: function() {
             Backbone.Mediator.pub("ScrumPageDefault:Open", this.model.id);
-        }//переименовать канал
+        },//переименовать канал
 
-     
+        getProjectInfo: function() {
+            Backbone.Mediator.pub("Projects:getInfo", this.model);   
+        }
+
     });
 
 })(app.Projects);
