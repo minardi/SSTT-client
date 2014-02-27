@@ -17,6 +17,7 @@
     </script>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <% if user_signed_in? %>
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -35,7 +36,6 @@
         <script src="bower_components/backbone/backbone-mediator.js"></script>
         <!-- endbuild -->
     
-
         <!-- build:js({.tmp,app}) scripts/main.js -->
 
         <script src="scripts/main.js"></script>
@@ -82,7 +82,7 @@
         <script src="scripts/DashBoard/DashBoardModelView.js"></script>
          
         <!-- endbuild -->
-        
+    <% end %>
 
 </head>
 <body>
