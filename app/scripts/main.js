@@ -34,6 +34,7 @@ $(function() {
             el: $(".b-sidebar")
         }),
         dashboard: new app.DashBoard.ModelView({
+            el: $(".b-dash"),
             model: new app.DashBoard.Model()
         }),
         scrum_board: new app.ScrumBoard.CollectionView()
