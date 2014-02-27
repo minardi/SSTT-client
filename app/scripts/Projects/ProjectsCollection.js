@@ -7,7 +7,7 @@
         model: module.Model,
          
         initialize: function() {
-            this.url = "projects/for-user/" + user.getId();
+            this.url = "projects/for-user/" + sstt.user.getId();
         }        
          
     });

@@ -6,13 +6,10 @@
   
         template: JST['app/scripts/User/UserTpl.ejs'],
          
-        initialize: function() {
-            this.model = new module.Model();
+        initialize: function(init_val) {
+            this.model = new module.Model(init_val.user_content);
 
             this.render();
-            this.model.on('change', this.render, this); // ??????
-
-            //this.model.on('sync', this.render, this); // ??????
         },
 
         render: function() {

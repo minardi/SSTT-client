@@ -1,11 +1,11 @@
-var user,
+var sstt = {},
     app = {
     User: {},
     Projects: {},
     ScrumPage: {},
     ProductBacklogStories: {},
     SprintBacklogStories: {},
-	ScrumPage:{},
+    ScrumPage:{},
     Projectinfo: {},
     DashBoard: {},
     ScrumBoard: {},
@@ -15,28 +15,33 @@ var user,
 $(function() {
     'use strict';
 
-    user = new app.User.ModelView({
-        el: $('.user')
+    sstt.user = new app.User.ModelView({
+        el: $('.user'),
+        user_content: current_user_content
     });
-    
-    var project = new app.Projects.CollectionView({
-            el: $(".b-main")
-        });
 
-	var SSTT = {
-        scrum_page: new app.ScrumPage.ModelView({
-            el: $(".b-main"),
-			model: new app.ScrumPage.Model()
-        }),
-        product_backlog: new app.ProductBacklogStories.CollectionView(),
-        sprint_backlog: new app.SprintBacklogStories.CollectionView(),
-        project_info: new app.Projectinfo.ModelView({
-            el: $(".b-sidebar")
-        }),
-        dashboard: new app.DashBoard.ModelView({
-            el: $(".b-dash"),
-            model: new app.DashBoard.Model()
-        }),
-        scrum_board: new app.ScrumBoard.CollectionView()
-    };
+    sstt.project = new app.Projects.CollectionView({
+        el: $(".b-main")
+    });
+
+    sstt.scrum_page = new app.ScrumPage.ModelView({
+        el: $(".b-main"),
+        model: new app.ScrumPage.Model()
+    }),
+
+    sstt.product_backlog = new app.ProductBacklogStories.CollectionView(),
+
+    sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView(),
+
+    sstt.project_info = new app.Projectinfo.ModelView({
+        el: $(".b-sidebar")
+    }),
+
+    sstt.dashboard = new app.DashBoard.ModelView({
+        el: $(".b-dash"),
+        model: new app.DashBoard.Model()
+    }),
+
+    sstt.scrum_board = new app.ScrumBoard.CollectionView()
+
 });
