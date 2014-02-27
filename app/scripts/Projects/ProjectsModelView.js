@@ -12,7 +12,7 @@
         
         events: {
             "dblclick": "selectProject",
-            "click": "getProjectInfo"
+            "click": "getProjectInfo",
         },
 
         render: function() {
@@ -21,7 +21,6 @@
         },
 
         selectProject: function() {
-
             Backbone.Mediator.pub("Project:Selected", this.model.id);
         },
         

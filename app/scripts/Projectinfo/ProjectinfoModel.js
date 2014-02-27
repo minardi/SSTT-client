@@ -10,8 +10,12 @@
 		 	owner: "",
 		 	start: "",
 		 	finish: "",
-		 	role: ""
-		 //	pm : ""
+		 	role: "",
+		 	pm: { 
+		      user_id: "",
+		      name: "",
+		      surname: ""
+		    }
          }		 
 		 
 	});

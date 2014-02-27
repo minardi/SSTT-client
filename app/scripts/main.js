@@ -28,20 +28,20 @@ $(function() {
     sstt.scrum_page = new app.ScrumPage.ModelView({
         el: $(".b-main"),
         model: new app.ScrumPage.Model()
-    }),
-
-    sstt.product_backlog = new app.ProductBacklogStories.CollectionView(),
-
-    sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView(),
+    });
 
     sstt.project_info = new app.Projectinfo.ModelView({
         el: $(".b-sidebar")
-    }),
+    });
 
     sstt.dashboard = new app.DashBoard.ModelView({
         el: $(".b-dash"),
         model: new app.DashBoard.Model()
-    }),
+    });
+
+    sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
+
+    sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
 
     sstt.scrum_board = new app.ScrumBoard.CollectionView(),
     
