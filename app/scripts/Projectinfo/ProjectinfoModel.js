@@ -9,7 +9,9 @@
 		 	description: "",
 		 	owner: "",
 		 	start: "",
-		 	finish: ""
+		 	finish: "",
+		 	role: ""
+		 //	pm : ""
          }		 
 		 
 	});
