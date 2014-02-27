@@ -13,7 +13,8 @@
         },
 
         subscriptions: {
-            "Project:Selected": "hide"
+            "Project:Selected": "hide",
+            "ScrumPage:toProjectPage": "show"
         },
 
         render: function() {
@@ -31,6 +32,11 @@
 
         hide: function() {
             this.$el.addClass("hiddenProjects");
+        },
+
+        show: function() {
+            this.$el.removeClass("hiddenProjects");
+            console.log("show");
         }
      
     });

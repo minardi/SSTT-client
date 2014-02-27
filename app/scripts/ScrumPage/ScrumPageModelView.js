@@ -12,7 +12,8 @@
         },
 
         subscriptions: {
-            "Project:Selected": "renderDefaultTab"
+            "Project:Selected": "renderDefaultTab",
+            "ScrumPage:toProjectPage": "removeScrumPage"
         },
         
         renderDefaultTab: function(project_id) {
@@ -38,6 +39,13 @@
 
         showStat: function() {
             Backbone.Mediator.pub("ScrumPage:StatBoardSelected", this.element);
+        },
+
+        removeScrumPage: function() {
+            this.$el.find(".scrum-page").remove();
+            console.log("remove SCRUM");
         }
+
+
     });
 })(app.ScrumPage);
