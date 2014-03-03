@@ -177,6 +177,21 @@ a {
 
 /*DashBoard block
 _________________________________________________*/
+.btn-del {
+    background: 'glyphicon glyphicon-remove';
+}
+.btn-back {
+   background: 'glyphicon glyphicon-arrow-left';
+}
+.btn-config {
+    background: 'glyphicon glyphicon-cog';
+}
+.btn-team:before {
+    content: 'T';
+}
+.btn-team {
+}
+
 .app-wrapper .b-dash {
     position: relative;
     top: -200px;

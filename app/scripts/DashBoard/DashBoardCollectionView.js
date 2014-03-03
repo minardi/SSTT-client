@@ -1,46 +1,35 @@
 /* DashBoard */
 
-(function(module) {
+(function(module, sstt) {
         
     module.CollectionView = Backbone.View.extend({	     
 		
         template: JST['app/scripts/DashBoard/DashBoardCollectionTpl.ejs'],        
  		
 	    initialize: function() {
-                       
+            this.collection = new module.Collection();   
+            this.collection.add([
+                {context: 'del'}, 
+                {context: 'config'},                
+                {context: 'back'},
+                {context: 'team'}
+                ])                   
         },           
 
         events: {
         },
-        
+        project: {},
         subscriptions: {
-            "Projects:getInfo": "collectionForProjects"
+            "Projects:getInfo": "makeProject"
             //"Team:getInfo": "collectionforTeams"
         },        	
 
-        getUserInfo: function (current_user) {
-            console.log('user', current_user);
+        accessAllow: function () {           
+            return (this.project.toJSON().pm.user_id == sstt.user.getId()) ? true : false
         },
         
-        collectionForProjects: function (model) {
-                console.log(model.toJSON().pm);                             
-                this.collection = new module.Collection();
-                this.collection.add([                    
-                    {context: 'team'},
-                    {context: 'del'},
-                    {context: 'config'},
-                    {context: 'back'}
-                ])      
-            this.render();
-        },
-
-        collectionForTeams: function (model) {
-            this.collection = new module.Collection();
-            this.collection.add([                                       
-                    {context: 'del'},
-                    {context: 'config'},
-                    {context: 'back'}
-            ]);                
+        makeProject: function (project) {
+            this.project = project;            
             this.render();
         },
 
@@ -50,15 +39,19 @@
 	        return this;
         },
 
-        renderOne: function (button_model) {            
-            var button = new module.ModelView({
+        renderOne: function (button_model) {  
+            button_model.set('project_id', this.project.id);
+            if (this.accessAllow()) {               
+                var button = new module.ModelView({
                 model: button_model                
-            });                
-            this.$el.append(button.render().el);            
+                }); 
+                this.$el.append(button.render().el);
+            };               
+                        
         }
 
 		 
 	});
 
-})(app.DashBoard);
+})(app.DashBoard, sstt);
 

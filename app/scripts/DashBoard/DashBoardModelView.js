@@ -6,31 +6,29 @@
 		
         template: JST['app/scripts/DashBoard/DashBoardTpl.ejs'],        
  		
-	    initialize: function() {
-            
+	    initialize: function() {            
         },
-
-        tagName: 'button', 
-        className: 'btn btn-info',    
-                       
+        attributes: {            
+            class: 'btn btn-info',
+            type: 'button'            
+        },
+        
+        tagName: 'button',                    
+        
         events: {
             //'#btn-team click': 'goToTeamList'
-        },        
-        
-        templates: {
-            back: JST["app/scripts/DashBoard/DashBtnBack.ejs"],
-            team: JST["app/scripts/DashBoard/DashBtnTeam.ejs"],
-            config: JST["app/scripts/DashBoard/DashBtnConfig.ejs"],
-            del: JST["app/scripts/DashBoard/DashBtnDel.ejs"]
-        },
-
+        },     
+             
+         
         subscriptions: {
 
         },	
 
-        render: function() { 
-            //this.id = this.model.toJSON().context;                      
-            this.$el.attr('id', this.model.toJSON().context).html(this.templates[this.model.toJSON().context]);		    
+        render: function() {    
+            console.log(this.model.toJSON().project_id);                                                               
+            this.$el.html(this.template({
+                context: this.model.toJSON().context
+            }));		    
 	        return this;
         }		
 		 
