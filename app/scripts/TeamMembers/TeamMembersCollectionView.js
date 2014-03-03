@@ -4,7 +4,7 @@
         
 	module.CollectionView = Backbone.View.extend({	     
         
-        collection: new module.Collection();
+        collection: new module.Collection(),
 		
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],        
  		
