@@ -10,6 +10,7 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    TeamMembers: {},
     Teams: {},
     empty: {}
 };
@@ -52,11 +53,7 @@ $(function() {
     
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
-    });
 
-    $("#team").on("click", function() {
-        console.log("Открыть TeamPage");
-        Backbone.Mediator.pub("toTeamPage");
-    })
-
+    }),
+    sstt.team_members = new app.TeamMembers.CollectionView()
 });
