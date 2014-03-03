@@ -11,6 +11,8 @@ var sstt = {},
     ScrumBoard: {},
     TeamEditPage: {},
     TeamMember: {},
+    TeamMembers: {},
+    Teams: {},
     empty: {}
 };
 
@@ -44,10 +46,15 @@ $(function() {
 
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
 
-    sstt.scrum_board = new app.ScrumBoard.CollectionView(),
+    sstt.scrum_board = new app.ScrumBoard.CollectionView();
+
+    sstt.teams = new app.Teams.CollectionView({
+        el: $(".b-main")
+    });
     
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
-    })
 
+    }),
+    sstt.team_members = new app.TeamMembers.CollectionView()
 });
