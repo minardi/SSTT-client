@@ -7,7 +7,7 @@
         template: JST['app/scripts/Teams/TeamsCollectionTpl.ejs'],
 
         subscriptions: {
-            "toTeamPage": "init",
+            "ButtonTeamClick": "init",
         },
 
         init: function() {

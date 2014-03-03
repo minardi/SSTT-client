@@ -8,6 +8,7 @@
  		
 	    initialize: function() {            
         },
+
         attributes: {            
             class: 'btn btn-info',
             type: 'button'            
@@ -16,24 +17,27 @@
         tagName: 'button',                    
         
         events: {
-            //'#btn-team click': 'goToTeamList'
+            "click .btn-team": "goToTeamList"
         },     
-             
-         
-
 
         subscriptions: {
 
         },	
 
+        goToTeamList: function() {
+            Backbone.Mediator.pub("ButtonTeamClick",this.model.get(project_id));
+        },
 
         render: function() {    
-            console.log(this.model.toJSON().project_id);                                                               
+            console.log(this.model.toJSON().project_id);
+
             this.$el.html(this.template({
                 context: this.model.toJSON().context
-            }));		    
+            }));	    
 	        return this;
-        }		
+        }
+
+
 		 
 	});
 })(app.DashBoard);
