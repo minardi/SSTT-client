@@ -14,11 +14,12 @@
 
         subscriptions: {
             "Project:Selected": "hide",
+            "toTeamPage": "hide",
             "ScrumPage:toProjectPage": "show"
         },
 
         render: function() {
-            this.$el.html(this.template());
+            this.$el.append(this.template());
             this.projectsCollection.each(this.renderOne, this);
             return this;
         },

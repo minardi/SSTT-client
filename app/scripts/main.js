@@ -11,6 +11,8 @@ var sstt = {},
     ScrumBoard: {},
     TeamEditPage: {},
     UserCandidates: {},
+    TeamMembers: {},
+    Teams: {},
     empty: {}
 };
 
@@ -35,10 +37,11 @@ $(function() {
         el: $(".b-sidebar")
     });
 
-    sstt.dashboard = new app.DashBoard.ModelView({
+    /*sstt.dashboard = new app.DashBoard.ModelView({
         el: $(".b-dash"),
         model: new app.DashBoard.Model()
     });
+    */
 
     sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
 
@@ -46,10 +49,22 @@ $(function() {
 
     sstt.user_candidates = new app.UserCandidates.CollectionView();
 
-    sstt.scrum_board = new app.ScrumBoard.CollectionView(),
-    
+    sstt.scrum_board = new app.ScrumBoard.CollectionView();
+
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
-    })
+    });
+    sstt.dashboard = new app.DashBoard.CollectionView({
+        el: $('.b-dash')
+    });
 
+    sstt.teams = new app.Teams.CollectionView({
+        el: $(".b-main")
+    });  
+    
+    sstt.team_members = new app.TeamMembers.CollectionView();
+
+    $("#test").on("click", function() {
+        Backbone.Mediator.pub("toTeamPage")
+    })
 });
