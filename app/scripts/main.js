@@ -10,6 +10,7 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    TeamMember: {},
     empty: {}
 };
 
