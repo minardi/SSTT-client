@@ -18,21 +18,25 @@
         
         events: {
             "click .btn-team": "goToTeamList"
-        },     
-
-        subscriptions: {
-
+        }, 
+        
+        glyph: {
+            back: 'glyphicon glyphicon-remove',
+            del: 'glyphicon glyphicon-arrow-left', 
+            config: 'glyphicon glyphicon-cog'
+        },    
+        
+        subscriptions: {            
         },	
 
         goToTeamList: function() {
-            Backbone.Mediator.pub("ButtonTeamClick",this.model.toJSON().project_id);
+            Backbone.Mediator.pub("ButtonTeamClick", this.model.toJSON().project_id);
         },
 
-        render: function() {    
-            console.log(this.model.toJSON().project_id);
-
+        render: function() {               
             this.$el.html(this.template({
-                context: this.model.toJSON().context
+                context: this.model.toJSON().context, 
+                glyph: this.glyph[this.model.toJSON().context]
             }));	    
 	        return this;
         }
