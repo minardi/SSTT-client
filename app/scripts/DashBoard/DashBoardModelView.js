@@ -1,4 +1,4 @@
-/* DashBoard */
+ /* DashBoard */
 
 (function(module) {
         
@@ -13,6 +13,7 @@
         },
 
         events: {
+            "click #btn-teams": "showTeams"
         },
 
         subscriptions: {
@@ -30,7 +31,14 @@
                 $("#btn-back").remove();
                 Backbone.Mediator.pub("ScrumPage:toProjectPage");
             })
-        }
+        },
+
+        // showTeams: function() {
+        //     //$("btn-teams").on("click",function() {
+        //         // Backbone.Mediator.pub("TeamPage:toProjectTeam");
+        //         console.log("Hi Teams");
+        //  //   })
+        // }
      
     });
 
