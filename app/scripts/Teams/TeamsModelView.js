@@ -11,18 +11,19 @@
         template: JST['app/scripts/Teams/TeamsTpl.ejs'],
         
         events: {
-            //"dblclick": "selectTeam",
+            "dblclick": "selectTeam",
+        },
+
+        selectTeam: function() {
+            console.log("проект № " + this.model.id + "откройся");
+            Backbone.Mediator.pub("Team:Selected", this.model.id);
         },
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
-        },
+        }
 
-        selectTeam: function() {
-            Backbone.Mediator.pub("Team:Selected", this.model.id);
-        },
-        
     });
 
 })(app.Teams);
