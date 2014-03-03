@@ -25,7 +25,10 @@
         },
         
         getProjectInfo: function() {
-            Backbone.Mediator.pub("Projects:getInfo", this.model);   
+            Backbone.Mediator.pub("Projects:getInfo", this.model);  
+           // Backbone.Mediator.pub("Project:Selected", this.model);
+            $(".box").removeClass("active-tab"); 
+            this.$el.addClass("active-tab"); 
         }
 
     });

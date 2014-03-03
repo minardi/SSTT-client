@@ -10,6 +10,7 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    UserCandidates: {},
     empty: {}
 };
 
@@ -42,6 +43,8 @@ $(function() {
     sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
 
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
+
+    sstt.user_candidates = new app.UserCandidates.CollectionView();
 
     sstt.scrum_board = new app.ScrumBoard.CollectionView(),
     
