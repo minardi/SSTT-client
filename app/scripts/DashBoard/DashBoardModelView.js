@@ -1,4 +1,4 @@
-/* DashBoard */
+ /* DashBoard */
 
 (function(module) {
         
@@ -20,9 +20,12 @@
         },     
              
          
+
+
         subscriptions: {
 
         },	
+
 
         render: function() {    
             console.log(this.model.toJSON().project_id);                                                               
@@ -33,5 +36,4 @@
         }		
 		 
 	});
-
 })(app.DashBoard);

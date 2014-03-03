@@ -10,6 +10,8 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    TeamMembers: {},
+    Teams: {},
     empty: {}
 };
 
@@ -45,7 +47,7 @@ $(function() {
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
 
     sstt.scrum_board = new app.ScrumBoard.CollectionView();
-    
+
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
     });
@@ -53,4 +55,13 @@ $(function() {
         el: $('.b-dash')
     });
 
+    sstt.teams = new app.Teams.CollectionView({
+        el: $(".b-main")
+    });  
+    
+    sstt.team_members = new app.TeamMembers.CollectionView();
+
+    $("#test").on("click", function() {
+        Backbone.Mediator.pub("toTeamPage")
+    })
 });

@@ -196,12 +196,17 @@ _________________________________________________*/
     position: relative;
     top: -200px;
     display: inline-block;
-    width: 200px;
+    width: auto;
     height: 50px;
     background-color: white;
     border-radius: 5px;
     padding-top: 8px;
+<<<<<<< HEAD
     padding-left: 15px;    
+=======
+    padding-left: 15px;
+    padding-right: 15px;
+>>>>>>> 7686239db72856259cc3902c992a34e097f6aeca
     opacity: 0.8;
 }
 
