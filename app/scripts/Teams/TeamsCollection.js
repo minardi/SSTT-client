@@ -7,7 +7,7 @@
         model: module.Model,
 
         initialize: function() {
-            this.url = "stories/for-projects/1"
+            this.url = "teams/for-projects/1"
             //this.url = "team/for-project/" + Id
         }
 

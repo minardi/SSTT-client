@@ -56,4 +56,8 @@ $(function() {
 
     }),
     sstt.team_members = new app.TeamMembers.CollectionView()
+
+    $("#test").on("click", function() {
+        Backbone.Mediator.pub("toTeamPage")
+    })
 });
