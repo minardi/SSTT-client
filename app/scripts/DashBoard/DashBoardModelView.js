@@ -25,7 +25,7 @@
         },	
 
         goToTeamList: function() {
-            Backbone.Mediator.pub("ButtonTeamClick",this.model.get(project_id));
+            Backbone.Mediator.pub("ButtonTeamClick",this.model.toJSON().project_id);
         },
 
         render: function() {    
