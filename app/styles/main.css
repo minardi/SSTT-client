@@ -184,17 +184,21 @@ a {
 /*DashBoard block
 _________________________________________________*/
 .btn-del {
-    background: 'glyphicon glyphicon-remove';
+   
 }
+
 .btn-back {
-   background: 'glyphicon glyphicon-arrow-left';
+   
 }
+
 .btn-config {
-    background: 'glyphicon glyphicon-cog';
+    
 }
+
 .btn-team:before {
     content: 'T';
 }
+
 .btn-team {
 }
 
@@ -207,12 +211,8 @@ _________________________________________________*/
     background-color: white;
     border-radius: 5px;
     padding-top: 8px;
-<<<<<<< HEAD
-    padding-left: 15px;    
-=======
     padding-left: 15px;
     padding-right: 15px;
->>>>>>> 7686239db72856259cc3902c992a34e097f6aeca
     opacity: 0.8;
 }
 
