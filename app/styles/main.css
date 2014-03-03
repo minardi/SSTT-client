@@ -186,13 +186,14 @@ _________________________________________________*/
     background-color: white;
     border-radius: 5px;
     padding-top: 8px;
-    padding-left: 15px;
+    padding-left: 15px;    
     opacity: 0.8;
 }
 
-.app-wrapper .b-dash .btn-info {
+.app-wrapper .b-dash .btn .btn-info {
     display: inline-block;
 }
+
 /*SCRUM-board block
 ________________________________________________*/
 

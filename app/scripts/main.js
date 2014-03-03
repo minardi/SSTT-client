@@ -34,19 +34,23 @@ $(function() {
         el: $(".b-sidebar")
     });
 
-    sstt.dashboard = new app.DashBoard.ModelView({
+    /*sstt.dashboard = new app.DashBoard.ModelView({
         el: $(".b-dash"),
         model: new app.DashBoard.Model()
     });
+    */
 
     sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
 
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
 
-    sstt.scrum_board = new app.ScrumBoard.CollectionView(),
+    sstt.scrum_board = new app.ScrumBoard.CollectionView();
     
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
-    })
+    });
+    sstt.dashboard = new app.DashBoard.CollectionView({
+        el: $('.b-dash')
+    });
 
 });

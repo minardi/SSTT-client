@@ -13,11 +13,11 @@
         },
 
         subscriptions: {
-          "Projects:getInfo": "showProjectInfo"
+          "Projects:getInfo": "showProjectInfo"          
         },
 
-        showProjectInfo: function(project_model) {
-          this.project = project_model;
+        showProjectInfo: function(project_model) {      
+          this.project = project_model;          
           this.render();
         },	
 

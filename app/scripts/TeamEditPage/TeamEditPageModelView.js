@@ -15,12 +15,12 @@
         subscriptions: {            
         },	
 
-        render: function() {
-            console.log('render');
+        render: function() {            
             this.$el.append(this.template);
-	    return this;
+	        Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", $('.candidates-list'));
+            return this;
         },
-
+        
         showWatchers: function () {            
             Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", this.element);
         },
