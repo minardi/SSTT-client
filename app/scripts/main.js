@@ -10,6 +10,7 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    TeamMembers: {},
     empty: {}
 };
 
@@ -47,6 +48,6 @@ $(function() {
     
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
         el: $('.b-main')
-    })
-
+    }),
+    sstt.team_members = new app.TeamMembers.CollectionView()
 });
