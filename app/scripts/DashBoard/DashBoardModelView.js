@@ -1,37 +1,48 @@
-/* DashBoard */
+ /* DashBoard */
 
 (function(module) {
         
-    module.ModelView = Backbone.View.extend({
-        
-        template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],
-
-        tempate_btn_back: JST["app/scripts/DashBoard/DashBtnBack.ejs"],
-        
-        initialize: function() {
-            this.render();
+    module.ModelView = Backbone.View.extend({	     
+		
+        template: JST['app/scripts/DashBoard/DashBoardTpl.ejs'],        
+ 		
+	    initialize: function() {            
         },
 
+        attributes: {            
+            class: 'btn btn-info',
+            type: 'button'            
+        },
+        
+        tagName: 'button',                    
+        
         events: {
-        },
+            "click .btn-team": "goToTeamList"
+        }, 
+        
+        glyph: {
+            back: 'glyphicon glyphicon-remove',
+            del: 'glyphicon glyphicon-arrow-left', 
+            config: 'glyphicon glyphicon-cog'
+        },    
+        
+        subscriptions: {            
+        },	
 
-        subscriptions: {
-            "Project:Selected": "showBtnBack"
-        },  
+        goToTeamList: function() {
+
+            Backbone.Mediator.pub("ButtonTeamClick", this.model.toJSON().project_id);
+        },       
 
         render: function() {
-            this.$el.append(this.template());
-            return this;
-        },
-
-        showBtnBack: function() {
-            this.$el.append(this.tempate_btn_back());
-            $("#btn-back").on("click", function() {
-                $("#btn-back").remove();
-                Backbone.Mediator.pub("ScrumPage:toProjectPage");
-            })
+            this.$el.html(this.template({
+                context: this.model.toJSON().context, 
+                glyph: this.glyph[this.model.toJSON().context]
+            }));	    
+	        return this;
         }
-     
-    });
 
+
+		 
+	});
 })(app.DashBoard);

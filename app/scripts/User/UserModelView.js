@@ -7,13 +7,12 @@
         template: JST['app/scripts/User/UserTpl.ejs'],
          
         initialize: function(init_val) {
-            this.model = new module.Model(init_val.user_content);
-
-            this.render();
+            this.model = new module.Model(init_val.user_content);                          
+            this.render();           
         },
 
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
+        render: function() {                       
+            this.$el.html(this.template(this.model.toJSON()));            
             return this;
         },
 

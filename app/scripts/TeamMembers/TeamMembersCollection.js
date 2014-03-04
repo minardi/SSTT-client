@@ -5,10 +5,10 @@
 	module.Collection = Backbone.Collection.extend({	     
 		 model: module.Model,
 		 
-		// url: "/user",
-		 
+		 url: "/user",
+            
 		 initialize: function() {
-           // this.fetch();
+            this.fetch();
          }		 
 		 
 	});
