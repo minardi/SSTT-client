@@ -13,7 +13,8 @@
         },          
 
         subscriptions: {
-            "Team:Selected": "render"
+            "Team:Selected": "render",
+            "Button:Click:Back": "removeTeamPage"
         },	
 
         render: function() {            
@@ -33,7 +34,12 @@
         showTeachLeads: function () {
 
             Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
-        }		 
+        },
+
+        removeTeamPage: function() {
+            this.$el.removeClass("hiddenTeams");
+            this.$el.find(".team-edit-page").remove();
+        }
     });
 
 })(app.TeamEditPage);
