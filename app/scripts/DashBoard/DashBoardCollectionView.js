@@ -9,10 +9,10 @@
         initialize: function() {
             this.collection = new module.Collection();   
             this.collection.add([
-                {context: 'Delete'}, 
-                {context: 'Configure'},  
                 {context: 'Back'},
-                {context: 'Team'}
+                {context: 'Team'},
+                {context: 'Configure'},  
+                {context: 'Delete'} 
                 ])                   
         },           
 
