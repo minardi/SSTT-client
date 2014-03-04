@@ -60,7 +60,7 @@ _______________________________________________________*/
     padding: 10px;
 }
 
-/* alexey dashboard*/
+/*dashboard*/
 
 .app-wrapper .b-sidebar .dashboard {
     display: inline-block;
@@ -75,12 +75,14 @@ _______________________________________________________*/
     margin: 4px;
 }
 
-.app-wrapper .b-sidebar .dashboard .icon-team:before {
-    font-weight: 900;
-    content: "T"
+.btn-team:before {
+    content: 'T';
 }
 
-
+.app-wrapper .b-sidebar .dashboard button span {
+    font-size: 16px;
+    font-weight: 900;
+}
 
 
 
@@ -202,44 +204,6 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-/*DashBoard block
-_________________________________________________*/
-.btn-del {
-   
-}
-
-.btn-back {
-   
-}
-
-.btn-config {
-    
-}
-
-.btn-team:before {
-    content: 'T';
-}
-
-.btn-team {
-}
-
-.app-wrapper .b-dash {
-    position: relative;
-    top: -200px;
-    display: inline-block;
-    width: auto;
-    height: 50px;
-    background-color: white;
-    border-radius: 5px;
-    padding-top: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    opacity: 0.8;
-}
-
-.app-wrapper .b-dash .btn .btn-info {
-    display: inline-block;
-}
 
 
 
