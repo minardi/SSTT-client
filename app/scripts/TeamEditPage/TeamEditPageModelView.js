@@ -31,10 +31,9 @@
         },
 
         showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
-        }
 
-		 
+            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
+        }		 
     });
 
 })(app.TeamEditPage);
