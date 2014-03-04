@@ -10,6 +10,7 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
+    UserCandidates: {},
     TeamMembers: {},
     Teams: {},
     empty: {}
@@ -55,9 +56,13 @@ $(function() {
     
     sstt.team_members = new app.TeamMembers.CollectionView();
 
-    $("#test").on("click", function() {
-        Backbone.Mediator.pub("ButtonTeamClick", 1)
-    })
+    sstt.user_candidates = new app.UserCandidates.CollectionView();
+
+  //  $("#test").on("click", function() {
+  //      Backbone.Mediator.pub("ButtonTeamClick", 1)
+  //  })
+
+
 
 
 });
