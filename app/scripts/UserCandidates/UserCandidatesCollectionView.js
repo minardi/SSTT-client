@@ -25,10 +25,13 @@
 
         renderOne: function(user_model) {
             var user = new module.ModelView({
-                    model: user_model
+                model: user_model
             });
+            
             this.$el.find(".users-box .users-list").append(user.render().el);
-            console.log(user_model.toJSON());
+            
+
+            //console.log(user_model.toJSON());
 
         }
 		 
