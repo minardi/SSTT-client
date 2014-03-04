@@ -5,7 +5,7 @@
 	module.Collection = Backbone.Collection.extend({	     
 		 model: module.Model,
 		 
-		 url: "/team_members/for-team",
+		 url: "/tasks/for-project",
 		 
 		 initialize: function() {
             this.fetch();

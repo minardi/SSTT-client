@@ -13,8 +13,8 @@
 		 	role: "",
 		 	pm: { 
 		      user_id: "",
-		      name: "",
-		      surname: ""
+		      first_name: "",
+		      last_name: ""
 		    }
          }		 
 		 

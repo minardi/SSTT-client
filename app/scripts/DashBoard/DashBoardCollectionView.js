@@ -22,7 +22,7 @@
         project: {},
 
         subscriptions: {
-            "Projects:getInfo": "makeProject"
+            "Project:checked": "makeProject"
             //"Team:getInfo": "collectionforTeams"
         },          
 
