@@ -16,10 +16,6 @@
            "click" : "addToProject"
         },
 
-        // subscriptions: {
-        //     "TeamEditPage:DevelopersBoardSelected": "addRoleDev"
-        // },  
-
         render: function() {
            this.$el.html(this.template(this.model.toJSON()));
            return this;
@@ -32,16 +28,7 @@
             Backbone.Mediator.pub("User:addToProject", this.model);
             console.log(this.model.get("first_name"));
 
-        },
-
-        // addRoleDev: function() {
-        //     // this.model.set("role","dev")
-        //     // this.render(this.model);
-
-        //     // Backbone.Mediator.pub("User:addToProject", this.model);
-        //     // console.log(this.model.get("first_name"));
-        //     console.log("Hi");
-        // }     
+        },  
          
     });
 
