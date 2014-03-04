@@ -11,7 +11,7 @@
         template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],
 
         events: {
-        "click" : "moveToSprintstory"
+        "dblclick" : "moveToSprintstory"
         },
 
         subscriptions: {},
