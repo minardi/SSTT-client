@@ -12,7 +12,8 @@
             "click #TeachLeads": "showTeachLeads"
         },          
 
-        subscriptions: {            
+        subscriptions: {
+            "Team:Selected": "render"
         },	
 
         render: function() {            

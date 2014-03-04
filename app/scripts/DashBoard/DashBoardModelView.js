@@ -17,7 +17,7 @@
         tagName: 'button',                    
         
         events: {
-            "click .btn-team": "goToTeamList"
+            "click": "goToTeamList"
         }, 
         
         glyph: {
@@ -30,8 +30,7 @@
         },	
 
         goToTeamList: function() {
-
-            Backbone.Mediator.pub("ButtonTeamClick", this.model.toJSON().project_id);
+            Backbone.Mediator.pub("ButtonTeam:goTo" + this.model.get("context"), this.model.get("project_id"));
         },       
 
         render: function() {

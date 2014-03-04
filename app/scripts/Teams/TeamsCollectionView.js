@@ -7,7 +7,8 @@
         template: JST['app/scripts/Teams/TeamsCollectionTpl.ejs'],
 
         subscriptions: {
-            "ButtonTeamClick": "init",
+            "ButtonTeam:goToTeamPage": "init",
+            "Team:Selected": "hide"
         },
 
         init: function(project_id) {
@@ -28,6 +29,10 @@
             });
             this.$el.find(".content.team-page").append(project.render().el);
         },
+
+        hide: function() {
+            this.$el.find(".content.team-page").hide();
+        }
 
     });
 
