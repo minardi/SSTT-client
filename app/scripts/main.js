@@ -12,14 +12,15 @@ var sstt = {},
     TeamEditPage: {},
     TeamMembers: {},
     Teams: {},
+    DashboardBtns: {},
     empty: {}
 };
 
 $(function() {
-    'use strict';
+    "use strict";
 
     sstt.user = new app.User.ModelView({
-        el: $('.user'),
+        el: $(".user"),
         user_content: current_user_content
     });
 
@@ -49,10 +50,10 @@ $(function() {
     sstt.scrum_board = new app.ScrumBoard.CollectionView();
 
     sstt.team_edit_page = new app.TeamEditPage.ModelView({
-        el: $('.b-main')
+        el: $(".b-main")
     });
     sstt.dashboard = new app.DashBoard.CollectionView({
-        el: $('.b-dash')
+        el: $(".b-dash")
     });
 
     sstt.teams = new app.Teams.CollectionView({
@@ -64,4 +65,10 @@ $(function() {
     $("#test").on("click", function() {
         Backbone.Mediator.pub("ButtonTeamClick", 1)
     })
+
+    //Alexey analog dashboard
+    sstt.dash_btm = new app.DashboardBtns.CollectionView({
+        el: $(".b-sidebar")
+    })
+
 });
