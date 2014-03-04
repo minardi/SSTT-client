@@ -21,7 +21,6 @@
 
             addToProject: function() {
               Backbone.Mediator.pub("User:addToProject", this.model);
-              this.$el.remove();
             }		
 		 
 	});
