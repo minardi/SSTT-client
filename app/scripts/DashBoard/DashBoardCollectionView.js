@@ -12,7 +12,7 @@
                 {context: 'del'}, 
                 {context: 'config'},  
                 {context: 'back'},
-                {context: 'TeamPage'}
+                {context: 'team'}
                 ])                   
         },           
 

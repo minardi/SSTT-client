@@ -30,7 +30,7 @@
         },	
 
         goToTeamList: function() {
-            Backbone.Mediator.pub("ButtonTeam:goTo" + this.model.get("context"), this.model.get("project_id"));
+            Backbone.Mediator.pub("Button:Click:" + this.model.get("context"), this.model.get("project_id"));
         },       
 
         render: function() {
