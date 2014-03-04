@@ -8,7 +8,8 @@
 
         subscriptions: {
             "Button:Click:Team": "init",
-            "Team:Selected": "hide"
+            "Team:Selected": "hide",
+            "Button:Click:Back": "removeTeamPage"
         },
 
         init: function(project_id) {
@@ -18,7 +19,8 @@
         },
 
         render: function() {
-            this.$el.html(this.template());
+            Backbone.Mediator.pub("ScrumPage:remove")
+            this.$el.append(this.template());
             this.TeamsCollection.each(this.renderOne, this);
             return this;
         },
@@ -31,7 +33,11 @@
         },
 
         hide: function() {
-            this.$el.find(".content.team-page").hide();
+            this.$el.addClass("hiddenTeams");
+        },
+
+        removeTeamPage: function() {
+            this.$el.find(".team-page").remove();
         }
 
     });

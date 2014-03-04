@@ -13,7 +13,8 @@
         },          
 
         subscriptions: {
-            "Team:Selected": "render"
+            "Team:Selected": "render",
+            "Button:Click:Back": "removeTeamPage"
         },	
 
         render: function(team_id) {            
@@ -23,18 +24,22 @@
         },
         
         showWatchers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:WatchersSelected", this.element);
         },
         
         showDevelopers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:DevelopersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:DevelopersSelected", this.element);
         },
 
         showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamEditPage:TeachLeadsBoardSelected", this.element);
-        }
 
-		 
+            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
+        },
+
+        removeTeamPage: function() {
+            this.$el.removeClass("hiddenTeams");
+            this.$el.find(".team-edit-page").remove();
+        }
     });
 
 })(app.TeamEditPage);

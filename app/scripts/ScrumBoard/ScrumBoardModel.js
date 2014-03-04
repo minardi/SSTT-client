@@ -10,11 +10,7 @@
             description: '',
             story_id: '',
             sprint_id: ''
-        },
-
-        initialize: function () {
-        }
-
+        }       
     });
 
 })(app.ScrumBoard);
