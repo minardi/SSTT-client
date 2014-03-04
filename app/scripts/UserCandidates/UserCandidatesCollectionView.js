@@ -7,14 +7,11 @@
         template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],        
 
         initialize: function() {
-            Backbone.Mediator.sub("Edit:TeamBoardSelected", this.initUserCandidates, this);
+            Backbone.Mediator.sub("TeamEditPage:WatchersBoardSelected", this.initUserCandidates, this);
         },
 
-        subscriptions: {
-            // "ScrumPage:PlanningBoardSelected": "initProductBacklog",
-        },
-
-        initUserCandidates: function(el_content, project_id) {
+        initUserCandidates: function(el_content) {
+            project_id = 1;
             this.setElement(el_content);
             this.collection = new module.Collection(project_id);
             this.collection.on('sync', this.render, this);

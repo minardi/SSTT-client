@@ -17,7 +17,8 @@
         subscriptions: {},
 
         render: function() {
-        this.$el.html(this.template({name:this.model.toJSON().title}));
+        //this.$el.html(this.template({name:this.model.toJSON().title}));
+        this.$el.html(this.template({name:this.model.get("title")}));
         return this;
         },
 
