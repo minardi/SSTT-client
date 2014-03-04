@@ -32,7 +32,7 @@
 
         showTeachLeads: function () {
             Backbone.Mediator.pub("TeamEditPage:TeachLeadsBoardSelected", this.element);
-        }
+        },
 
 		 
     });
