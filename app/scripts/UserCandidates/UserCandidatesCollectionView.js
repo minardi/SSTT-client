@@ -7,7 +7,7 @@
         template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],        
 
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:WatchersBoardSelected", this.initUserCandidates, this);
+            Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
         },
 
         initUserCandidates: function(el_content) {

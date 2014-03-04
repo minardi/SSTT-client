@@ -18,20 +18,20 @@
 
         render: function() {            
             this.$el.append(this.template);
-	        Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", $('.candidates-list'));
+	        Backbone.Mediator.pub("TeamEditPage:Open", $('.candidates-list'));
             return this;
         },
         
         showWatchers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:WatchersSelected", this.element);
         },
         
         showDevelopers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:DevelopersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:DevelopersSelected", this.element);
         },
 
         showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamEditPage:TeachLeadsBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
         }
 
 		 
