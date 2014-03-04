@@ -111,6 +111,13 @@ _________________________________________________________*/
 }
 
 
+.hiddenProjects > .project-page,
+.hiddenScrum > .scrum-page,
+.hiddenTeams > .team-page {
+    display: none;
+}
+
+
 
 /*Project Page  & Team Page
 ________________________________________________*/
@@ -132,10 +139,6 @@ ________________________________________________*/
     font-size: 18px;
     text-align: center;
     border-bottom: 2px solid rgba(0,0,0,0.6);
-}
-
-.hiddenProjects > .project-page {
-    display: none;
 }
 
 

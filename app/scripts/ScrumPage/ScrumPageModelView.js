@@ -13,7 +13,7 @@
 
         subscriptions: {
             "Project:Selected": "renderDefaultTab",
-            "ScrumPage:toProjectPage": "removeScrumPage"
+            "ScrumPage:toProjectPage": "removeScrumPage",
         },
         
         renderDefaultTab: function(project_id) {
@@ -43,7 +43,6 @@
 
         removeScrumPage: function() {
             this.$el.find(".scrum-page").remove();
-            console.log("remove SCRUM");
         }
 
 

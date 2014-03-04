@@ -18,7 +18,7 @@
         },
 
         render: function() {
-            this.$el.html(this.template());
+            this.$el.append(this.template());
             this.TeamsCollection.each(this.renderOne, this);
             return this;
         },
@@ -31,7 +31,7 @@
         },
 
         hide: function() {
-            this.$el.find(".content.team-page").hide();
+            this.$el.addClass("hiddenTeams");
         }
 
     });

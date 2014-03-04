@@ -14,7 +14,7 @@
 
         subscriptions: {
             "Project:Selected": "hide",
-            "toTeamPage": "hide",
+            "Button:Click:Team": "hide",
             "ScrumPage:toProjectPage": "show"
         },
 
@@ -37,7 +37,6 @@
 
         show: function() {
             this.$el.removeClass("hiddenProjects");
-            console.log("show");
         }
      
     });

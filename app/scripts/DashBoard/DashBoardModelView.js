@@ -14,7 +14,7 @@
         tagName: 'button',                    
         
         events: {
-            "click": "goToTeamList"
+            "click": "action"
         }, 
         
         glyph: {
@@ -23,7 +23,7 @@
             Configure: 'glyphicon glyphicon-cog'
         },  
                
-        goToTeamList: function() {
+        action: function() {
             Backbone.Mediator.pub("Button:Click:" + this.model.get("context"), this.model.get("project_id"));
         },       
 
