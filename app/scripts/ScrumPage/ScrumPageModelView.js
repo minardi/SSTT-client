@@ -13,7 +13,8 @@
 
         subscriptions: {
             "Project:Selected": "renderDefaultTab",
-            "ScrumPage:toProjectPage": "removeScrumPage",
+            "Button:Click:Team": "removeScrumPage",
+            "Button:Click:Back": "removeScrumPage"
         },
         
         renderDefaultTab: function(project_id) {

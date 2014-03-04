@@ -14,8 +14,9 @@
 
         subscriptions: {
             "Project:Selected": "hide",
+            "ScrumPage:toProjectPage": "show",
             "Button:Click:Team": "hide",
-            "ScrumPage:toProjectPage": "show"
+            "Button:Click:Back": "show"
         },
 
         render: function() {
