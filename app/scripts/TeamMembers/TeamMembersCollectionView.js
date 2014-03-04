@@ -16,9 +16,11 @@
         },
 
         subscriptions: {
+           // "Project:Selected": "render"
         },	
 
         render: function() {
+            this.$el.append(this.template());
 		    this.collection.forEach(this.addOne, this);
 			return this;
         },

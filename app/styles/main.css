@@ -204,11 +204,6 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-
-
-
-
-
 /*SCRUM-board block
 ________________________________________________*/
 
@@ -306,4 +301,19 @@ a {
 
 .tab:hover {
     background-color: rgba(255,255,255,0.8);
+}
+
+/*TeamMembersPage block
+____________________________________________*/
+.team_members_box {
+    width: 360px;
+    height: 260px;
+    background-color: rgba(187, 221, 187, 0.7);
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.team_members-box-name {
+    font-size: 18px;
+    text-align: center;
 }

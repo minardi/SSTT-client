@@ -53,7 +53,9 @@ $(function() {
         el: $(".b-main")
     });  
     
-    sstt.team_members = new app.TeamMembers.CollectionView();
+    sstt.team_members = new app.TeamMembers.CollectionView({
+        el: $(".b-main")
+    });
 
     $("#test").on("click", function() {
         Backbone.Mediator.pub("ButtonTeamClick", 1)
