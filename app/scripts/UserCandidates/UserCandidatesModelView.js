@@ -20,7 +20,7 @@
             },
 
             addToProject: function() {
-              Backbone.Mediator.pub("User:addToProject", this.model);
+              Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
             }		
 		 
 	});

@@ -16,9 +16,9 @@
             "Team:Selected": "render"
         },	
 
-        render: function() {            
+        render: function(team_id) {            
             this.$el.append(this.template);
-	        Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", $('.candidates-list'));
+	        Backbone.Mediator.pub("TeamEditPage:Open", $('.candidates-list'), team_id);
             return this;
         },
         
