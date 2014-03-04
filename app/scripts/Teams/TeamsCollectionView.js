@@ -7,7 +7,7 @@
         template: JST['app/scripts/Teams/TeamsCollectionTpl.ejs'],
 
         subscriptions: {
-            "Button:Click:team": "init",
+            "Button:Click:Team": "init",
             "Team:Selected": "hide"
         },
 
