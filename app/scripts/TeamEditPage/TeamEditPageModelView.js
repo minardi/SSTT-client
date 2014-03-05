@@ -25,16 +25,15 @@
         },
         
         showWatchers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:WatchersSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:Selected", "watcher");
         },
         
         showDevelopers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:DevelopersSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:Selected", "developer");
         },
 
         showTeachLeads: function () {
-
-            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:Selected", "techlead");
         },
 
         removeTeamPage: function() {
