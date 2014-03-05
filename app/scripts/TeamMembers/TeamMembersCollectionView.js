@@ -16,19 +16,17 @@
         },
 
         subscriptions: {
-           // "Project:Selected": "render"
         },	
 
         render: function() {
-            this.$el.append(this.template());
+            this.$el.append(this.template()); 
 		    this.collection.forEach(this.addOne, this);
 			return this;
         },
 
         addOne: function() {
             var team_members = new module.ModelView({model: new module.Model});
-            this.$el.append(team_members.render().el);
-            return this;
+            this.$el.find(".team_members-list").append(team_members.render().el);
         }
 	});
 

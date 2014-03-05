@@ -2,12 +2,11 @@
 
 (function(module) {
         
-	module.ModelView = Backbone.View.extend({	     
+	module.ModelView = Backbone.View.extend({	    
 		
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],        
  		
 		initialize: function() {
-            this.render();
         },
 
         events: {
