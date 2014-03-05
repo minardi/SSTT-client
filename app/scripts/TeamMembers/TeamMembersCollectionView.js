@@ -1,13 +1,12 @@
 /* TeamMembers */
 
 (function(module) {
-        
-	module.CollectionView = Backbone.View.extend({	     
-        
+
+    module.CollectionView = Backbone.View.extend({
+
         collection: new module.Collection(),
-		
-        template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],        
- 		
+
+        template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
 
        initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:Open", this.initUsers, this);
@@ -25,8 +24,8 @@
         },
 
         render: function() {
-		    this.collection.forEach(this.addOne, this);
-			return this;
+            this.collection.forEach(this.addOne, this);
+            return this;
         },
 
         addOne: function() {
@@ -34,7 +33,7 @@
             this.$el.append(team_members.render().el);
             return this;
         }
-	});
+    });
 
 })(app.TeamMembers);
 

@@ -1,10 +1,10 @@
 /* UserCandidates */
 
 (function(module) {
-        
-	module.CollectionView = Backbone.View.extend({	     
-		
-        template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],        
+
+    module.CollectionView = Backbone.View.extend({
+
+        template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],
 
         initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
@@ -26,12 +26,12 @@
             var user = new module.ModelView({
                 model: user_model
             });
-            
+
             this.$el.find(".users-box .users-list").append(user.render().el);
             //console.log(user_model.toJSON());
         }
-		 
-	});
+
+    });
 
 })(app.UserCandidates);
 
