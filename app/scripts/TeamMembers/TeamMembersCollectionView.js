@@ -2,39 +2,48 @@
 
 (function(module) {
         
-	module.CollectionView = Backbone.View.extend({	     
-        
-        collection: new module.Collection(),
-		
-        template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],        
+    module.CollectionView = Backbone.View.extend({
 
-       initialize: function() {
-        this.render();
-            //Backbone.Mediator.sub("TeamEditPage:Open", this.initUsers, this);
+        collection: new module.Collection(),
+        
+        template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
+        
+        team_members_class : "watcher",
+
+        initialize: function() {
+            Backbone.Mediator.sub("TeamEditPage:Open2", this.initUsers, this);
+        },
+
+        subscriptions: {
+            "UserCandidate:addToProject": "addOne",
+            "TeamMemberSelected" :"setTeamMemberClass"
         }, 
 
-     /*   initUsers: function() {
-            team_id = 5;
+        setTeamMemberClass: function(new_class) {
+            this.team_members_class = new_class;
+            this.render();
+        },
+
+        initUsers: function(element, team_id) {
+            this.setElement(element);
             this.collection = new module.Collection(team_id);
-            //this.collection.on('sync', this.render, this);
-            this.collection.on('sync', this.show, this);
-        },
+            this.collection.fetch();
+            this.collection.on('sync', this.render, this);
+        },       
 
-        show: function () {
-           console.log(this.collection.toJSON());
-        },
-*/
         render: function() {
-            this.$el.append(this.template()); 
-		    this.collection.forEach(this.addOne, this);
-			return this;
+            this.$el.html(this.template());
+            this.collection.forEach(this.addOne, this);
+            return this;
         },
 
-        addOne: function() {
-            var team_members_view = new module.ModelView({model: team_member});
-            this.$el.find(".team_members-list").append(team_members_view.render().el);
+        addOne: function(model) {
+          if (model.get("role") === this.team_members_class) {
+            var team_members = new module.ModelView({model: model});
+            this.$el.find('.list').append(team_members.render().el);
+          }
         }
-	});
+    });
 
 })(app.TeamMembers);
 

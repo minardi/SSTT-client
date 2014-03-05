@@ -15,9 +15,10 @@
             };
         <% end %>
     </script>
+    <% if user_signed_in? %>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <% if user_signed_in? %>
+    
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -85,8 +86,14 @@
          
         <!-- module TeamEditPage-->
         <script src="scripts/TeamEditPage/TeamEditPageModel.js"></script>
+        <script src="scripts/TeamEditPage/TeamEditPageModelView.js"></script>
+         
+        <!-- module TeamMember-->
+        <script src="scripts/TeamMember/TeamMemberModel.js"></script>
+        <script src="scripts/TeamMember/TeamMemberCollection.js"></script>
+        <script src="scripts/TeamMember/TeamMemberModelView.js"></script>
+        <script src="scripts/TeamMember/TeamMemberCollectionView.js"></script>
         <script src="scripts/TeamEditPage/TeamEditPageModelView.js"></script>        
-
 
         <!-- module TeamMembers-->
         <script src="scripts/TeamMembers/TeamMembersModel.js"></script>
