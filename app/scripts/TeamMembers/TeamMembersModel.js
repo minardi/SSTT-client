@@ -5,8 +5,7 @@
 	module.Model = Backbone.Model.extend({	     
 		 
 		 defaults: {
-            name: "",
-            team: ""
+            name: ""
          }		 
 		 
 	});

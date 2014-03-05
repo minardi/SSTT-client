@@ -4,10 +4,9 @@
         
 	module.Collection = Backbone.Collection.extend({	     
 		 model: module.Model,
-		 
-		 url: "/user",
-            
-		 initialize: function() {
+		  
+		 initialize: function(team_id) {
+            this.url = "/team_members/for-team" + team_id;
             this.fetch();
          }		 
 		 
