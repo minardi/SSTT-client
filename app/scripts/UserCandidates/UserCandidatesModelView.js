@@ -4,28 +4,43 @@
 
 	module.ModelView = Backbone.View.extend({	     
 		
-          template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],        
- 		
-          model: module.Model,
-          tagName: "div",
-          className: "user-box",
-          
-           events: {
-             "click" : "addToProject"
-           },
+    template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
 
-           render: function() {
-             this.$el.html(this.template(this.model.toJSON()));
-             return this;
-            },
+    initialize: function() {
+      this.model.on("change", this.render, this);
+    },      
 
-            addToProject: function() {
-              this.model.set("role","watcher")
-              this.render(this.model);
+    model: module.Model,
 
-              Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
-              console.log(this.model.get("first_name"));
-            }		
+    subscriptions: {
+        "TeamMemberSelected": "setRole"
+    },
+
+    role: "",
+
+    setRole: function(role_new) {
+        this.role = role_new;
+        return this.role;
+    },
+
+    tagName: "div",
+
+    className: "user-box",
+    
+    events: {
+       "click" : "addToProject"
+    },
+
+    render: function() {
+       this.$el.html(this.template(this.model.toJSON()));
+       return this;
+      },
+
+    addToProject: function() {
+      this.model.set("role", this.role);
+      Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
+      
+    }		
 		 
 	});
 
