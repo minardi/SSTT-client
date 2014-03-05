@@ -9,12 +9,13 @@
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],        
  		
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:Open", this.initUsers, this);
+            Backbone.Mediator.sub("TeamEditPage:Open2", this.initUsers, this);
             //this.render();
         }, 
 
         initUsers: function(element, team_id) {
             //team_id = 5;
+            this.setElement(element);
             this.collection = new module.Collection(team_id);
             this.collection.fetch();
             this.collection.on('sync', this.render, this);

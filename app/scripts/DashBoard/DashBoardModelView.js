@@ -11,7 +11,7 @@
             type: "button"            
         },
         
-        tagName: "button",                    
+        tagName: "button",
         
         events: {
             "click": "action"

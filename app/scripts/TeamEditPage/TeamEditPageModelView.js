@@ -20,6 +20,7 @@
         render: function(team_id) {            
             this.$el.append(this.template);
 	        Backbone.Mediator.pub("TeamEditPage:Open", $('.candidates-list'), team_id);
+            Backbone.Mediator.pub("TeamEditPage:Open2", $('.team-members'), team_id);
             return this;
         },
         

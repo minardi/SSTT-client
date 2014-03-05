@@ -54,9 +54,7 @@ $(function() {
         el: $(".b-main")
     });  
     
-    sstt.team_members = new app.TeamMembers.CollectionView({
-        el: $(".b-main"),
-    });
+    sstt.team_members = new app.TeamMembers.CollectionView();
 
     sstt.user_candidates = new app.UserCandidates.CollectionView();
 
