@@ -311,6 +311,7 @@ a {
 }
 
 .candidates-list {
+    display: inline-block;
     min-height: 50%;
     width: 40%;
     border: 2px solid rgba(0,0,0,0.2);
@@ -341,3 +342,23 @@ a {
 .user-box:hover {
     color: #7744E4;
 }
+
+/* TeamMembers Page
+____________________________________________*/
+
+.team-members {
+    float: right;
+    min-height: 50%;
+    width: 40%;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: rgba(187,221,187,0.7);
+    box-shadow: 0px 0px 10px rgba(158, 221, 158, 0.7);
+    opacity: 0.8;
+}
+
+.team-members-list {
+    
+}
+
+
