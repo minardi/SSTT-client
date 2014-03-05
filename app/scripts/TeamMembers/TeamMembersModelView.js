@@ -3,11 +3,12 @@
 (function(module) {
         
 	module.ModelView = Backbone.View.extend({	     
-		
+		model: new module.Model(),
+        
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],        
  		
 		initialize: function() {
-            this.render();
+            //this.render();
         },
 
         events: {
