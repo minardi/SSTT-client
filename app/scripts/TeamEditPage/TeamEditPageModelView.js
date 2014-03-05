@@ -12,28 +12,34 @@
             "click #TeachLeads": "showTeachLeads"
         },          
 
-        subscriptions: {            
+        subscriptions: {
+            "Team:Selected": "render",
+            "Button:Click:Back": "removeTeamPage"
         },	
 
-        render: function() {            
+        render: function(team_id) {            
             this.$el.append(this.template);
-	        Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", $('.candidates-list'));
+	        Backbone.Mediator.pub("TeamEditPage:Open", $('.candidates-list'), team_id);
             return this;
         },
         
         showWatchers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:WatchersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:WatchersSelected", this.element);
         },
         
         showDevelopers: function () {            
-            Backbone.Mediator.pub("TeamEditPage:DevelopersBoardSelected", this.element);
+            Backbone.Mediator.pub("TeamEditPage:DevelopersSelected", this.element);
         },
 
         showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamEditPage:TeachLeadsBoardSelected", this.element);
-        }
 
-		 
+            Backbone.Mediator.pub("TeamEditPage:TeachLeadsSelected", this.element);
+        },
+
+        removeTeamPage: function() {
+            this.$el.removeClass("hiddenTeams");
+            this.$el.find(".team-edit-page").remove();
+        }
     });
 
 })(app.TeamEditPage);

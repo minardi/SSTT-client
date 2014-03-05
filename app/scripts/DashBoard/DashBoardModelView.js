@@ -4,45 +4,35 @@
         
     module.ModelView = Backbone.View.extend({	     
 		
-        template: JST['app/scripts/DashBoard/DashBoardTpl.ejs'],        
- 		
-	    initialize: function() {            
-        },
-
+        template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],     
+ 		    
         attributes: {            
-            class: 'btn btn-info',
-            type: 'button'            
+            class: "btn btn-info",
+            type: "button"            
         },
         
-        tagName: 'button',                    
+        tagName: "button",                    
         
         events: {
-            "click .btn-team": "goToTeamList"
+            "click": "action"
         }, 
         
         glyph: {
-            back: 'glyphicon glyphicon-remove',
-            del: 'glyphicon glyphicon-arrow-left', 
-            config: 'glyphicon glyphicon-cog'
-        },    
-        
-        subscriptions: {            
-        },	
-
-        goToTeamList: function() {
-
-            Backbone.Mediator.pub("ButtonTeamClick", this.model.toJSON().project_id);
+            Back: "glyphicon glyphicon-arrow-left",
+            Delete:  "glyphicon glyphicon-remove",
+            Configure: "glyphicon glyphicon-cog"
+        },  
+               
+        action: function() {
+            Backbone.Mediator.pub("Button:Click:" + this.model.get("context"), this.model.get("project_id"));
         },       
 
         render: function() {
             this.$el.html(this.template({
-                context: this.model.toJSON().context, 
-                glyph: this.glyph[this.model.toJSON().context]
+                context: this.model.get("context"), 
+                glyph: this.glyph[this.model.get("context")]
             }));	    
 	        return this;
-        }
-
-
-		 
+        }		 
 	});
 })(app.DashBoard);

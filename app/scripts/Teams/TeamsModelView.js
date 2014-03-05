@@ -15,7 +15,6 @@
         },
 
         selectTeam: function() {
-            console.log("проект № " + this.model.id + "откройся");
             Backbone.Mediator.pub("Team:Selected", this.model.id);
         },
 

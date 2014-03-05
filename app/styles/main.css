@@ -44,10 +44,9 @@ _______________________________________________________*/
 
 .app-wrapper .b-sidebar .info {
     height: 300px;
-    background-color: #DDDA8F;
-    opacity: 0.6;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
     border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    background-color: rgba(220,220,140,0.7);
 }
 
 .app-wrapper .b-sidebar .info .title {
@@ -60,7 +59,7 @@ _______________________________________________________*/
     padding: 10px;
 }
 
-/* alexey dashboard*/
+/*dashboard*/
 
 .app-wrapper .b-sidebar .dashboard {
     display: inline-block;
@@ -75,12 +74,14 @@ _______________________________________________________*/
     margin: 4px;
 }
 
-.app-wrapper .b-sidebar .dashboard .icon-team:before {
-    font-weight: 900;
-    content: "T"
+.btn-Team:before {
+    content: 'T';
 }
 
-
+.app-wrapper .b-sidebar .dashboard button span {
+    font-size: 16px;
+    font-weight: 900;
+}
 
 
 
@@ -109,17 +110,24 @@ _________________________________________________________*/
 }
 
 
+.hiddenProjects > .project-page,
+.hiddenTeams > .team-page {
+    display: none;
+}
+
+
 
 /*Project Page  & Team Page
 ________________________________________________*/
 .app-wrapper .b-main .content .box {
-    display: inline-block;
+    float: left;
     width: 200px;
     height: 150px;
     margin: 0 20px 20px 0;
     border: 2px solid rgba(0,0,0,0.6);
     border-radius: 5px;
-    background-color: rgba(187,221,187,0.7);
+    background-color: rgba(180,220,180,0.6);
+    cursor: pointer;
 }
 
 .app-wrapper .b-main .content .box:hover {
@@ -132,10 +140,6 @@ ________________________________________________*/
     border-bottom: 2px solid rgba(0,0,0,0.6);
 }
 
-.hiddenProjects > .project-page {
-    display: none;
-}
-
 
 /*Planing&Sprint block
 ________________________________________________*/
@@ -144,7 +148,8 @@ ________________________________________________*/
     width: 40%;
     border: 2px solid rgba(0,0,0,0.6);
     border-radius: 5px;
-    background-color: rgba(187,221,187,0.7);
+    background-color: rgba(180,220,180,0.7);
+    box-shadow: 0px 0px 10px rgba(160, 220, 160, 0.6);
 }
 
 .app-wrapper .b-main .content .product {
@@ -157,16 +162,19 @@ ________________________________________________*/
 }
 .backlog-box .story-list .story-box {
     margin: 5px 20px;
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.3);
     background-color: rgba(255,255,255,0.3);
     font-size: 16px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .app-wrapper .b-main .content .backlog-box-name{ 
     font-size: 18px;
     text-align: center;
     border-bottom: 2px solid rgba(0,0,0,0.6);
+    opacity: 0.9;
 }
 
 .app-wrapper .b-main .content .backlog-box-actions{
@@ -201,48 +209,6 @@ a {
 .app-wrapper .b-main .tab:hover {
     background-color: rgba(255,255,255,0.8);
 }
-
-/*DashBoard block
-_________________________________________________*/
-.btn-del {
-   
-}
-
-.btn-back {
-   
-}
-
-.btn-config {
-    
-}
-
-.btn-team:before {
-    content: 'T';
-}
-
-.btn-team {
-}
-
-.app-wrapper .b-dash {
-    position: relative;
-    top: -200px;
-    display: inline-block;
-    width: auto;
-    height: 50px;
-    background-color: white;
-    border-radius: 5px;
-    padding-top: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    opacity: 0.8;
-}
-
-.app-wrapper .b-dash .btn .btn-info {
-    display: inline-block;
-}
-
-
-
 
 
 /*SCRUM-board block
@@ -342,4 +308,36 @@ a {
 
 .tab:hover {
     background-color: rgba(255,255,255,0.8);
+}
+
+.candidates-list {
+    min-height: 50%;
+    width: 40%;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background-color: rgba(187,221,187,0.7);
+    box-shadow: 0px 0px 10px rgba(158, 221, 158, 0.7);
+    opacity: 0.8;
+}
+.users-box-name {
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+    opacity: 0.9;
+} 
+
+.user-box {
+    margin: 5px 20px;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.3);
+    background-color: rgba(255,255,255,0.3);
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition:color .0.4s ease-out, 0.4s ease-in;
+}
+
+.user-box:hover {
+    color: #7744E4;
 }

@@ -5,26 +5,29 @@
     module.ModelView = Backbone.View.extend({
 
         model: module.Model,
+
         tagName: "div",
+
         className: "story-box",
 
         template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],
 
         events: {
-        "click" : "moveToSprintstory"
+            "dblclick" : "moveToSprintstory"
         },
 
         subscriptions: {},
 
         render: function() {
-        this.$el.html(this.template({name:this.model.toJSON().title}));
-        return this;
+            //this.$el.html(this.template({name:this.model.toJSON().title}));
+            this.$el.html(this.template({name:this.model.get("title")}));
+            return this;
         },
 
         moveToSprintstory: function() {
-        Backbone.Mediator.pub("Story:moveToSprint", this.model);
-        this.$el.remove();
-    }
+            Backbone.Mediator.pub("Story:moveToSprint", this.model);
+            this.$el.remove();
+        }
 
     });
 

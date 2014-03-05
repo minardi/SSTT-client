@@ -5,19 +5,19 @@
     module.CollectionView = Backbone.View.extend({
 
         template: JST['app/scripts/ScrumBoard/ScrumBoardCollectionTpl.ejs'],
-    
         
-        initialize: function () {  
-            this.collection = new module.Collection();     
-        },       
-        
-
-        subscriptions: {           
+        subscriptions: {   
+            'Project:Selected': 'init',      
             'ScrumPage:ScrumBoardSelected': 'setElementAndRender'
         },
         
-        setElementAndRender: function(content_el) {
+        init: function (project_id) {  
+            this.collection = new module.Collection(project_id);
             this.collection.fetch();
+            this.listenTo(this.collection, 'sync', this.render);     
+        },   
+            
+        setElementAndRender: function(content_el) {           
             this.setElement(content_el);                                 
             this.render();       
         },

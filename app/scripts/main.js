@@ -10,10 +10,9 @@ var sstt = {},
     DashBoard: {},
     ScrumBoard: {},
     TeamEditPage: {},
-    TeamMember: {},
+    UserCandidates: {},
     TeamMembers: {},
     Teams: {},
-    DashboardBtns: {},
     empty: {}
 };
 
@@ -38,12 +37,6 @@ $(function() {
         el: $(".b-sidebar")
     });
 
-    /*sstt.dashboard = new app.DashBoard.ModelView({
-        el: $(".b-dash"),
-        model: new app.DashBoard.Model()
-    });
-    */
-
     sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
 
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
@@ -54,7 +47,7 @@ $(function() {
         el: $(".b-main")
     });
     sstt.dashboard = new app.DashBoard.CollectionView({
-        el: $(".b-dash")
+        el: $(".b-sidebar")
     });
 
     sstt.teams = new app.Teams.CollectionView({
@@ -63,13 +56,13 @@ $(function() {
     
     sstt.team_members = new app.TeamMembers.CollectionView();
 
-    $("#test").on("click", function() {
-        Backbone.Mediator.pub("ButtonTeamClick", 1)
-    })
+    sstt.user_candidates = new app.UserCandidates.CollectionView();
 
-    //Alexey analog dashboard
-    sstt.dash_btm = new app.DashboardBtns.CollectionView({
-        el: $(".b-sidebar")
-    })
+  //  $("#test").on("click", function() {
+  //      Backbone.Mediator.pub("ButtonTeamClick", 1)
+  //  })
+
+
+
 
 });

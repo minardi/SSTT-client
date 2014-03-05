@@ -9,10 +9,10 @@
         initialize: function() {
             this.collection = new module.Collection();   
             this.collection.add([
-                {context: 'del'}, 
-                {context: 'config'},                
-                {context: 'back'},
-                {context: 'team'}
+                {context: 'Back'},
+                {context: 'Team'},
+                {context: 'Configure'},  
+                {context: 'Delete'} 
                 ])                   
         },           
 
@@ -22,7 +22,7 @@
         project: {},
 
         subscriptions: {
-            "Projects:getInfo": "makeProject"
+            "Project:checked": "makeProject"
             //"Team:getInfo": "collectionforTeams"
         },          
 
@@ -36,7 +36,7 @@
         },
 
         render: function() {           
-            this.$el.html(this.template);
+            this.$el.append(this.template);
             this.collection.each(this.renderOne, this);         
             return this;
         },
@@ -47,7 +47,7 @@
                 var button = new module.ModelView({
                 model: button_model                
                 }); 
-                this.$el.append(button.render().el);
+                this.$el.find(".dashboard").append(button.render().el);
             };                              
         }    
     });
