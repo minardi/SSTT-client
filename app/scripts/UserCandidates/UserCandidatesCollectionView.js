@@ -30,7 +30,6 @@
             });
 
             this.$el.find(".users-box .users-list").append(user.render().el);
-            //console.log(user_model.toJSON());
         }
 
     });
