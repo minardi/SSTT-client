@@ -7,13 +7,12 @@
         template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],        
 
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:WatchersBoardSelected", this.initUserCandidates, this);
-        },
+            Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
+        }, 
 
-        initUserCandidates: function(el_content) {
-            project_id = 1;
+        initUserCandidates: function(el_content, team_id) {
             this.setElement(el_content);
-            this.collection = new module.Collection(project_id);
+            this.collection = new module.Collection(team_id);
             this.collection.on('sync', this.render, this);
         },
 
@@ -25,11 +24,11 @@
 
         renderOne: function(user_model) {
             var user = new module.ModelView({
-                    model: user_model
+                model: user_model
             });
+            
             this.$el.find(".users-box .users-list").append(user.render().el);
-            console.log(user_model.toJSON());
-
+            //console.log(user_model.toJSON());
         }
 		 
 	});

@@ -44,10 +44,9 @@ _______________________________________________________*/
 
 .app-wrapper .b-sidebar .info {
     height: 300px;
-    background-color: #DDDA8F;
-    opacity: 0.6;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
     border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    background-color: rgba(220,220,140,0.7);
 }
 
 .app-wrapper .b-sidebar .info .title {
@@ -127,7 +126,7 @@ ________________________________________________*/
     margin: 0 20px 20px 0;
     border: 2px solid rgba(0,0,0,0.6);
     border-radius: 5px;
-    background-color: rgba(187,221,187,0.7);
+    background-color: rgba(180,220,180,0.6);
     cursor: pointer;
 }
 
@@ -147,11 +146,10 @@ ________________________________________________*/
 .app-wrapper .b-main .content .backlog-box {
     min-height: 50%;
     width: 40%;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0,0,0,0.6);
     border-radius: 5px;
-    background-color: rgba(187,221,187,0.7);
-    box-shadow: 0px 0px 10px rgba(158, 221, 158, 0.7);
-    opacity: 0.8;
+    background-color: rgba(180,220,180,0.7);
+    box-shadow: 0px 0px 10px rgba(160, 220, 160, 0.6);
 }
 
 .app-wrapper .b-main .content .product {
@@ -311,7 +309,7 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-.users-box {
+.candidates-list {
     min-height: 50%;
     width: 40%;
     border: 2px solid rgba(0,0,0,0.2);
@@ -336,9 +334,12 @@ a {
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
+    transition:color .0.4s ease-out, 0.4s ease-in;
 }
 
-
+.user-box:hover {
+    color: #7744E4;
+}
 /*TeamMembersPage block
 ____________________________________________*/
 .team_members_box {
@@ -352,4 +353,5 @@ ____________________________________________*/
 .team_members-box-name {
     font-size: 18px;
     text-align: center;
-}
+
+

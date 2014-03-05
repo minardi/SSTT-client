@@ -14,7 +14,6 @@
 
         subscriptions: {
             "Project:Selected": "hide",
-            "ScrumPage:toProjectPage": "show",
             "Button:Click:Team": "hide",
             "Button:Click:Back": "show"
         },
