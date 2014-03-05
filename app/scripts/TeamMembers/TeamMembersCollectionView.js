@@ -8,15 +8,21 @@
 		
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],        
  		
-		initialize: function() {
-            this.render();
+
+       initialize: function() {
+            Backbone.Mediator.sub("TeamEditPage:Open", this.initUsers, this);
+        }, 
+
+        initUsers: function() {
+            team_id = 5;
+            this.collection = new module.Collection(team_id);
+            //this.collection.on('sync', this.render, this);
+            this.collection.on('sync', this.show, this);
         },
 
-        events: {
+        show: function () {
+           console.log(this.collection.toJSON());
         },
-
-        subscriptions: {
-        },	
 
         render: function() {
 		    this.collection.forEach(this.addOne, this);

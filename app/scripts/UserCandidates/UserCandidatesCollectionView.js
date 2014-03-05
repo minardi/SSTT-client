@@ -12,7 +12,6 @@
 
         initUserCandidates: function(el_content, team_id) {
             this.setElement(el_content);
-            console.log(team_id);
             this.collection = new module.Collection(team_id);
             this.collection.on('sync', this.render, this);
         },

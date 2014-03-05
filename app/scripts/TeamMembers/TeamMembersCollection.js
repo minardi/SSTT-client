@@ -3,15 +3,13 @@
 (function(module) {
         
 	module.Collection = Backbone.Collection.extend({	     
-		 model: module.Model,
+      model: module.Model,
 		 
-		// url: "/user",
-		 
-		 initialize: function() {
-           // this.fetch();
-         }		 
-		 
-	});
-
+	  initialize: function(team_id) {
+        this.url = "/users/for-team/" + team_id;
+        this.fetch();	 
+	  }
+    });
+     
 })(app.TeamMembers);
 
