@@ -24,7 +24,7 @@
             },
 
             addToProject: function() {
-              this.model.set("role","watcher")
+              this.model.set("role", "some")
               //this.render(this.model);
 
               Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
