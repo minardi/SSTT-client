@@ -2,19 +2,15 @@
 
 (function(module) {
         
-	module.ModelView = Backbone.View.extend({	    
+	module.ModelView = Backbone.View.extend({	  
+        el: $(".team_members_box"),
 		
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],        
  		
 		initialize: function() {
+            this.render();
         },
-
-        events: {
-        },
-
-        subscriptions: {
-        },	
-
+        
         render: function() {
 		    this.$el.html(this.template(this.model.toJSON()));
 			return this;
