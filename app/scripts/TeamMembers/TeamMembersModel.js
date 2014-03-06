@@ -4,8 +4,7 @@
         
 	module.Model = Backbone.Model.extend({	     
 
-	  defaults: {
-	  	id: '',
+	  defaults: {	  	
    	    first_name: '', 
 	    last_name: '',
         role: ''

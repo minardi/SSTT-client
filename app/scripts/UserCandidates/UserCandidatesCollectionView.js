@@ -11,6 +11,7 @@
         }, 
 
         initUserCandidates: function(el_content, team_id) {
+            //attribute of function would be hash            
             this.setElement(el_content);
             this.collection = new module.Collection(team_id);
             this.collection.on('sync', this.render, this);
@@ -18,6 +19,8 @@
 
         render: function() {
             this.$el.append(this.template());
+            this.$users_list =  this.$el.find(".users-list");
+            console.log(this.$users_list)
             this.collection.each(this.renderOne, this);
             return this;
         },
@@ -28,7 +31,7 @@
                 role: "watcher"
             });
 
-            this.$el.find(".users-box .users-list").append(user.render().el);
+            this.$users_list.append(user.render().el);
         }
 
     });

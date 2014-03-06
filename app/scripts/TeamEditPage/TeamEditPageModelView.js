@@ -9,37 +9,39 @@
         events: {
             "click #watchers": "showWatchers",
             "click #developers": "showDevelopers",
-            "click #TeachLeads": "showTeachLeads"
-        }, 
-
-        initialize: function () {
-            this.showWatchers();
-        },         
+            "click #techleads": "showTeachLeads"
+        },
 
         subscriptions: {
             "Team:Selected": "render",
             "Button:Click:Back": "removeTeamPage"
         },
 
+        initialize: function () {
+            this.showWatchers();
+        },         
+
+        showWatchers: function () {            
+            Backbone.Mediator.pub("TeamTab:Selected", "watcher");
+        },
+
+        showDevelopers: function () {
+            Backbone.Mediator.pub("TeamTab:Selected", "developer");
+        },
+
+        showTeachLeads: function () {
+            Backbone.Mediator.pub("TeamTab:Selected", "techlead");
+        },
+
         render: function(team_id) {            
-            this.$el.append(this.template);
-	        Backbone.Mediator.pub("TeamEditPage:Open", this.$el.find('.candidates-list'), team_id);
+            this.$el.append(this.template());
+            //one pub, and use object as attribute
+            Backbone.Mediator.pub("TeamEditPage:Open", this.$el.find('.candidats'), team_id);
             Backbone.Mediator.pub("TeamEditPage:OpenTeamMembers", this.$el.find('.team-members'), team_id);
             return this;
         },
         
-        showWatchers: function () {            
-            Backbone.Mediator.pub("TeamMemberSelected", "watcher");
-        },
         
-        showDevelopers: function () {
-            Backbone.Mediator.pub("TeamMemberSelected", "developer");
-        },
-
-        showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamMemberSelected", "techlead");
-        },
-
         removeTeamPage: function() {
             this.$el.removeClass("hiddenTeams");
             this.$el.find(".team-edit-page").remove();

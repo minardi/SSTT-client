@@ -1,17 +1,21 @@
 /* TeamMembers */
 
 (function(module) {
+
         module.ModelView = Backbone.View.extend({              
-             
-        model: new module.Model(),
-        
+
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
 
-        urlRoot: "/users/for-team/",
+        initialize: function () {
+            this.model.on('change', this.render, this);
+        },
+
+        subscription: {
+            "TeamTab:Selected": "chek"
+        },
 
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
+            this.$el.html(this.template(this.model.toJSON()));	
         }         
     });
 

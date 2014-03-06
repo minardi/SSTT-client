@@ -2,33 +2,30 @@
 
 (function(module) {
 
-	module.ModelView = Backbone.View.extend({	     
-		
-    template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
-
-    initialize: function() {
-      this.model.on("change", this.render, this);
-    },      
-
-    model: module.Model,
-
-    subscriptions: {
-        "TeamMemberSelected": "setRole"
-    },
-
-    role: "",
-
-    setRole: function(role_new) {
-        this.role = role_new;
-        return this.role;
-    },
+	module.ModelView = Backbone.View.extend({	
 
     tagName: "div",
 
     className: "user-box",
     
+    role: "",   
+		
+    template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
+
+    initialize: function() {
+      this.model.on("change", this.render, this);
+    },
+
     events: {
        "click" : "addToProject"
+    },      
+
+    subscriptions: {
+        "TeamTab:Selected": "setRole"
+    },
+
+    setRole: function(current_role) {
+        this.role = current_role;
     },
 
     render: function() {
