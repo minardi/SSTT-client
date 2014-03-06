@@ -1,6 +1,7 @@
 /* TeamMembers */
 
 (function(module) {
+
         module.ModelView = Backbone.View.extend({              
 
         initialize: function () {

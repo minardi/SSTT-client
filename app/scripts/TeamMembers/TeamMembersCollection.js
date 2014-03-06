@@ -2,14 +2,16 @@
 
 (function(module) {
         
-	module.Collection = Backbone.Collection.extend({	     
+    module.Collection = Backbone.Collection.extend({
     
     model: module.Model,
-		 
-	initialize: function(team_id) {
-        this.url = "/users/for-team/" + team_id;
-        //this.fetch();	 
-	  }
+         
+        initialize: function(project_id) {
+            this.url = "/users/for-project/" + project_id;
+            //this.url = "/users/for-team/" + team_id;
+            this.fetch();
+      }
+      
     });
      
 })(app.TeamMembers);

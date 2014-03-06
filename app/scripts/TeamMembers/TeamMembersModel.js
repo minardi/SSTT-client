@@ -5,9 +5,9 @@
 	module.Model = Backbone.Model.extend({	     
 
 	  defaults: {	  	
-   	    first_name: '+', 
-	    last_name: '+',
-        role: '+'
+   	    first_name: '', 
+	    last_name: '',
+        role: ''
       }		 
 	});
 

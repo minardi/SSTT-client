@@ -2,10 +2,9 @@
 
 (function(module) {
         
-    module.CollectionView = Backbone.View.extend({       
+    module.CollectionView = Backbone.View.extend({
         
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
-        
 
         initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
@@ -16,6 +15,7 @@
         },
 
         subscriptions: {
+            //"TeamTab:Selected": "setTeamMemberClass",
             "UserCandidate:addToProject": "addToCollection",
             "TeamMemberSelected": "setMode"
         },  
@@ -33,11 +33,11 @@
             this.collection.on('add', this.addOne, this);
         },     
 
-        addToCollection: function (new_model) {             
+        addToCollection: function (new_model) {
             var exist_model = this.collection.findWhere({
                                     first_name: new_model.get("first_name"), 
                                     last_name: new_model.get("last_name")
-                            });
+                              });
 
             if (exist_model) {
                 exist_model.set('role', new_model.get('role')); 
@@ -47,15 +47,9 @@
             }
         },
         
-        saveCollection: function () {
-            this.collection.each(function (model) {
-                model.save();
-            }, this);
-        },
-        
         render: function() {
             this.$el.html(this.template());
-            this.collection.each(this.addOne, this);
+            this.collection.each(this.renderOne, this);
             return this;
         },
 

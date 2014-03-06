@@ -2,12 +2,19 @@
 
 (function(module) {
 
-	module.ModelView = Backbone.View.extend({	     
+	module.ModelView = Backbone.View.extend({	
+
+    tagName: "div",
+
+    className: "user-box",
+    
+    role: "",   
 		
     template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
 
     initialize: function() {
       this.model.on("change", this.render, this);
+
       this.role = "watcher";
     },      
 
@@ -21,12 +28,8 @@
         this.role = role_new;       
     },
 
-    tagName: "div",
-
-    className: "user-box",
-    
-    events: {
-       "click" : "addToProject"
+    setRole: function(current_role) {
+        this.role = current_role;
     },
 
     render: function() {
