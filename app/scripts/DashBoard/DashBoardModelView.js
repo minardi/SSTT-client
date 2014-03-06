@@ -1,18 +1,15 @@
- /* DashBoard */
+/* DashBoard */
 
 (function(module) {
         
-    module.ModelView = Backbone.View.extend({	     
-		
-        template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],     
- 		    
-        attributes: {            
-            class: "btn btn-info",
-            type: "button"            
-        },
-        
+    module.ModelView = Backbone.View.extend({
+
         tagName: "button",
+
+        className: "btn btn-info",
         
+        template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],
+
         events: {
             "click": "action"
         }, 
@@ -22,17 +19,18 @@
             Delete:  "glyphicon glyphicon-remove",
             Configure: "glyphicon glyphicon-cog"
         },  
-               
+
         action: function() {
-            Backbone.Mediator.pub("Button:Click:" + this.model.get("context"), this.model.get("project_id"));
-        },       
+            Backbone.Mediator.pub("Button:Click:" + this.model.get("content"), this.model.get("project_id"));
+        },
 
         render: function() {
             this.$el.html(this.template({
-                context: this.model.get("context"), 
-                glyph: this.glyph[this.model.get("context")]
-            }));	    
-	        return this;
-        }		 
-	});
+                content: this.model.get("content"),
+                glyph: this.glyph[this.model.get("content")]
+            }));
+            return this;
+        }
+
+    });
 })(app.DashBoard);
