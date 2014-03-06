@@ -16,9 +16,6 @@
                 ])                   
         },           
 
-        events: {
-        },
-
         project: {},
 
         subscriptions: {

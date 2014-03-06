@@ -30,17 +30,14 @@
         
         showWatchers: function () {            
             Backbone.Mediator.pub("TeamMemberSelected", "watcher");
-
         },
         
         showDevelopers: function () {
             Backbone.Mediator.pub("TeamMemberSelected", "developer");
-
         },
 
         showTeachLeads: function () {
             Backbone.Mediator.pub("TeamMemberSelected", "techlead");
-
         },
 
         removeTeamPage: function() {

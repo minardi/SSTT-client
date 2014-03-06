@@ -8,7 +8,6 @@
 
         initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
-           // Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
         }, 
 
         initUserCandidates: function(el_content, team_id) {

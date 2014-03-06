@@ -14,6 +14,10 @@
             Backbone.Mediator.sub("TeamEditPage:Open2", this.initUsers, this);
         },
 
+        events: {
+            "click #save": "save"
+        },
+
         subscriptions: {
             "UserCandidate:addToProject": "addOne",
             "TeamMemberSelected" :"setTeamMemberClass"
@@ -38,10 +42,20 @@
         },
 
         addOne: function(model) {
-          if (model.get("role") === this.team_members_class) {
-            var team_members = new module.ModelView({model: model});
-            this.$el.find('.list').append(team_members.render().el);
-          }
+            
+            var team_members;
+                
+            if (model.get("role") === this.team_members_class) {
+               // this.model = model;
+                team_members = new module.ModelView({model: model});
+                this.$el.find('.list').append(team_members.render().el); 
+            }
+            //console.log(team_members);
+        },
+
+        save: function() {
+            console.log(this.model);
+            //this.save();
         }
     });
 
