@@ -16,8 +16,6 @@
         "TeamMemberSelected": "setRole"
     },
 
-    role: "",
-
     setRole: function(role_new) {
         this.role = role_new;
         return this.role;
