@@ -210,7 +210,6 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-
 /*SCRUM-board block
 ________________________________________________*/
 
@@ -340,8 +339,8 @@ a {
 }
 
 .user-box:hover {
-    color: #7744E4;
-}
+    color: #7744E4;}
+
 
 /* TeamMembers Page
 ____________________________________________*/
@@ -357,8 +356,28 @@ ____________________________________________*/
     opacity: 0.8;
 }
 
+
 .team-members-list {
-    
 }
 
+.watcher {
+    border: 1px black solid;
+    border-radius: 3px;
+    margin: 5px;
+}
 
+.developer {
+    border: 1px black solid;
+    border-radius: 3px;
+     margin: 5px;
+}
+
+.techlead {
+    border: 1px black solid;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.list {
+    overflow: auto;
+}
