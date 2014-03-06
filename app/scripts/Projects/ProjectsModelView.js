@@ -25,7 +25,7 @@
         },
         
         getProjectInfo: function() {
-            Backbone.Mediator.pub("Project:checked", this.model);  
+            Backbone.Mediator.pub("Project:Checked", this.model);  
             $(".box").removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         }
