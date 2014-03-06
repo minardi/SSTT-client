@@ -8,9 +8,8 @@
 
     initialize: function() {
       this.model.on("change", this.render, this);
+      this.role = "watcher";
     },      
-
-    //model: module.Model,
 
     subscriptions: {
         "TeamMemberSelected": "setRole"
@@ -37,8 +36,7 @@
 
     addToProject: function() {
       this.model.set("role", this.role);
-      Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
-      
+      Backbone.Mediator.pub("UserCandidate:addToProject", this.model); 
     }		
 		 
 	});

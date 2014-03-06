@@ -2,23 +2,42 @@
 
 (function(module) {
         module.ModelView = Backbone.View.extend({              
-             
-        //model: new module.Model(),
+
         initialize: function () {
-            this.model.on('change', this.render, this);
+            this.model.on('change', this.show, this);
         },
 
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
-      
-        render: function(selected_role) {
-        	if ((!selected_role) || (this.model.get('role') === selected_role)) {
+        
+        subscriptions: {
+            "TeamMemberSelected": "setMode"
+        },
 
-            	this.$el.html(this.template(this.model.toJSON()));	
+        mode: "watcher",
+
+        canRender: function() {
+         return (this.model.get("role") === this.mode);  
+        },
+
+        show: function() {
+            if (this.canRender()) {
+               this.$el.show();  
             } else {
-            	this.$el.html(this.template(new module.Model().toJSON()));
+               this.$el.hide();   
             }
-            return this;
-        }       
+        },
+
+        render: function() {
+          this.$el.html(this.template(this.model.toJSON())); 
+          this.show();   
+          return this;
+        },
+
+        setMode: function(new_mode) {
+            this.mode = new_mode;
+            this.show();
+            console.log(this.mode);
+        }  
          
     });
 
