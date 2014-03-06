@@ -13,7 +13,7 @@
         },
 
         subscriptions: {
-          "Project:checked": "showProjectInfo"          
+          "Project:Checked": "showProjectInfo"          
         },
 
         showProjectInfo: function(project_model) {      
