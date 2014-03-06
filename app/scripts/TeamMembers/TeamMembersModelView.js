@@ -11,7 +11,7 @@
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
         
         subscriptions: {
-            "TeamMemberSelected": "setMode"
+            "TeamTab:Selected": "setMode"
         },
 
         mode: "watcher",
@@ -37,7 +37,6 @@
         setMode: function(new_mode) {
             this.mode = new_mode;
             this.show();
-            console.log(this.mode);
         }  
          
     });

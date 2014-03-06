@@ -14,22 +14,21 @@
 
     initialize: function() {
       this.model.on("change", this.render, this);
-
-      this.role = "watcher";
+      //this.role = "watcher";
     },      
 
     subscriptions: {
-        "TeamMemberSelected": "setRole"
+        "TeamTab:Selected": "setRole"
+    },
+
+     events: {
+        "click": "addToProject"
     },
 
     setRole: function(role_new) {
         //rename role var
         //refactor
         this.role = role_new;       
-    },
-
-    setRole: function(current_role) {
-        this.role = current_role;
     },
 
     render: function() {
@@ -39,7 +38,7 @@
 
     addToProject: function() {
       this.model.set("role", this.role);
-      Backbone.Mediator.pub("UserCandidate:addToProject", this.model); 
+      Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
     }		
 		 
 	});

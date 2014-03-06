@@ -15,15 +15,12 @@
         },
 
         subscriptions: {
-            //"TeamTab:Selected": "setTeamMemberClass",
             "UserCandidate:addToProject": "addToCollection",
-            "TeamMemberSelected": "setMode"
+            "TeamTab:Selected": "setMode"
         },  
 
         setMode: function(new_mode) {
-            this.mode = new_mode;
-            console.log(this.mode);
-        },
+            this.mode = new_mode;        },
 
         initUsers: function(element, team_id) {
             this.setElement(element);
@@ -49,7 +46,7 @@
         
         render: function() {
             this.$el.html(this.template());
-            this.collection.each(this.renderOne, this);
+            this.collection.forEach(this.addOne, this);
             return this;
         },
 
