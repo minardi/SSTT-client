@@ -49,9 +49,7 @@
         
         render: function() {
             this.$el.html(this.template());
-                     console.log("renderCollection view");
-            this.collection.forEach(this.renderOne, this);
-            console.log("renderCollection view");
+            this.collection.each(this.renderOne, this);
             return this;
         },
 
