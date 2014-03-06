@@ -340,8 +340,8 @@ a {
 }
 
 .user-box:hover {
-    color: #7744E4;
-}
+    color: #7744E4;}
+
 
 /* TeamMembers Page
 ____________________________________________*/
@@ -358,7 +358,25 @@ ____________________________________________*/
 }
 
 .team-members-list {
-    
 }
+
+.watcher {
+    border: 1px black solid;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.developer {
+    border: 1px black solid;
+    border-radius: 3px;
+     margin: 5px;
+}
+
+.techlead {
+    border: 1px black solid;
+    border-radius: 3px;
+    margin: 5px;
+}
+
 
 
