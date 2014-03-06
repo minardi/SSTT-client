@@ -14,7 +14,7 @@
 
     initialize: function() {
       this.model.on("change", this.render, this);
-      //this.role = "watcher";
+      this.role = "watcher";
     },      
 
     subscriptions: {
