@@ -16,10 +16,6 @@
             'click #save': 'saveCollection'
         },
 
-        events: {
-            "click #save": "save"
-        },
-
         subscriptions: {
             "UserCandidate:addToProject": "addToCollection",
             "TeamMemberSelected" :"setTeamMemberClass"
