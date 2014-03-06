@@ -6,7 +6,8 @@
         
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
         
-        team_members_class : "watcher",
+        team_members_class: "watcher",
+        //???
 
         initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
@@ -18,7 +19,7 @@
 
         subscriptions: {
             "UserCandidate:addToProject": "addToCollection",
-            "TeamMemberSelected" :"setTeamMemberClass"
+            "TeamMemberSelected": "setTeamMemberClass"
         },  
 
         initUsers: function(element, team_id) {
@@ -26,20 +27,25 @@
             this.collection = new module.Collection(team_id);
             this.collection.fetch();
             this.collection.on('sync', this.render, this);
+            this.collection.on('add', this.addOne, this);
         },     
       
         setTeamMemberClass: function(new_class) {
-            this.team_members_class = new_class;        
+            this.team_members_class = new_class;   
+            this.render();     
         },
 
         addToCollection: function (new_model) {             
-            this.collection.each(function(exist_model) {
-                if ((exist_model.get('first_name') === new_model.get('first_name')) &&(exist_model.get('last_name') === new_model.get('last_name'))) {
-                    exist_model.set('role', new_model.get('role')); 
-                } else {                    
-                    this.collection.add([new_model.attributes]);
-                }}, this);            
-            this.render();
+            var exist_model = this.collection.findWhere({
+                                    first_name: new_model.get("first_name"), 
+                                    last_name: new_model.get("last_name")
+                            });
+
+            if (exist_model) {
+                exist_model.set('role', new_model.get('role')); 
+            } else {                                        
+                this.collection.add([new_model.attributes]);
+            }
         },
         
         saveCollection: function () {
@@ -50,13 +56,16 @@
         
         render: function() {
             this.$el.html(this.template());
-            this.collection.forEach(this.addOne, this);
+            this.collection.each(this.addOne, this);
             return this;
         },
 
-        addOne: function(model) {                
-            var team_members = new module.ModelView({model: model});                
-            this.$el.find('.' + model.get('role')).append(team_members.render().el);
+        addOne: function(model) {
+            var team_members;
+
+            team_members = new module.ModelView({model: model})
+                                
+            this.$el.find('.' + model.get('role')).append(team_members.render(this.team_members_class).el);    
         }
         
     });

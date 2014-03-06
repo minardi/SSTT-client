@@ -10,7 +10,7 @@
       this.model.on("change", this.render, this);
     },      
 
-    model: module.Model,
+    //model: module.Model,
 
     subscriptions: {
         "TeamMemberSelected": "setRole"
@@ -19,8 +19,9 @@
     role: "",
 
     setRole: function(role_new) {
-        this.role = role_new;
-        return this.role;
+        //rename role var
+        //refactor
+        this.role = role_new;       
     },
 
     tagName: "div",
