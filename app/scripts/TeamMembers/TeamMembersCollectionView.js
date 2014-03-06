@@ -54,13 +54,11 @@
             return this;
         },
 
-        addOne: function(model) {
-            if (model.get("role") === this.team_members_class) {
-                var team_members = new module.ModelView({model: model});
-                this.collection.add(model);
-                this.$el.find('.list').append(team_members.render().el);
-            }
+        addOne: function(model) {                
+            var team_members = new module.ModelView({model: model});                
+            this.$el.find('.' + model.get('role')).append(team_members.render().el);
         }
+        
     });
 
 })(app.TeamMembers);
