@@ -14,9 +14,14 @@
 
     initialize: function() {
       this.model.on("change", this.render, this);
+<<<<<<< HEAD
 
       this.role = "watcher";
+=======
+>>>>>>> parent of 4add0df... TeamMembers.Filter
     },      
+
+    //model: module.Model,
 
     subscriptions: {
         "TeamMemberSelected": "setRole"
@@ -39,7 +44,8 @@
 
     addToProject: function() {
       this.model.set("role", this.role);
-      Backbone.Mediator.pub("UserCandidate:addToProject", this.model); 
+      Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
+      
     }		
 		 
 	});
