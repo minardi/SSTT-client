@@ -3,6 +3,8 @@
 (function(module) {
         
     module.ModelView = Backbone.View.extend({
+        
+       className: "team_members-box",
     
         model: new module.Model(),
         
