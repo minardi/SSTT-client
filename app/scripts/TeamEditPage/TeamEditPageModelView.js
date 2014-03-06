@@ -15,11 +15,7 @@
         subscriptions: {
             "Team:Selected": "render",
             "Button:Click:Back": "removeTeamPage"
-        },
-
-        initialize: function () {
-            this.showWatchers();
-        },         
+        },     
 
         showWatchers: function () {            
             Backbone.Mediator.pub("TeamTab:Selected", "watcher");
@@ -32,6 +28,10 @@
         showTeachLeads: function () {
             Backbone.Mediator.pub("TeamTab:Selected", "techlead");
         },
+
+        initialize: function () {
+            this.showWatchers();
+        },    
 
         render: function(team_id) {            
             this.$el.append(this.template());
