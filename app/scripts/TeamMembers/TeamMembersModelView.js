@@ -2,7 +2,9 @@
 
 (function(module) {
 
-        module.ModelView = Backbone.View.extend({              
+        module.ModelView = Backbone.View.extend({
+
+        className: "user-box",
 
         initialize: function () {
             this.model.on('change', this.show, this);
