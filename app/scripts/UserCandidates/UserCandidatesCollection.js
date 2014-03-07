@@ -6,8 +6,8 @@
 
         model: module.Model,
 
-        initialize: function(project_id) {
-            this.url = "/users/for-project/" + project_id;
+        initialize: function(team_id) {
+            this.url = "/users-candidats/for-team/" + team_id;
             this.fetch();
         }
 
