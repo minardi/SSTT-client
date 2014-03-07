@@ -5,6 +5,8 @@
     module.CollectionView = Backbone.View.extend({
         
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
+        
+        mode : 'watcher',
 
         initialize: function() {
             Backbone.Mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
@@ -52,8 +54,14 @@
 
         addOne: function(model) {
             var team_members,
-            team_members = new module.ModelView({model: model}) ;                
+            team_members = new module.ModelView({model: model}) ; 
+             team_members.mode = this.mode;               
             this.$el.find(".team-members-list").append(team_members.render().el);    
+        },
+
+        saveCollection : function() {
+            console.log("save");
+            this.collection.save();
         }
         
     });
