@@ -7,7 +7,7 @@
         tagName: "button",
 
         className: "btn btn-info",
-        
+
         template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],
 
         events: {
@@ -17,7 +17,8 @@
         glyph: {
             Back: "glyphicon glyphicon-arrow-left",
             Delete:  "glyphicon glyphicon-remove",
-            Configure: "glyphicon glyphicon-cog"
+            Configure: "glyphicon glyphicon-cog",
+            BackFromTeamEditPage: "glyphicon glyphicon-plus"
         },  
 
         action: function() {
@@ -26,8 +27,8 @@
 
         render: function() {
             this.$el.html(this.template({
-                content: this.model.get("content"),
-                glyph: this.glyph[this.model.get("content")]
+                glyph: this.glyph[this.model.get("content")],
+                content: this.model.get("content")
             }));
             return this;
         }

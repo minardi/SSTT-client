@@ -14,12 +14,24 @@
             this.collection = new module.Collection();
             this.collection.add([
                 {
-                    content: "Back", 
+                    content: "Back",
+                    glyph: "glyphicon glyphicon-arrow-left",
                     provision: {
                         "must_be": "",
                         "not": {
-                            page: "project_page"
+                            page: ["project_page", "team_edit_page"]
                         }
+                    }
+                },
+
+                {
+                    content: "BackFromTeamEditPage", 
+                    glyph: "glyphicon glyphicon-arrow-left",
+                    provision: {
+                        "must_be": {
+                            page: ["team_edit_page"]
+                        },
+                        "not": ""
                     }
                 },
 
@@ -27,31 +39,33 @@
                     content: "Team",
                     provision: {
                         "must_be": {
-                            right: "pm"
+                            right: ["pm"]
                         },
                         "not": {
-                            page: "team_page"
+                            page: ["team_page"]
                         }
                     }
                 },
 
                 {
                     content: "Configure",
+                    glyph: "glyphicon glyphicon-arrow-cog",
                     provision: {
                         "must_be": {
-                            right: "pm"
+                            right: ["pm"]
                         },
-                        "not": ""                    
+                        "not": ""
                     }
                 },
 
                 {
                     content: "Delete",
+                    glyph: "glyphicon glyphicon-arrow-remove",
                     provision: {
                         "must_be": {
-                            right: "pm"
+                            right: ["pm"]
                         },
-                        "not": ""                    
+                        "not": ""
                     }
                 } 
             ])
@@ -61,7 +75,8 @@
             "Project:Checked": "setProject",
             "Button:Click:Back": "toProjectPage",
             "Project:Selected": "toScrumPage",
-            "Button:Click:Team": "toTeamPage"
+            "Button:Click:Team": "toTeamPage",
+            "Team:Selected": "toTeamEditPage"
         },
 
         toProjectPage: function() {
@@ -79,6 +94,12 @@
         toTeamPage: function() {
             this.$el.find(".dashboard").remove();
             this.current_page = "team_page";
+            this.render();
+        },
+
+        toTeamEditPage: function() {
+            this.$el.find(".dashboard").remove();
+            this.current_page = "team_edit_page";
             this.render();
         },
 
@@ -107,30 +128,47 @@
         },
 
         canRender: function (provision) {
-            var answer;
+            var answer = true;
 
-            if(provision.must_be) {
-                if (this.current_right === provision.must_be.right) {
-                    answer = true;
-                } else {
-                    return false;
-                }
-            } else {
-                answer = true;
+            if (provision.must_be.right) {
+                _.each(provision.must_be.right, function(el) {
+                                                    if (el !== this.current_right) {
+                                                        answer = false;
+                                                    }
+                                                }
+                , this)
             }
 
-            if (provision.not) {
-                if(this.current_page === provision.not.page) {
-                    answer = false;
-                }
-            } else {
-                answer = true;
+            if (provision.must_be.page) {
+                _.each(provision.must_be.page, function(el) {
+                                                    if (el !== this.current_page) {
+                                                        answer = false;
+                                                    }
+                                                }
+                , this)
+            }
+
+            if (provision.not.page) {
+                _.each(provision.not.right, function(el) {
+                                                    if (el === this.current_rigth) {
+                                                        answer = false;
+                                                    }
+                                                }
+                , this)
+            }
+
+            if (provision.not.page) {
+                _.each(provision.not.page, function(el) {
+                                                    if (el === this.current_page) {
+                                                        answer = false;
+                                                    }
+                                                }
+                , this)
             }
 
             return answer;
-        },
+        }
 
     });
 
 })(app.DashBoard, sstt);
-

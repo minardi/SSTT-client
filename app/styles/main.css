@@ -74,7 +74,7 @@ _______________________________________________________*/
     margin: 4px;
 }
 
-.btn-Team:before {
+#btn-Team:before {
     content: 'T';
 }
 
