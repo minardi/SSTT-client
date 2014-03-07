@@ -9,7 +9,8 @@
         subscriptions: {
             "Button:Click:Team": "init",
             "Team:Selected": "hide",
-            "Button:Click:Back": "removeTeamPage"
+            "Button:Click:Back": "removeTeamPage",
+            "Button:Click:BackFromTeamEditPage": "show"
         },
 
         init: function(project_id) {
@@ -35,6 +36,10 @@
 
         hide: function() {
             this.$el.addClass("hiddenTeams");
+        },
+
+        show: function() {
+            this.$el.removeClass("hiddenTeams");
         },
 
         removeTeamPage: function() {

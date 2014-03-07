@@ -42,7 +42,7 @@
                             right: ["pm"]
                         },
                         "not": {
-                            page: ["team_page"]
+                            page: ["team_page", "team_edit_page"]
                         }
                     }
                 },
@@ -76,7 +76,8 @@
             "Button:Click:Back": "toProjectPage",
             "Project:Selected": "toScrumPage",
             "Button:Click:Team": "toTeamPage",
-            "Team:Selected": "toTeamEditPage"
+            "Team:Selected": "toTeamEditPage",
+            "Button:Click:BackFromTeamEditPage": "toTeamPage",
         },
 
         toProjectPage: function() {

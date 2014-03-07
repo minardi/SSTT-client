@@ -14,7 +14,8 @@
 
         subscriptions: {
             "Team:Selected": "render",
-            "Button:Click:Back": "removeTeamPage"
+            "Button:Click:Back": "removeTeamPage",
+            "Button:Click:BackFromTeamEditPage": "removeTeamPage"
         },     
 
         showWatchers: function () {            

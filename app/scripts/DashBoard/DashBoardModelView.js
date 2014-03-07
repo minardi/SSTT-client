@@ -18,7 +18,7 @@
             Back: "glyphicon glyphicon-arrow-left",
             Delete:  "glyphicon glyphicon-remove",
             Configure: "glyphicon glyphicon-cog",
-            BackFromTeamEditPage: "glyphicon glyphicon-plus"
+            BackFromTeamEditPage: "glyphicon glyphicon-arrow-left"
         },  
 
         action: function() {
