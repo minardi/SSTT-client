@@ -356,10 +356,6 @@ ____________________________________________*/
     opacity: 0.8;
 }
 
-
-.team-members-list {
-}
-
 .watcher {
     border: 1px black solid;
     border-radius: 3px;
@@ -380,4 +376,9 @@ ____________________________________________*/
 
 .list {
     overflow: auto;
+}
+
+#save {
+    margin-left: 80%;
+    margin-right: auto;
 }

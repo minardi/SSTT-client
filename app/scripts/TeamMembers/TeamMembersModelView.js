@@ -19,7 +19,7 @@
         mode: "watcher",
 
         canRender: function() {
-         return (this.model.get("role") === this.mode);  
+            return (this.model.get("role") === this.mode);  
         },
 
         show: function() {

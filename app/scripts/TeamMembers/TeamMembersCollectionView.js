@@ -20,7 +20,8 @@
         },  
 
         setMode: function(new_mode) {
-            this.mode = new_mode;        },
+            this.mode = new_mode;     
+        },
 
         initUsers: function(element, team_id) {
             this.setElement(element);

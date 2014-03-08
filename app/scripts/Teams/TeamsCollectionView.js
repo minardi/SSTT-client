@@ -14,7 +14,6 @@
         },
 
         init: function(project_id) {
-            console.log("team page")
             this.TeamsCollection = new module.Collection(project_id);
             this.TeamsCollection.fetch();
             this.listenTo(this.TeamsCollection, "sync", this.render);
