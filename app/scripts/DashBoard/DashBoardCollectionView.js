@@ -12,63 +12,6 @@
         
         initialize: function() {
             this.collection = new module.Collection();
-            this.collection.add([
-                {
-                    content: "Back",
-                    glyph: "glyphicon glyphicon-arrow-left",
-                    provision: {
-                        "must_be": "",
-                        "not": {
-                            page: ["project_page", "team_edit_page"]
-                        }
-                    }
-                },
-
-                {
-                    content: "BackFromTeamEditPage", 
-                    glyph: "glyphicon glyphicon-arrow-left",
-                    provision: {
-                        "must_be": {
-                            page: ["team_edit_page"]
-                        },
-                        "not": ""
-                    }
-                },
-
-                {
-                    content: "Team",
-                    provision: {
-                        "must_be": {
-                            right: ["pm"]
-                        },
-                        "not": {
-                            page: ["team_page", "team_edit_page"]
-                        }
-                    }
-                },
-
-                {
-                    content: "Configure",
-                    glyph: "glyphicon glyphicon-arrow-cog",
-                    provision: {
-                        "must_be": {
-                            right: ["pm"]
-                        },
-                        "not": ""
-                    }
-                },
-
-                {
-                    content: "Delete",
-                    glyph: "glyphicon glyphicon-arrow-remove",
-                    provision: {
-                        "must_be": {
-                            right: ["pm"]
-                        },
-                        "not": ""
-                    }
-                } 
-            ])
         },
 
         subscriptions: {
@@ -119,7 +62,7 @@
 
         renderOne: function (button_model) {
             button_model.set("project_id", this.project.id);
-            if (this.canRender(button_model.get("provision"))) {
+            if (this.canRender(button_model.get("permition"))) {
                 var button = new module.ModelView({
                         model: button_model
                     });
@@ -128,11 +71,11 @@
             };
         },
 
-        canRender: function (provision) {
+        canRender: function (permition) {
             var answer = true;
 
-            if (provision.must_be.right) {
-                _.each(provision.must_be.right, function(el) {
+            if (permition.must_be.right) {
+                _.each(permition.must_be.right, function(el) {
                                                     if (el !== this.current_right) {
                                                         answer = false;
                                                     }
@@ -140,8 +83,8 @@
                 , this)
             }
 
-            if (provision.must_be.page) {
-                _.each(provision.must_be.page, function(el) {
+            if (permition.must_be.page) {
+                _.each(permition.must_be.page, function(el) {
                                                     if (el !== this.current_page) {
                                                         answer = false;
                                                     }
@@ -149,8 +92,8 @@
                 , this)
             }
 
-            if (provision.not.page) {
-                _.each(provision.not.right, function(el) {
+            if (permition.not.page) {
+                _.each(permition.not.right, function(el) {
                                                     if (el === this.current_rigth) {
                                                         answer = false;
                                                     }
@@ -158,8 +101,8 @@
                 , this)
             }
 
-            if (provision.not.page) {
-                _.each(provision.not.page, function(el) {
+            if (permition.not.page) {
+                _.each(permition.not.page, function(el) {
                                                     if (el === this.current_page) {
                                                         answer = false;
                                                     }

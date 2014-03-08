@@ -7,7 +7,7 @@
        defaults: {
            content: "",
            project_id: "",
-           provision: []
+           permition: []
        }
     });
 

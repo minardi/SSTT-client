@@ -16,8 +16,6 @@
             "TeamTab:Selected": "setMode"
         },
 
-        mode: "watcher",
-
         canRender: function() {
             return (this.model.get("role") === this.mode);  
         },
