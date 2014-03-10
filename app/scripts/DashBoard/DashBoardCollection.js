@@ -4,15 +4,14 @@
 
     module.Collection = Backbone.Collection.extend({
 
-    	initialize: function() {
-    		/*
-			this.add(<%= %>)
-    		*/
+        model: module.Model,
 
-    		this.add([
+        initialize: function() {
+
+            this.add([
                 {
                     content: "Back",
-                    glyph: "glyphicon glyphicon-arrow-left",
+                    glyph: "btn btn-info glyphicon glyphicon-arrow-left",
                     permition: {
                         "must_be": "",
                         "not": {
@@ -23,7 +22,7 @@
 
                 {
                     content: "BackFromTeamEditPage", 
-                    glyph: "glyphicon glyphicon-arrow-left",
+                    glyph: "btn btn-info glyphicon glyphicon-arrow-left",
                     permition: {
                         "must_be": {
                             page: ["team_edit_page"]
@@ -34,6 +33,7 @@
 
                 {
                     content: "Team",
+                    glyph: "btn btn-info glyphicon icon-team",
                     permition: {
                         "must_be": {
                             right: ["pm"]
@@ -46,7 +46,7 @@
 
                 {
                     content: "Configure",
-                    glyph: "glyphicon glyphicon-arrow-cog",
+                    glyph: "btn btn-info glyphicon glyphicon-cog",
                     permition: {
                         "must_be": {
                             right: ["pm"]
@@ -57,7 +57,7 @@
 
                 {
                     content: "Delete",
-                    glyph: "glyphicon glyphicon-arrow-remove",
+                    glyph: "btn btn-info glyphicon glyphicon-remove",
                     permition: {
                         "must_be": {
                             right: ["pm"]
@@ -66,9 +66,7 @@
                     }
                 } 
             ])
-		},
-
-        model: module.Model,
+        }
 
     });
 

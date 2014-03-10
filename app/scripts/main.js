@@ -6,7 +6,7 @@ var sstt = {},
     ScrumPage: {},
     ProductBacklogStories: {},
     SprintBacklogStories: {},
-    ScrumPage:{},
+    ScrumPage: {},
     Projectinfo: {},
     DashBoard: {},
     ScrumBoard: {},
@@ -60,12 +60,5 @@ $(function() {
     });
 
     sstt.user_candidates = new app.UserCandidates.CollectionView();
-
-  //  $("#test").on("click", function() {
-  //      Backbone.Mediator.pub("ButtonTeamClick", 1)
-  //  })
-
-
-
 
 });

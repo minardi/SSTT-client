@@ -27,7 +27,7 @@ html, body {
 .app-wrapper .b-header {
     height: 50px;
     line-height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: right;
     background: url(../images/logo.png) no-repeat 10px 0;
 }
@@ -75,16 +75,14 @@ _______________________________________________________*/
 
 .app-wrapper .b-sidebar .dashboard button {
     margin: 4px;
+    padding: 8px 15px;
 }
 
-#btn-Team:before {
+.icon-team:before {
+    font-weight: 900;
     content: 'T';
 }
 
-.app-wrapper .b-sidebar .dashboard button span {
-    font-size: 16px;
-    font-weight: 900;
-}
 
 
 
