@@ -8,7 +8,7 @@
 
         className: "user-box",
         
-        role: "",
+        role: "watcher",
 
         template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],   
 
@@ -22,7 +22,6 @@
 
         initialize: function() {
           this.model.on("change", this.render, this);
-          this.role = "watcher";
         },   
 
         setRole: function(current_role) {
@@ -36,7 +35,7 @@
 
         addToProject: function() {
           this.model.set("role", this.role);
-          Backbone.Mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
+          mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
         }
 
     });

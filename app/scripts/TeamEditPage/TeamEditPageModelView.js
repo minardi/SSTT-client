@@ -28,17 +28,14 @@
 
         showTeachLeads: function () {
             mediator.pub("TeamTab:Selected", "techlead");
-        },
-
-        initialize: function () {
-            this.showWatchers();
-        },    
+        },   
 
         render: function(team_id) {            
             this.$el.append(this.template());
             //one pub, and use object as attribute
             mediator.pub("TeamEditPage:Open", this.$el.find('.candidats'), team_id);
             mediator.pub("TeamEditPage:OpenTeamMembers", this.$el.find('.team-members'), team_id);
+            this.showWatchers();
             return this;
         },
         
