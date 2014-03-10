@@ -19,7 +19,8 @@
 
         canRender: function() {
             return (this.model.get("role") === this.mode);  
-
+        },
+        
         setMode: function(new_mode) {
             this.mode = new_mode;
             this.show();
