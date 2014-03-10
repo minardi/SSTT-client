@@ -12,13 +12,13 @@
         },
         
         init: function (project_id) {  
-            this.collection = new module.Collection(project_id);
-            this.collection.fetch();
-            this.listenTo(this.collection, 'sync', this.render);     
+            this.collection = new module.Collection(project_id);            
+            this.collection.on('sync', this.render, this);     
         },   
             
         setElementAndRender: function(content_el) {           
-            this.setElement(content_el);                                 
+            this.setElement(content_el);
+            this.collection.fetch();
             this.render();       
         },
 

@@ -10,10 +10,9 @@
             mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
         }, 
 
-        initUserCandidates: function(elem, team_id) {
-            // this.setElement(elem["user_candidates"]);   
-            this.setElement(elem);
-            this.collection = new module.Collection(team_id);
+        initUserCandidates: function(data) {              
+            this.setElement(data["element"]);
+            this.collection = new module.Collection(data["team_id"]);
             this.collection.on('sync', this.render, this);
         },
 

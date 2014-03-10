@@ -312,7 +312,7 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-.candidats, .team-members {
+.candidates, .team-members {
     display: inline-block;
     min-height: 50%;
     width: 40%;

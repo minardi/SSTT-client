@@ -31,11 +31,11 @@
             })
         },
 
-        initUsers: function(element, team_id) {
-            this.team_id = team_id;
-            this.setElement(element);
+        initUsers: function(data) {
+            this.team_id = data["team_id"];
+            this.setElement(data["element"]);
 
-            this.collection = new module.Collection(team_id);
+            this.collection = new module.Collection(data["team_id"]);
             this.collection.fetch();
 
             this.collection.on("sync", this.render, this);
