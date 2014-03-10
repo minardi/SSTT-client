@@ -4,13 +4,10 @@
         
     module.CollectionView = Backbone.View.extend({
         
-
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
-        
-        mode: 'watcher',
 
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
+            mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
         },
 
         events: {
@@ -29,15 +26,14 @@
         saveCollection: function() {
             this.collection.each(function(model) {
                 model.save();
-                console.log(model.toJSON());
             })
         },
 
-        initUsers: function(element, team_id) {
-            this.team_id = team_id;
-            this.setElement(element);
+        initUsers: function(data) {
+            this.team_id = data["team_id"];
+            this.setElement(data["element"]);
 
-            this.collection = new module.Collection(team_id);
+            this.collection = new module.Collection(data["team_id"]);
             this.collection.fetch();
 
             this.collection.on("sync", this.render, this);
@@ -67,10 +63,9 @@
 
         renderOne: function(model) {
             var team_members;
-
-            team_members = new module.ModelView({model: model});
+            team_members = new module.ModelView({ model: model});
             team_members.mode = this.mode;
-
+           
             this.$el.find(".team-members-list").append(team_members.render().el);    
         }
                 

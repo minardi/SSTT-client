@@ -20,7 +20,7 @@
         },
 
         render: function() {
-            Backbone.Mediator.pub("ScrumPage:remove")
+            mediator.pub("ScrumPage:remove")
             this.$el.append(this.template());
             this.TeamsCollection.each(this.renderOne, this);
             return this;
