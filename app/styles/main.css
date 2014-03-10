@@ -196,7 +196,7 @@ a {
 	font-size: 20px;
 }
 
-.app-wrapper .b-main .scam-page-header {
+.app-wrapper .b-main .scrum-page-header {
     height: 48px;
     font-size: 24px;
 }
@@ -358,12 +358,6 @@ ____________________________________________*/
     opacity: 0.8;
 }
 
-#save {
-    position: absolute;
-    bottom: -50px;
-    right: 0
-}
-
 .watcher {
     border: 1px black solid;
     border-radius: 3px;
@@ -386,6 +380,9 @@ ____________________________________________*/
     overflow: auto;
 }
 
+#save {
+    margin-left: 80%;
+    margin-right: auto;
 
 /* Extract class
 ____________________________________________*/
