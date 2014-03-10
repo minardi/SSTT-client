@@ -13,13 +13,12 @@
         template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesTpl.ejs'],
 
         events: {
-            "dblclick" : "moveToSprintstory"
+        //    "dblclick" : "moveToSprintstory"
         },
 
         subscriptions: {},
 
         render: function() {
-            //this.$el.html(this.template({name:this.model.toJSON().title}));
             this.$el.html(this.template({name:this.model.get("title")}));
             return this;
         },

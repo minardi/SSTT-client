@@ -16,12 +16,12 @@
 
         initProductBacklog: function(el_content, project_id) {
             this.setElement(el_content);
+            this.$el.append(this.template());
             this.collection = new module.Collection(project_id);
             this.collection.on('sync', this.render, this);
         },
 
         render: function() {
-            this.$el.append(this.template());
             this.collection.each(this.renderOne, this);
             return this;
         },

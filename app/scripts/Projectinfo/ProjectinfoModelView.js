@@ -13,13 +13,12 @@
         showProjectInfo: function(project_model) {      
             this.project = project_model;          
             this.render();
-        },  
+        },
 
         render: function() {
-            this.$el.html(this.template({project:this.project.toJSON()}));
+            this.$el.html(this.template(this.project.toJSON()));
             return this;
-        }       
-         
-    });
-
+        }
+  });
+    
 })(app.Projectinfo);

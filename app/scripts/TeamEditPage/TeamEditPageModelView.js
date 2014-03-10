@@ -39,8 +39,8 @@
             mediator.pub("TeamEditPage:Open", { element: this.$el.find('.candidates'), team_id: team_id });
             mediator.pub("TeamEditPage:OpenTeamMembers", { element: this.$el.find('.team-members'), team_id: team_id });
             return this;
-        },
-        
+        },   
+               
         removeTeamPage: function() {
             this.$el.removeClass("hiddenTeams");
             this.$el.find(".team-edit-page").remove();

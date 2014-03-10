@@ -25,8 +25,8 @@
 
         renderOne: function(user_model) {
             var user = new module.ModelView({
-                model: user_model
-            });
+                    model: user_model
+                });
 
             this.$users_list.append(user.render().el);
         }

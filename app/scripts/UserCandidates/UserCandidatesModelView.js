@@ -8,35 +8,34 @@
 
         className: "user-box",
         
-        role: "",
+        role: "watcher",
 
-        template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
-
-        initialize: function() {
-            this.model.on("change", this.render, this);
-            this.role = "watcher";
-        },      
+        template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],   
 
         subscriptions: {
-            "TeamTab:Selected": "setRole"
+          "TeamTab:Selected": "setRole"
         },
 
         events: {
-            "click": "addToProject"
+          "click": "addToProject"
         },
 
+        initialize: function() {
+          this.model.on("change", this.render, this);
+        },   
+
         setRole: function(current_role) {
-            this.role = current_role;
+          this.role = current_role;
         },
 
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
+          this.$el.html(this.template(this.model.toJSON()));
+          return this;
         },
 
         addToProject: function() {
-            this.model.set("role", this.role);
-            mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
+          this.model.set("role", this.role);
+          mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
         }
 
     });
