@@ -21,11 +21,11 @@
         },
 
         selectProject: function() {
-            Backbone.Mediator.pub("Project:Selected", this.model.id);
+            mediator.pub("Project:Selected", this.model.id);
         },
         
         getProjectInfo: function() {
-            Backbone.Mediator.pub("Project:Checked", this.model);  
+            mediator.pub("Project:Checked", this.model);  
             $(".box").removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         }
