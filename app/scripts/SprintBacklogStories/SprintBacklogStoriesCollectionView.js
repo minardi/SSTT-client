@@ -6,13 +6,13 @@
 
         template: JST['app/scripts/SprintBacklogStories/SprintBacklogStoriesCollectionTpl.ejs'],  
 
+        subscriptions: {
+            "Story:moveToSprint": "addStory",
+        },
+        
         initialize: function() {
             this.collection = new module.Collection();
             Backbone.Mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
-        },
-
-        subscriptions: {
-            "Story:moveToSprint": "moveToSprintstory",
         },
 
         initSprintBacklog: function(el_content) {
@@ -32,7 +32,7 @@
             return this;
         },
 
-        moveToSprintstory: function(product_story_model) {
+        addStory: function(product_story_model) {
             this.collection.add(product_story_model.toJSON());
             this.renderOne(product_story_model);
         }

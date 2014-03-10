@@ -28,10 +28,6 @@
 
         showTeachLeads: function () {
             Backbone.Mediator.pub("TeamTab:Selected", "techlead");
-        },
-
-        initialize: function () {
-            this.showWatchers();
         },    
 
         render: function(team_id) {            
@@ -39,9 +35,9 @@
             //one pub, and use object as attribute
             Backbone.Mediator.pub("TeamEditPage:Open", this.$el.find('.candidats'), team_id);
             Backbone.Mediator.pub("TeamEditPage:OpenTeamMembers", this.$el.find('.team-members'), team_id);
+            this.showWatchers();
             return this;
         },
-        
         
         removeTeamPage: function() {
             this.$el.removeClass("hiddenTeams");
