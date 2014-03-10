@@ -2,7 +2,7 @@
 
 (function(module) {
 
-        module.ModelView = Backbone.View.extend({
+    module.ModelView = Backbone.View.extend({
 
         className: "user-box",
 
@@ -17,7 +17,7 @@
         },
 
         canRender: function() {
-         return (this.model.get("role") === this.mode);  
+            return (this.model.get("role") === this.mode);  
         },
 
         show: function() {
@@ -29,9 +29,9 @@
         },
 
         render: function() {
-          this.$el.html(this.template(this.model.toJSON())); 
-          this.show();   
-          return this;
+            this.$el.html(this.template(this.model.toJSON())); 
+            this.show();   
+            return this;
         },
 
         setMode: function(new_mode) {

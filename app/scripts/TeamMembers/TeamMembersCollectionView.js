@@ -4,13 +4,12 @@
         
     module.CollectionView = Backbone.View.extend({
         
-
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
         
         mode: 'watcher',
 
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
+            mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
         },
 
         events: {
@@ -29,7 +28,6 @@
         saveCollection: function() {
             this.collection.each(function(model) {
                 model.save();
-                console.log(model.toJSON());
             })
         },
 

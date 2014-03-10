@@ -31,15 +31,15 @@
 		
         showPlanning: function() {
             this.element.html("");
-            Backbone.Mediator.pub("ScrumPage:PlanningBoardSelected", this.element, this.model.get("id_of_project"));
+            mediator.pub("ScrumPage:PlanningBoardSelected", this.element, this.model.get("id_of_project"));
         },
 
         showScrum: function() {
-            Backbone.Mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
+            mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
         },
 
         showStat: function() {
-            Backbone.Mediator.pub("ScrumPage:StatBoardSelected", this.element);
+            mediator.pub("ScrumPage:StatBoardSelected", this.element);
            // Backbone.Mediator.pub("Edit:TeamBoardSelected", this.element, this.model.get("id_of_project"));
         },
 

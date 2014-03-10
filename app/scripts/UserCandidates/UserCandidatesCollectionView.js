@@ -7,7 +7,7 @@
         template: JST['app/scripts/UserCandidates/UserCandidatesCollectionTpl.ejs'],
 
         initialize: function() {
-            Backbone.Mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
+            mediator.sub("TeamEditPage:Open", this.initUserCandidates, this);
         }, 
 
         initUserCandidates: function(elem, team_id) {

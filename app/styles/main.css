@@ -338,7 +338,7 @@ a {
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
-    transition:color .0.4s ease-out, 0.4s ease-in;
+    transition: color .0.4s ease-out, 0.4s ease-in;
 }
 
 .user-box:hover {

@@ -15,7 +15,7 @@
         },
 
         selectTeam: function() {
-            Backbone.Mediator.pub("Team:Selected", this.model.id);
+            mediator.pub("Team:Selected", this.model.id);
         },
 
         render: function() {
