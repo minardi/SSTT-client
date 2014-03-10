@@ -24,7 +24,7 @@
         },
 
         moveToSprintstory: function() {
-            Backbone.Mediator.pub("Story:moveToSprint", this.model);
+            mediator.pub("Story:moveToSprint", this.model);
             this.$el.remove();
         }
 

@@ -1,4 +1,5 @@
 var sstt = {},
+    mediator = Backbone.Mediator,
     app = {
     User: {},
     Projects: {},

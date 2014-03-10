@@ -22,7 +22,7 @@
         },  
 
         action: function() {
-            Backbone.Mediator.pub("Button:Click:" + this.model.get("content"), this.model.get("project_id"));
+            mediator.pub("Button:Click:" + this.model.get("content"), this.model.get("project_id"));
         },
 
         render: function() {

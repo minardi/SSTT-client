@@ -2,7 +2,7 @@
 
 (function(module) {
 
-    module.ModelView = Backbone.View.extend({ 
+    module.ModelView = Backbone.View.extend({	
 
         tagName: "div",
 

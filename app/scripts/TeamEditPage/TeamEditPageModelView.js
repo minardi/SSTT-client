@@ -19,23 +19,26 @@
         },     
 
         showWatchers: function () {            
-            Backbone.Mediator.pub("TeamTab:Selected", "watcher");
+            mediator.pub("TeamTab:Selected", "watcher");
         },
 
         showDevelopers: function () {
-            Backbone.Mediator.pub("TeamTab:Selected", "developer");
+            mediator.pub("TeamTab:Selected", "developer");
         },
 
         showTeachLeads: function () {
-            Backbone.Mediator.pub("TeamTab:Selected", "techlead");
+            mediator.pub("TeamTab:Selected", "techlead");
+        },
+
+        initialize: function () {
+            this.showWatchers();
         },    
 
         render: function(team_id) {            
             this.$el.append(this.template());
             //one pub, and use object as attribute
-            Backbone.Mediator.pub("TeamEditPage:Open", this.$el.find('.candidats'), team_id);
-            Backbone.Mediator.pub("TeamEditPage:OpenTeamMembers", this.$el.find('.team-members'), team_id);
-            this.showWatchers();
+            mediator.pub("TeamEditPage:Open", this.$el.find('.candidats'), team_id);
+            mediator.pub("TeamEditPage:OpenTeamMembers", this.$el.find('.team-members'), team_id);
             return this;
         },
         

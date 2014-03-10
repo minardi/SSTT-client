@@ -7,7 +7,7 @@
         template: JST['app/scripts/ProductBacklogStories/ProductBacklogStoriesCollectionTpl.ejs'],
 
         initialize: function() {
-            Backbone.Mediator.sub("ScrumPage:PlanningBoardSelected", this.initProductBacklog, this);
+            mediator.sub("ScrumPage:PlanningBoardSelected", this.initProductBacklog, this);
         },
 
         subscriptions: {

@@ -8,6 +8,10 @@ html, body {
     width: 100%;
 }
 
+.hide {
+    display: none;
+}
+
 .app-wrapper {
     position: relative;
     top: 0; 
@@ -29,7 +33,6 @@ html, body {
 }
 
 .app-wrapper .b-header .user {
-    text-decoration: underline;
     padding-right: 20px;
 }
 
@@ -335,7 +338,7 @@ a {
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
-    transition:color .0.4s ease-out, 0.4s ease-in;
+    transition: color .0.4s ease-out, 0.4s ease-in;
 }
 
 .user-box:hover {
@@ -346,6 +349,7 @@ a {
 ____________________________________________*/
 
 .team-members {
+    position: relative;
     float: right;
     min-height: 50%;
     width: 40%;
@@ -356,8 +360,10 @@ ____________________________________________*/
     opacity: 0.8;
 }
 
-
-.team-members-list {
+#save {
+    position: absolute;
+    bottom: -50px;
+    right: 0
 }
 
 .watcher {

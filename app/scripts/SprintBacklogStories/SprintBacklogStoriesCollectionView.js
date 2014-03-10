@@ -12,7 +12,7 @@
         
         initialize: function() {
             this.collection = new module.Collection();
-            Backbone.Mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
+            mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
         },
 
         initSprintBacklog: function(el_content) {

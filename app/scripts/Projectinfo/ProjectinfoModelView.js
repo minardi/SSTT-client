@@ -1,11 +1,11 @@
 /* Projectinfo */
 
 (function(module) {
-
-  module.ModelView = Backbone.View.extend({      
-
+        
+    module.ModelView = Backbone.View.extend({        
+        
         template: JST['app/scripts/Projectinfo/ProjectinfoTpl.ejs'],        
-
+        
         subscriptions: {
             "Project:Checked": "showProjectInfo"          
         },
@@ -20,5 +20,5 @@
             return this;
         }
   });
-  
+    
 })(app.Projectinfo);
