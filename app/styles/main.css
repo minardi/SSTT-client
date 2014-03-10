@@ -29,7 +29,7 @@ html, body {
 }
 
 .app-wrapper .b-header .user {
-    text-decoration: underline;
+    text-decoration: none;
     padding-right: 20px;
 }
 
