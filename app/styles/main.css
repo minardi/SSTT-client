@@ -346,6 +346,7 @@ a {
 ____________________________________________*/
 
 .team-members {
+    position: relative;
     float: right;
     min-height: 50%;
     width: 40%;
@@ -356,8 +357,10 @@ ____________________________________________*/
     opacity: 0.8;
 }
 
-
-.team-members-list {
+#save {
+    position: absolute;
+    bottom: -50px;
+    right: 0
 }
 
 .watcher {
