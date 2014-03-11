@@ -46,7 +46,6 @@
         removeScrumPage: function() {
             this.$el.find(".scrum-page").remove();
         }
-
-
+        
     });
 })(app.ScrumPage);

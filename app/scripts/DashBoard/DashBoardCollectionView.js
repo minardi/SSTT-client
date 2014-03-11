@@ -1,12 +1,8 @@
 /* DashBoard */
 
-(function(module, sstt) {
+(function(module) {
         
     module.CollectionView = Backbone.View.extend({
-
-        project: {},
-
-        current_page: "project_page",
 
         template: JST["app/scripts/DashBoard/DashBoardCollectionTpl.ejs"],
         
@@ -23,51 +19,49 @@
             "Button:Click:BackFromTeamEditPage": "toTeamPage",
         },
 
+        setProject: function(project) {
+            this.project = project;
+            this.current_page = "project_page";
+            this.render();
+        },
+
         toProjectPage: function() {
-            this.$el.find(".dashboard").remove();
             this.current_page = "project_page";
             this.render();
         },
 
         toScrumPage: function() {
-            this.$el.find(".dashboard").remove();
             this.current_page = "scrum_page";
             this.render();
         },
 
         toTeamPage: function() {
-            this.$el.find(".dashboard").remove();
             this.current_page = "team_page";
             this.render();
         },
 
         toTeamEditPage: function() {
-            this.$el.find(".dashboard").remove();
             this.current_page = "team_edit_page";
             this.render();
         },
 
-        setProject: function(project) {
-            this.$el.find(".dashboard").remove();
-            this.project = project;
-            this.render();
-        },
-
         render: function(project) {
-            this.current_right = (this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm";
+            this.$el.find(".dashboard").remove();
             this.$el.append(this.template);
+            
+            this.current_right = (this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm";
             this.collection.each(this.renderOne, this);
             return this;
         },
 
-        renderOne: function (button_model) {
-            button_model.set("project_id", this.project.id);
-            if (this.canRender(button_model.get("permition"))) {
-                var button = new module.ModelView({
-                        model: button_model
-                    });
-
-                this.$el.find(".dashboard").append(button.render().el);
+        renderOne: function (btn_model) {
+            btn_model.set("project_id", this.project.id);
+            if (this.canRender(btn_model.get("permition"))) {
+                var btn = new module.ModelView({
+                        model: btn_model,
+                        className: btn_model.get("glyph")
+                });
+                this.$el.find(".dashboard").append(btn.render().el);
             };
         },
 
@@ -76,37 +70,37 @@
 
             if (permition.must_be.right) {
                 _.each(permition.must_be.right, function(el) {
-                                                    if (el !== this.current_right) {
-                                                        answer = false;
-                                                    }
-                                                }
+                        if (el !== this.current_right) {
+                            answer = false;
+                        }
+                    }
                 , this)
             }
 
             if (permition.must_be.page) {
                 _.each(permition.must_be.page, function(el) {
-                                                    if (el !== this.current_page) {
-                                                        answer = false;
-                                                    }
-                                                }
+                        if (el !== this.current_page) {
+                            answer = false;
+                        }
+                    }
                 , this)
             }
 
             if (permition.not.page) {
                 _.each(permition.not.right, function(el) {
-                                                    if (el === this.current_rigth) {
-                                                        answer = false;
-                                                    }
-                                                }
+                        if (el === this.current_rigth) {
+                            answer = false;
+                        }
+                    }
                 , this)
             }
 
             if (permition.not.page) {
                 _.each(permition.not.page, function(el) {
-                                                    if (el === this.current_page) {
-                                                        answer = false;
-                                                    }
-                                                }
+                        if (el === this.current_page) {
+                            answer = false;
+                        }
+                    }
                 , this)
             }
 
@@ -115,4 +109,4 @@
 
     });
 
-})(app.DashBoard, sstt);
+})(app.DashBoard);
