@@ -19,7 +19,7 @@
 
         setMode: function(new_mode) {
             this.mode = new_mode;
-            this.show();
+           // this.show();
         },
 
         show: function() {
