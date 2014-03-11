@@ -7,7 +7,7 @@
         template: JST['app/scripts/ScrumBoard/ScrumBoardCollectionTpl.ejs'],
         
         subscriptions: {   
-            'Project:Selected': 'init',      
+            'Project:Selected': 'initCollection',      
             'ScrumPage:ScrumBoardSelected': 'setElementAndRender'
         },
         
@@ -18,7 +18,7 @@
         setElementAndRender: function(content_el) {           
             this.setElement(content_el);
             this.collection.fetch();
-            this.collection.on('sync', this.render, this);                  
+            this.collection.on('sync', this.render, this);                           
         },
 
         render: function () {
