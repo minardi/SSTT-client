@@ -40,7 +40,6 @@
 
         showStat: function() {
             mediator.pub("ScrumPage:StatBoardSelected", this.element);
-           // Backbone.Mediator.pub("Edit:TeamBoardSelected", this.element, this.model.get("id_of_project"));
         },
 
         removeScrumPage: function() {
