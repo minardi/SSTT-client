@@ -11,15 +11,14 @@
             'ScrumPage:ScrumBoardSelected': 'setElementAndRender'
         },
         
-        init: function (project_id) {  
-            this.collection = new module.Collection(project_id);            
-            this.collection.on('sync', this.render, this);     
+        initCollection: function (project_id) {  
+            this.collection = new module.Collection(project_id);                            
         },   
             
         setElementAndRender: function(content_el) {           
             this.setElement(content_el);
             this.collection.fetch();
-            this.render();       
+            this.collection.on('sync', this.render, this);                  
         },
 
         render: function () {
@@ -31,7 +30,7 @@
         renderModel: function (task_model) {         
             var task = new module.ModelView({
                     model: task_model
-            });           
+                });           
             this.$el.find('.' + task_model.get('status')).append(task.render().el);            
         }
 
