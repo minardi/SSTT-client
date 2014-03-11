@@ -10,10 +10,6 @@
             mediator.sub("ScrumPage:PlanningBoardSelected", this.initProductBacklog, this);
         },
 
-        subscriptions: {
-            // "ScrumPage:PlanningBoardSelected": "initProductBacklog",
-        },
-
         initProductBacklog: function(el_content, project_id) {
             this.setElement(el_content);
             this.$el.append(this.template());

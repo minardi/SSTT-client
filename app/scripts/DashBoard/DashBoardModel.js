@@ -4,11 +4,12 @@
 
     module.Model = Backbone.Model.extend({
 
-       defaults: {
-           content: "",
-           project_id: "",
-           permition: []
-       }
+        defaults: {
+            project_id: "",
+            content: "",
+            glyph: "",
+            permition: []
+        }
     });
 
 })(app.DashBoard);
