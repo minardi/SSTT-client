@@ -9,26 +9,7 @@
         initialize: function() {
             mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
         },
-
-        events: {
-            "click #save": "saveCollection"
-        },
-
-        subscriptions: {
-            "UserCandidate:addToProject": "addToCollection",
-            "TeamTab:Selected": "setMode"
-        },  
-
-        setMode: function(new_mode) {
-            this.mode = new_mode;
-        },
-
-        saveCollection: function() {
-            this.collection.each(function(model) {
-                model.save();
-            })
-        },
-
+        
         initUsers: function(data) {
             this.team_id = data["team_id"];
             this.setElement(data["element"]);
@@ -39,7 +20,25 @@
             this.collection.on("sync", this.render, this);
             this.collection.on("add", this.renderOne, this);
         },     
-
+        
+        render: function() {
+            this.$el.html(this.template());
+            this.collection.forEach(this.renderOne, this);
+            return this;
+        },
+        
+        renderOne: function(model) {
+            var team_members;
+            team_members = new module.ModelView({ model: model});
+            team_members.mode = this.mode;
+            this.$el.find(".team-members-list").append(team_members.render().el);    
+        },
+        
+        subscriptions: {
+            "UserCandidate:addToProject": "addToCollection",
+            "TeamTab:Selected": "setMode"
+        },  
+        
         addToCollection: function(attributes) {
             var exist_model = this.collection.findWhere({
                                     first_name: attributes["first_name"],
@@ -55,19 +54,19 @@
             }
         },
         
-        render: function() {
-            this.$el.html(this.template());
-            this.collection.forEach(this.renderOne, this);
-            return this;
+        setMode: function(new_mode) {
+            this.mode = new_mode;
+        },
+        
+        events: {
+            "click #save": "saveCollection"
         },
 
-        renderOne: function(model) {
-            var team_members;
-            team_members = new module.ModelView({ model: model});
-            team_members.mode = this.mode;
-           
-            this.$el.find(".team-members-list").append(team_members.render().el);    
-        }
+        saveCollection: function() {
+            this.collection.each(function(model) {
+                model.save();
+            })
+        }  
                 
     });
 

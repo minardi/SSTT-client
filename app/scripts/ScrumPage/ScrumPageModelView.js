@@ -5,18 +5,18 @@
 
         template: JST["app/scripts/ScrumPage/ScrumPageTpl.ejs"],
 		
+        subscriptions: {
+            "Project:Selected": "renderDefaultTab",
+            "Button:Click:Team": "removeScrumPage",
+            "Button:Click:Back": "removeScrumPage"
+        },
+                
         events: {
             "click #planning": "showPlanning",
             "click #scrumboard": "showScrum",
             "click #stat": "showStat"
         },
 
-        subscriptions: {
-            "Project:Selected": "renderDefaultTab",
-            "Button:Click:Team": "removeScrumPage",
-            "Button:Click:Back": "removeScrumPage"
-        },
-        
         renderDefaultTab: function(project_id) {
             this.model.set({id_of_project: project_id});
             this.render();
@@ -24,11 +24,15 @@
             this.showPlanning();
         },
         
-        render: function() {
+         render: function() {
             this.$el.append(this.template());
             return this;
         },
-		
+        
+        removeScrumPage: function() {
+            this.$el.find(".scrum-page").remove();
+        },
+        	
         showPlanning: function() {
             this.element.html("");
             mediator.pub("ScrumPage:PlanningBoardSelected", this.element, this.model.get("id_of_project"));
@@ -40,10 +44,6 @@
 
         showStat: function() {
             mediator.pub("ScrumPage:StatBoardSelected", this.element);
-        },
-
-        removeScrumPage: function() {
-            this.$el.find(".scrum-page").remove();
         }
         
     });
