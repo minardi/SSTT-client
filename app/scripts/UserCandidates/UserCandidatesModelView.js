@@ -12,20 +12,16 @@
 
         template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],   
 
-        subscriptions: {
-            "TeamTab:Selected": "setRole"
-        },
+        initialize: function() {
+            this.model.on("change", this.render, this);
+        }, 
 
         events: {
             "click": "addToProject"
         },
 
-        initialize: function() {
-            this.model.on("change", this.render, this);
-        },   
-
-        setRole: function(current_role) {
-            this.role = current_role;
+        subscriptions: {
+            "TeamTab:Selected": "setRole"
         },
 
         render: function() {
@@ -36,8 +32,12 @@
         addToProject: function() {
             this.model.set("role", this.role);
             mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
-        }
+        },
 
+        setRole: function(current_role) {
+            this.role = current_role;
+        },
+        
     });
 
 })(app.UserCandidates);

@@ -17,16 +17,6 @@
         subscriptions: {
             "TeamTab:Selected": "setMode",
             "UserCandidate:addToProject": "addToCollection"            
-        },  
-
-        setMode: function(new_mode) {
-            this.mode = new_mode;
-        },
-
-        saveCollection: function() {
-            this.collection.each(function(model) {
-                model.save();
-            })
         },
 
         initUsers: function(data) {
@@ -51,8 +41,18 @@
             team_members = new module.ModelView({ model: model});
             team_members.mode = this.mode;
             this.$el.find(".team-members-list").append(team_members.render().el);    
+        },  
+
+        setMode: function(new_mode) {
+            this.mode = new_mode;
         },
-                
+
+        saveCollection: function() {
+            this.collection.each(function(model) {
+                model.save();
+            })
+        },
+       
         addToCollection: function(attributes) {
             var exist_model = this.collection.findWhere({
                                     first_name: attributes["first_name"],

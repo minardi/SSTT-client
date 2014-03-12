@@ -12,6 +12,10 @@
             this.model.on('change', this.show, this);
             this.show();
         },
+
+        subscriptions: {
+            "TeamTab:Selected": "setMode"
+        },
        
         show: function() {
             return (this.canRender()) ? this.$el.show() : this.$el.hide();
@@ -20,18 +24,10 @@
         canRender: function() {
             return (this.model.get("role") === this.mode);  
         },
-        
-        subscriptions: {
-            "TeamTab:Selected": "setMode"
-        },
-        
+
         setMode: function(new_mode) {
             this.mode = new_mode;
             this.show();
-        },
-
-        canRender: function() {
-            return (this.model.get("role") === this.mode);
         },
 
         render: function() {

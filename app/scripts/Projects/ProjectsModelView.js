@@ -15,11 +15,6 @@
             "click": "getProjectInfo",
         },
 
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
-        },
-
         selectProject: function() {
             mediator.pub("Project:Selected", this.model.id);
         },
@@ -28,6 +23,11 @@
             mediator.pub("Project:Checked", this.model);  
             $(".box").removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
+        },
+
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
         }
 
     });

@@ -16,16 +16,14 @@
            "dblclick" : "moveToSprintstory"
         },
 
-        subscriptions: {},
+        moveToSprintstory: function() {
+            mediator.pub("Story:moveToSprint", this.model);
+            this.$el.remove();
+        },
 
         render: function() {
             this.$el.html(this.template({name:this.model.get("title")}));
             return this;
-        },
-
-        moveToSprintstory: function() {
-            mediator.pub("Story:moveToSprint", this.model);
-            this.$el.remove();
         }
 
     });
