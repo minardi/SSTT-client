@@ -7,7 +7,7 @@
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
 
         initialize: function() {
-            mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
+            mediator.sub("TeamEditPage:Open", this.initUsers, this);
         },
 
         events: {
@@ -15,8 +15,8 @@
         },
 
         subscriptions: {
-            "UserCandidate:addToProject": "addToCollection",
-            "TeamTab:Selected": "setMode"
+            "TeamTab:Selected": "setMode",
+            "UserCandidate:addToProject": "addToCollection"            
         },  
 
         setMode: function(new_mode) {
@@ -31,7 +31,7 @@
 
         initUsers: function(data) {
             this.team_id = data["team_id"];
-            this.setElement(data["element"]);
+            this.setElement(data["element"].find('.team-members'));
 
             this.collection = new module.Collection(data["team_id"]);
             this.collection.fetch();

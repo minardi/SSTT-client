@@ -32,8 +32,7 @@
 
         render: function(team_id) {            
             this.$el.append(this.template());           
-            mediator.pub("TeamEditPage:Open", { element: this.$el.find('.candidates'), team_id: team_id });
-            mediator.pub("TeamEditPage:OpenTeamMembers", { element: this.$el.find('.team-members'), team_id: team_id });
+            mediator.pub("TeamEditPage:Open", { element: this.$el, team_id: team_id });            
             this.showWatchers();
             return this;
         },   
