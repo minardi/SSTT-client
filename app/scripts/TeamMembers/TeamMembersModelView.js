@@ -18,7 +18,7 @@
         },
        
         show: function() {
-            return (this.canRender()) ? this.$el.show() : this.$el.hide();
+            return (this.canRender()) ? this.$el.css('display','block') : this.$el.css('display','none');
         },
         
         canRender: function() {
@@ -27,7 +27,7 @@
 
         setMode: function(new_mode) {
             this.mode = new_mode;
-           // this.show();
+            this.show();
         },
 
         render: function() {
