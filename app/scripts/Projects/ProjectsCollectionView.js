@@ -18,6 +18,14 @@
             "Button:Click:Back": "show"
         },
 
+        hide: function() {
+            this.$el.addClass("hiddenProjects");
+        },
+
+        show: function() {
+            this.$el.removeClass("hiddenProjects");
+        },
+
         render: function() {
             this.$el.append(this.template());
             this.projectsCollection.each(this.renderOne, this);
@@ -29,14 +37,6 @@
                 model: projectModel
             });
             this.$el.find(".content").append(project.render().el);
-        },
-
-        hide: function() {
-            this.$el.addClass("hiddenProjects");
-        },
-
-        show: function() {
-            this.$el.removeClass("hiddenProjects");
         }
      
     });

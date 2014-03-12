@@ -1,21 +1,20 @@
 var sstt = {},
     mediator = Backbone.Mediator,
     app = {
-    User: {},
-    Projects: {},
-    ScrumPage: {},
-    ProductBacklogStories: {},
-    SprintBacklogStories: {},
-    ScrumPage: {},
-    Projectinfo: {},
-    DashBoard: {},
-    ScrumBoard: {},
-    TeamEditPage: {},
-    UserCandidates: {},
-    TeamMembers: {},
-    Teams: {},
-    empty: {}
-};
+        User: {},
+        Projects: {},
+        ScrumPage: {},
+        ProductBacklogStories: {},
+        SprintBacklogStories: {},
+        Projectinfo: {},
+        DashBoard: {},
+        ScrumBoard: {},
+        TeamEditPage: {},
+        UserCandidates: {},
+        TeamMembers: {},
+        Teams: {},
+        empty: {}
+    };
 
 $(function() {
     "use strict";

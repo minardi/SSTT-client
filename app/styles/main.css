@@ -75,7 +75,7 @@ _______________________________________________________*/
 
 .app-wrapper .b-sidebar .dashboard button {
     margin: 4px;
-    padding: 8px 15px;
+    padding: 10px 23px 10px 12px;
 }
 
 .icon-team:before {
@@ -381,12 +381,17 @@ ____________________________________________*/
 }
 
 #save {
-    margin-left: 80%;
-    margin-right: auto;
-
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+}
 /* Extract class
 ____________________________________________*/
 
 .hidden {
     display: none;
+}
+
+a:visited {
+    color: white;
 }

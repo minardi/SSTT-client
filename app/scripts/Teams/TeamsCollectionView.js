@@ -37,14 +37,14 @@
             this.$el.addClass("hiddenTeams");
         },
 
-        show: function() {
-            this.$el.removeClass("hiddenTeams");
-        },
-
         removeTeamPage: function() {
             this.$el.find(".team-page").remove();
-        }
+        },
 
+        show: function() {
+            this.$el.removeClass("hiddenTeams");
+        }
+        
     });
 
 })(app.Teams);

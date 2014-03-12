@@ -6,15 +6,15 @@
 
         template: JST['app/scripts/SprintBacklogStories/SprintBacklogStoriesCollectionTpl.ejs'],  
 
-        subscriptions: {
-            "Story:moveToSprint": "addStory",
-        },
-        
         initialize: function() {
             this.collection = new module.Collection();
             mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
         },
 
+        subscriptions: {
+            "Story:moveToSprint": "addStory",
+        },
+        
         initSprintBacklog: function(el_content) {
             this.setElement(el_content);
             this.render();

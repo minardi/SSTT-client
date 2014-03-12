@@ -5,33 +5,29 @@
     module.ModelView = Backbone.View.extend({
 
         className: "user-box",
-
+        
+        template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
+        
         initialize: function() {
             this.model.on('change', this.show, this);
             this.show();
         },
 
-        template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
-        
         subscriptions: {
             "TeamTab:Selected": "setMode"
         },
-
+       
+        show: function() {
+            return (this.canRender()) ? this.$el.show() : this.$el.hide();
+        },
+        
         canRender: function() {
             return (this.model.get("role") === this.mode);  
         },
-        
+
         setMode: function(new_mode) {
             this.mode = new_mode;
            // this.show();
-        },
-
-        show: function() {
-          return (this.canRender()) ? this.$el.show() : this.$el.hide();
-        },
-
-        canRender: function() {
-            return (this.model.get("role") === this.mode);
         },
 
         render: function() {

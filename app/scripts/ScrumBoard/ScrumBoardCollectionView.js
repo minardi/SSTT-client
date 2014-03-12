@@ -23,11 +23,11 @@
 
         render: function () {
             this.$el.html(this.template()); 
-            this.collection.each(this.renderModel,this);
+            this.collection.each(this.renderOne,this);
             return this;
         },
 
-        renderModel: function (task_model) {         
+        renderOne: function (task_model) {         
             var task = new module.ModelView({
                     model: task_model
                 });           
