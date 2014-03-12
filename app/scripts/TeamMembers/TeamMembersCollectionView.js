@@ -7,12 +7,31 @@
         template: JST['app/scripts/TeamMembers/TeamMembersCollectionTpl.ejs'],
 
         initialize: function() {
-            mediator.sub("TeamEditPage:OpenTeamMembers", this.initUsers, this);
+            mediator.sub("TeamEditPage:Open", this.initUsers, this);
         },
-        
+
+        events: {
+            "click #save": "saveCollection"
+        },
+
+        subscriptions: {
+            "TeamTab:Selected": "setMode",
+            "UserCandidate:addToProject": "addToCollection"            
+        },  
+
+        setMode: function(new_mode) {
+            this.mode = new_mode;
+        },
+
+        saveCollection: function() {
+            this.collection.each(function(model) {
+                model.save();
+            })
+        },
+
         initUsers: function(data) {
             this.team_id = data["team_id"];
-            this.setElement(data["element"]);
+            this.setElement(data["element"].find('.team-members'));
 
             this.collection = new module.Collection(data["team_id"]);
             this.collection.fetch();
@@ -33,12 +52,7 @@
             team_members.mode = this.mode;
             this.$el.find(".team-members-list").append(team_members.render().el);    
         },
-        
-        subscriptions: {
-            "UserCandidate:addToProject": "addToCollection",
-            "TeamTab:Selected": "setMode"
-        },  
-        
+                
         addToCollection: function(attributes) {
             var exist_model = this.collection.findWhere({
                                     first_name: attributes["first_name"],
@@ -52,22 +66,8 @@
                 attributes["team_id"] = this.team_id;
                 this.collection.add(attributes);
             }
-        },
+        }
         
-        setMode: function(new_mode) {
-            this.mode = new_mode;
-        },
-        
-        events: {
-            "click #save": "saveCollection"
-        },
-
-        saveCollection: function() {
-            this.collection.each(function(model) {
-                model.save();
-            })
-        }  
-                
     });
 
 })(app.TeamMembers);

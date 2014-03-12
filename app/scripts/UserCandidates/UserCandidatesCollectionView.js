@@ -11,7 +11,7 @@
         }, 
 
         initUserCandidates: function(data) {              
-            this.setElement(data["element"]);
+            this.setElement(data["element"].find('.candidates'));
             this.collection = new module.Collection(data["team_id"]);
             this.collection.on('sync', this.render, this);
         },
