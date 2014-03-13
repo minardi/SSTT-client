@@ -4,10 +4,9 @@
         
 	module.Model = Backbone.Model.extend({	     
 		 
-		 defaults: {
+		defaults: {
 			id_of_project: ""
-         }		 
-		 
+        }		 
 	});
 
 })(app.ScrumPage);

@@ -8,13 +8,13 @@
 
         initialize: function() {
             this.collection = new module.Collection();
-            Backbone.Mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
+            mediator.sub("ScrumPage:PlanningBoardSelected", this.initSprintBacklog, this);
         },
 
         subscriptions: {
-            "Story:moveToSprint": "moveToSprintstory",
+            "Story:moveToSprint": "addStory",
         },
-
+        
         initSprintBacklog: function(el_content) {
             this.setElement(el_content);
             this.render();
@@ -32,7 +32,7 @@
             return this;
         },
 
-        moveToSprintstory: function(product_story_model) {
+        addStory: function(product_story_model) {
             this.collection.add(product_story_model.toJSON());
             this.renderOne(product_story_model);
         }

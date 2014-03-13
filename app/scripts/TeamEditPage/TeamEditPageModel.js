@@ -4,8 +4,8 @@
         
 	module.Model = Backbone.Model.extend({	
 
-		 defaults: {
-         }		 
+		defaults: {
+        }		 
 		 
 	});
 

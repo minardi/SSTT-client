@@ -8,6 +8,10 @@ html, body {
     width: 100%;
 }
 
+.hide {
+    display: none;
+}
+
 .app-wrapper {
     position: relative;
     top: 0; 
@@ -23,13 +27,12 @@ html, body {
 .app-wrapper .b-header {
     height: 50px;
     line-height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: right;
     background: url(../images/logo.png) no-repeat 10px 0;
 }
 
 .app-wrapper .b-header .user {
-    text-decoration: underline;
     padding-right: 20px;
 }
 
@@ -72,16 +75,14 @@ _______________________________________________________*/
 
 .app-wrapper .b-sidebar .dashboard button {
     margin: 4px;
+    padding: 10px 23px 10px 12px;
 }
 
-#btn-Team:before {
+.icon-team:before {
+    font-weight: 900;
     content: 'T';
 }
 
-.app-wrapper .b-sidebar .dashboard button span {
-    font-size: 16px;
-    font-weight: 900;
-}
 
 
 
@@ -195,7 +196,7 @@ a {
 	font-size: 20px;
 }
 
-.app-wrapper .b-main .scam-page-header {
+.app-wrapper .b-main .scrum-page-header {
     height: 48px;
     font-size: 24px;
 }
@@ -309,7 +310,7 @@ a {
     background-color: rgba(255,255,255,0.8);
 }
 
-.candidats, .team-members {
+.candidates, .team-members {
     display: inline-block;
     min-height: 50%;
     width: 40%;
@@ -335,7 +336,7 @@ a {
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
-    transition:color .0.4s ease-out, 0.4s ease-in;
+    transition: color .0.4s ease-out, 0.4s ease-in;
 }
 
 .user-box:hover {
@@ -346,6 +347,7 @@ a {
 ____________________________________________*/
 
 .team-members {
+    position: relative;
     float: right;
     min-height: 50%;
     width: 40%;
@@ -354,10 +356,6 @@ ____________________________________________*/
     background-color: rgba(187,221,187,0.7);
     box-shadow: 0px 0px 10px rgba(158, 221, 158, 0.7);
     opacity: 0.8;
-}
-
-
-.team-members-list {
 }
 
 .watcher {
@@ -380,4 +378,20 @@ ____________________________________________*/
 
 .list {
     overflow: auto;
+}
+
+#save {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+}
+/* Extract class
+____________________________________________*/
+
+.hidden {
+    display: none;
+}
+
+a:visited {
+    color: white;
 }

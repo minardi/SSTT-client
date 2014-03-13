@@ -2,45 +2,42 @@
 
 (function(module) {
 
-	module.ModelView = Backbone.View.extend({	
+    module.ModelView = Backbone.View.extend({	
 
-    tagName: "div",
+        tagName: "div",
 
-    className: "user-box",
-    
-    role: "",   
-		
-    template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],
+        className: "user-box",
+        
+        role: "watcher",
 
-    initialize: function() {
-      this.model.on("change", this.render, this);
-      this.role = "watcher";
-    },      
+        template: JST['app/scripts/UserCandidates/UserCandidatesTpl.ejs'],   
 
-    subscriptions: {
-        "TeamTab:Selected": "setRole"
-    },
+        initialize: function() {
+            this.model.on("change", this.render, this);
+        }, 
 
-     events: {
-        "click": "addToProject"
-    },
+        events: {
+            "click": "addToProject"
+        },
 
-    setRole: function(role_new) {
-        //rename role var
-        //refactor
-        this.role = role_new;       
-    },
+        subscriptions: {
+            "TeamTab:Selected": "setRole"
+        },
 
-    render: function() {
-       this.$el.html(this.template(this.model.toJSON()));
-       return this;
-      },
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        },
 
-    addToProject: function() {
-      this.model.set("role", this.role);
-      Backbone.Mediator.pub("UserCandidate:addToProject", this.model);
-    }		
-		 
-	});
+        addToProject: function() {
+            this.model.set("role", this.role);
+            mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
+        },
+
+        setRole: function(current_role) {
+            this.role = current_role;
+        },
+        
+    });
 
 })(app.UserCandidates);

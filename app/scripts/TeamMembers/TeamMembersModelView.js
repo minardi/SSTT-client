@@ -2,45 +2,40 @@
 
 (function(module) {
 
-        module.ModelView = Backbone.View.extend({
+    module.ModelView = Backbone.View.extend({
 
         className: "user-box",
-
-        initialize: function () {
-            this.model.on('change', this.show, this);
-        },
-
+        
         template: JST['app/scripts/TeamMembers/TeamMembersTpl.ejs'],
         
+        initialize: function() {
+            this.model.on('change', this.show, this);
+            this.show();
+        },
+
         subscriptions: {
             "TeamTab:Selected": "setMode"
         },
-
-        mode: "watcher",
-
-        canRender: function() {
-         return (this.model.get("role") === this.mode);  
-        },
-
+       
         show: function() {
-            if (this.canRender()) {
-               this.$el.show();  
-            } else {
-               this.$el.hide();   
-            }
+            return (this.canRender()) ? this.$el.css('display','block') : this.$el.css('display','none');
         },
-
-        render: function() {
-          this.$el.html(this.template(this.model.toJSON())); 
-          this.show();   
-          return this;
+        
+        canRender: function() {
+            return (this.model.get("role") === this.mode);  
         },
 
         setMode: function(new_mode) {
             this.mode = new_mode;
             this.show();
-        }  
-         
+        },
+
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            this.show();
+            return this;
+        }
+
     });
 
 })(app.TeamMembers);

@@ -14,14 +14,13 @@
         },
 
         init: function(project_id) {
-            console.log("team page")
             this.TeamsCollection = new module.Collection(project_id);
             this.TeamsCollection.fetch();
             this.listenTo(this.TeamsCollection, "sync", this.render);
         },
 
         render: function() {
-            Backbone.Mediator.pub("ScrumPage:remove")
+            mediator.pub("ScrumPage:remove")
             this.$el.append(this.template());
             this.TeamsCollection.each(this.renderOne, this);
             return this;
@@ -38,14 +37,14 @@
             this.$el.addClass("hiddenTeams");
         },
 
-        show: function() {
-            this.$el.removeClass("hiddenTeams");
-        },
-
         removeTeamPage: function() {
             this.$el.find(".team-page").remove();
-        }
+        },
 
+        show: function() {
+            this.$el.removeClass("hiddenTeams");
+        }
+        
     });
 
 })(app.Teams);
