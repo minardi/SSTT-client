@@ -16,7 +16,7 @@
         },
 
         selectProject: function() {
-            mediator.pub("Project:Selected", this.model.id);
+            mediator.pub("ProjectPage:ProjectSelected", this.model.id);
         },
         
         getProjectInfo: function() {

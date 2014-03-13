@@ -15,7 +15,7 @@
         },
 
         selectTeam: function() {
-            mediator.pub("Team:Selected", this.model.id);
+            mediator.pub("TeamPage:TeamSelected", this.model.id);
         },
 
         render: function() {
