@@ -12,16 +12,16 @@
         
         events: {
             "dblclick": "selectProject",
-            "click": "getProjectInfo",
+            "click": "showProjectInfo",
         },
 
         selectProject: function() {
             mediator.pub("Project:Selected", this.model.id);
         },
         
-        getProjectInfo: function() {
+        showProjectInfo: function() {
             mediator.pub("Project:Checked", this.model);  
-            $(".box").removeClass("active-tab"); 
+            this.$el.siblings().removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         },
 
