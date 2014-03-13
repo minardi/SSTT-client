@@ -21,7 +21,7 @@
         },
 
         subscriptions: {
-            "TeamTab:Selected": "setRole"
+            "TeamEditPage:TabSelected": "setRole"
         },
 
         addToProject: function() {

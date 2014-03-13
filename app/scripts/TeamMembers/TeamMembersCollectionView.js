@@ -15,7 +15,7 @@
         },
 
         subscriptions: {
-            "TeamTab:Selected": "setMode",
+            "TeamEditPage:TabSelected": "setMode",
             "UserCandidate:addToProject": "addToCollection"            
         },
 

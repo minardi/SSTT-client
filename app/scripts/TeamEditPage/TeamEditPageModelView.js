@@ -19,15 +19,15 @@
         },     
 
         showWatchers: function () {            
-            mediator.pub("TeamTab:Selected", "watcher");
+            mediator.pub("TeamEditPage:TabSelected", "watcher");
         },
 
         showDevelopers: function () {
-            mediator.pub("TeamTab:Selected", "developer");
+            mediator.pub("TeamEditPage:TabSelected", "developer");
         },
 
         showTeachLeads: function () {
-            mediator.pub("TeamTab:Selected", "techlead");
+            mediator.pub("TeamEditPage:TabSelected", "techlead");
         },         
 
         render: function(team_id) {            

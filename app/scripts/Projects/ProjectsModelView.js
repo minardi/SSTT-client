@@ -20,7 +20,7 @@
         },
         
         getProjectInfo: function() {
-            mediator.pub("Project:Checked", this.model);  
+            mediator.pub("ProjectPage:ProjectChecked", this.model);  
             $(".box").removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         },

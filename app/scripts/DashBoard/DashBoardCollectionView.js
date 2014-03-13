@@ -11,7 +11,7 @@
         },
 
         subscriptions: {
-            "Project:Checked": "setProject",
+            "ProjectPage:ProjectChecked": "setProject",
             "DashBoard:ActiveBack": "toProjectPage",
             "ProjectPage:ProjectSelected": "toScrumPage",
             "DashBoard:ActiveTeam": "toTeamPage",

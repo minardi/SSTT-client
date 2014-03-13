@@ -14,7 +14,7 @@
         },
 
         subscriptions: {
-            "TeamTab:Selected": "setMode"
+            "TeamEditPage:TabSelected": "setMode"
         },
        
         show: function() {
