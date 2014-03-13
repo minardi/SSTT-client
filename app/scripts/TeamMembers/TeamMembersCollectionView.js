@@ -11,7 +11,7 @@
         },
 
         events: {
-            "click #save": "saveCollection"
+            "click #save": "saveCollection",
         },
 
         subscriptions: {
@@ -37,7 +37,8 @@
         saveCollection: function() {
             this.collection.each(function(model) {
                 model.save();
-            })
+            });
+            mediator.pub("TeamMembers:Saved");
         },
        
         addToCollection: function(attributes) {
