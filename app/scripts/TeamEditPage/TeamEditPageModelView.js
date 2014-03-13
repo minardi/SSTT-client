@@ -13,9 +13,9 @@
         },
 
         subscriptions: {
-            "Team:Selected": "render",
-            "Button:Click:Back": "removeTeamPage",
-            "Button:Click:BackFromTeamEditPage": "removeTeamPage"
+            "TeamPage:TeamSelected": "render",
+            "DashBoard:ActiveBack": "removeTeamPage",
+            "DashBoard:ActiveBackFromTeamEditPage": "removeTeamPage"
         },     
 
         showWatchers: function () {            

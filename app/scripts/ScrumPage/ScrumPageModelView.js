@@ -12,9 +12,9 @@
         },
 
         subscriptions: {
-            "Project:Selected": "renderDefaultTab",
-            "Button:Click:Team": "removeScrumPage",
-            "Button:Click:Back": "removeScrumPage"
+            "ProjectPage:ProjectSelected": "renderDefaultTab",
+            "DashBoard:ActiveTeam": "removeScrumPage",
+            "DashBoard:ActiveBack": "removeScrumPage"
         },
 
         showPlanning: function() {

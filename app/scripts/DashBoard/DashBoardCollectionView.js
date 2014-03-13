@@ -12,11 +12,11 @@
 
         subscriptions: {
             "Project:Checked": "setProject",
-            "Button:Click:Back": "toProjectPage",
-            "Project:Selected": "toScrumPage",
-            "Button:Click:Team": "toTeamPage",
-            "Team:Selected": "toTeamEditPage",
-            "Button:Click:BackFromTeamEditPage": "toTeamPage",
+            "DashBoard:ActiveBack": "toProjectPage",
+            "ProjectPage:ProjectSelected": "toScrumPage",
+            "DashBoard:ActiveTeam": "toTeamPage",
+            "TeamPage:TeamSelected": "toTeamEditPage",
+            "DashBoard:ActiveBackFromTeamEditPage": "toTeamPage",
         },
 
         setProject: function(project) {
