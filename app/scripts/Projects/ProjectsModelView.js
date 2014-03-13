@@ -16,11 +16,11 @@
         },
 
         selectProject: function() {
-            mediator.pub("Project:Selected", this.model.id);
+            mediator.pub("ProjectPage:ProjectSelected", this.model.id);
         },
         
         getProjectInfo: function() {
-            mediator.pub("Project:Checked", this.model);  
+            mediator.pub("ProjectPage:ProjectChecked", this.model);  
             $(".box").removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         },

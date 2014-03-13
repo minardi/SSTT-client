@@ -13,9 +13,9 @@
         },
 
         subscriptions: {
-            "Project:Selected": "hide",
-            "Button:Click:Team": "hide",
-            "Button:Click:Back": "show"
+            "ProjectPage:ProjectSelected": "hide",
+            "DashBoard:ActiveTeam": "hide",
+            "DashBoard:ActiveBack": "show"
         },
 
         hide: function() {

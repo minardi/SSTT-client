@@ -13,23 +13,23 @@
             "click #ok_btn": "hideConfirm"
         },
 
-        subscriptions: {
-            "Team:Selected": "render",
-            "Button:Click:Back": "removeTeamPage",
-            "Button:Click:BackFromTeamEditPage": "removeTeamPage",
-            "TeamMembers:Saved": "showSaveMsg"
+        subscriptions: {         
+            "TeamPage:TeamSelected": "render",
+            "DashBoard:ActiveBack": "removeTeamPage",
+            "DashBoard:ActiveBackFromTeamEditPage": "removeTeamPage",
+             "TeamMembers:Saved": "showSaveMsg"
         },     
 
         showWatchers: function () {            
-            mediator.pub("TeamTab:Selected", "watcher");
+            mediator.pub("TeamEditPage:TabSelected", "watcher");
         },
 
         showDevelopers: function () {
-            mediator.pub("TeamTab:Selected", "developer");
+            mediator.pub("TeamEditPage:TabSelected", "developer");
         },
 
         showTeachLeads: function () {
-            mediator.pub("TeamTab:Selected", "techlead");
+            mediator.pub("TeamEditPage:TabSelected", "techlead");
         },         
         
         showSaveMsg: function() {
