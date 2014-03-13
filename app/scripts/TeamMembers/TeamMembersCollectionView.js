@@ -29,19 +29,6 @@
             this.collection.on("sync", this.render, this);
             this.collection.on("add", this.renderOne, this);
         },     
-        
-        render: function() {
-            this.$el.html(this.template());
-            this.collection.forEach(this.renderOne, this);
-            return this;
-        },
-        
-        renderOne: function(model) {
-            var team_members;
-            team_members = new module.ModelView({ model: model});
-            team_members.mode = this.mode;
-            this.$el.find(".team-members-list").append(team_members.render().el);    
-        },  
 
         setMode: function(new_mode) {
             this.mode = new_mode;
@@ -66,7 +53,20 @@
                 attributes["team_id"] = this.team_id;
                 this.collection.add(attributes);
             }
-        }
+        },
+
+        render: function() {
+            this.$el.html(this.template());
+            this.collection.forEach(this.renderOne, this);
+            return this;
+        },
+        
+        renderOne: function(model) {
+            var team_members;
+            team_members = new module.ModelView({ model: model});
+            team_members.mode = this.mode;
+            this.$el.find(".team-members-list").append(team_members.render().el);    
+        }  
         
     });
 

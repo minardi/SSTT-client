@@ -20,6 +20,12 @@
             this.render();
         },
 
+
+        addStory: function(product_story_model) {
+            this.collection.add(product_story_model.toJSON());
+            this.renderOne(product_story_model);
+        },
+
         render: function() {
             this.$el.append(this.template());
             return this;
@@ -30,11 +36,6 @@
 
             this.$el.find(".sprint .story-list").append(story.render().el);
             return this;
-        },
-
-        addStory: function(product_story_model) {
-            this.collection.add(product_story_model.toJSON());
-            this.renderOne(product_story_model);
         }
 
     });

@@ -24,11 +24,6 @@
             "TeamTab:Selected": "setRole"
         },
 
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
-        },
-
         addToProject: function() {
             this.model.set("role", this.role);
             mediator.pub("UserCandidate:addToProject", this.model.toTeamMemberAttributes());
@@ -37,6 +32,11 @@
         setRole: function(current_role) {
             this.role = current_role;
         },
+
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
         
     });
 
