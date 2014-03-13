@@ -18,7 +18,12 @@
             "UserCandidate:addToProject": "addToCollection",
             "TeamTab:Selected": "setMode"
         },  
-
+        
+        saveCollection: function(my_model) {
+            this.collection.forEach(this.my_model.save());
+            console.log(this.my_model);
+        },
+        
         setMode: function(new_mode) {
             this.mode = new_mode;        },
 
