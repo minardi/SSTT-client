@@ -14,11 +14,11 @@
         },
 
         subscriptions: {
-            "TeamTab:Selected": "setMode"
+            "TeamEditPage:TabSelected": "setMode"
         },
        
         show: function() {
-            return (this.canRender()) ? this.$el.css('display','block') : this.$el.css('display','none');
+            return (this.canRender()) ? this.$el.removeClass('hide') : this.$el.addClass('hide');
         },
         
         canRender: function() {

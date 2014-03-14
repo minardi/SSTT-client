@@ -21,12 +21,7 @@
         },
 
         subscriptions: {
-            "TeamTab:Selected": "setRole"
-        },
-
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
+            "TeamEditPage:TabSelected": "setRole"
         },
 
         addToProject: function() {
@@ -37,6 +32,11 @@
         setRole: function(current_role) {
             this.role = current_role;
         },
+
+        render: function() {
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        }
         
     });
 

@@ -13,7 +13,7 @@
         },
         
         action: function() {
-            mediator.pub("Button:Click:" + this.model.get("content"), this.model.get("project_id"));
+            mediator.pub("DashBoard:Active" + this.model.get("content"), this.model.get("project_id"));
         }
 
     });

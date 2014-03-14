@@ -7,7 +7,7 @@
         template: JST['app/scripts/ScrumBoard/ScrumBoardCollectionTpl.ejs'],
         
         subscriptions: {   
-            'Project:Selected': 'initCollection',      
+            'ProjectPage:ProjectSelected': 'initCollection',      
             'ScrumPage:ScrumBoardSelected': 'setElementAndRender'
         },
         

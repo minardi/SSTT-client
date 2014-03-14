@@ -6,22 +6,22 @@
 
         tagName: "div",
         
-        className: "box",        
+        className: "box",
         
-        template: JST['app/scripts/Projects/ProjectsTpl.ejs'],        
+        template: JST['app/scripts/Projects/ProjectsTpl.ejs'],
         
         events: {
             "dblclick": "selectProject",
-            "click": "getProjectInfo",
+            "click": "showProjectInfo",
         },
 
         selectProject: function() {
-            mediator.pub("Project:Selected", this.model.id);
+            mediator.pub("ProjectPage:ProjectSelected", this.model.id);
         },
         
-        getProjectInfo: function() {
-            mediator.pub("Project:Checked", this.model);  
-            $(".box").removeClass("active-tab"); 
+        showProjectInfo: function() {
+            mediator.pub("ProjectPage:ProjectChecked", this.model);
+            this.$el.siblings().removeClass("active-tab"); 
             this.$el.addClass("active-tab"); 
         },
 
