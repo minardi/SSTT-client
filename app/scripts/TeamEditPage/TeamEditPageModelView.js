@@ -33,11 +33,11 @@
         },         
         
         showSaveMsg: function() {
-            $("#save_confirm").removeClass();
+            this.$el.find("#save_confirm").removeClass();
         },     
                 
         hideConfirm: function() {
-            $("#save_confirm").addClass("hidden");
+            this.$el.find("#save_confirm").addClass("hidden");
         },
         
         render: function(team_id) {            

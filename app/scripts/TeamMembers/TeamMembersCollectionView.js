@@ -36,9 +36,9 @@
 
         saveCollection: function() {
             this.collection.each(function(model) {
-                model.save();
+                model.save(null, {success: function() {mediator.pub("TeamMembers:Saved")},
+                                            error: function() {console.log("Save error")}});
             });
-            mediator.pub("TeamMembers:Saved");
         },
        
         addToCollection: function(attributes) {
