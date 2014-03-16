@@ -49,6 +49,7 @@
 
             if (exist_model) {
                 exist_model.set("role", attributes["role"]); 
+                this.$el.find("#save").removeAttr("disabled");
             } else { 
                 attributes["role"] = this.mode;
                 attributes["team_id"] = this.team_id;
