@@ -9,11 +9,11 @@
         initialize: function() {
             mediator.sub("TeamEditPage:Open", this.initUsers, this);
         },
-
+        
         events: {
-            "click #save": "saveCollection",
+            "click #save": "saveCollection"
         },
-
+        
         subscriptions: {
             "TeamEditPage:TabSelected": "setMode",
             "UserCandidate:addToProject": "addToCollection"            
@@ -29,16 +29,16 @@
             this.collection.on("sync", this.render, this);
             this.collection.on("add", this.renderOne, this);
         },     
-
+              
         setMode: function(new_mode) {
             this.mode = new_mode;
         },
 
         saveCollection: function() {
             this.collection.each(function(model) {
-                model.save(null, {success: function() {mediator.pub("TeamMembers:Saved")},
-                                            error: function() {console.log("Save error")}});
+                model.save();
             });
+            this.$el.find("#save").attr("disabled", "disabled");
         },
        
         addToCollection: function(attributes) {
@@ -49,10 +49,12 @@
 
             if (exist_model) {
                 exist_model.set("role", attributes["role"]); 
+                this.$el.find("#save").removeAttr("disabled");
             } else { 
                 attributes["role"] = this.mode;
                 attributes["team_id"] = this.team_id;
                 this.collection.add(attributes);
+                this.$el.find("#save").removeAttr("disabled");
             }
         },
 

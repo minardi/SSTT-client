@@ -406,20 +406,6 @@ ____________________________________________*/
     right: 0;
 }
 
-#save_confirm {
-    margin-top: 50px;
-    width: 40%;
-    height: 15%;
-    padding: 10px;
-    background-color: rgba(173,166,159,.86);
-    border-radius: 10px;
-    opacity: .6;
-    float: right;
-}
-
-.shown {
-    display: block;
-}
 /* Extract class
 ____________________________________________*/
 
