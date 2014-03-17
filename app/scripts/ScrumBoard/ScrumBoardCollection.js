@@ -7,7 +7,7 @@
         model: module.Model,     
            
         initialize: function (project_id) { 
-            this.url = 'tasks/for-project/' + project_id;
+            this.url = '/tasks/for-project/' + project_id;
                                          
         }       
 
