@@ -5,11 +5,11 @@
     module.Model = Backbone.Model.extend({
 
         defaults: {
-            title: '',
-            status: 'todo',
-            description: '',
-            story_id: '',
-            sprint_id: ''
+            title: "",
+            status: "",
+            description: "",
+            story_id: "",
+            sprint_id: ""
         }       
     });
 
