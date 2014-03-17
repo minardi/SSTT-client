@@ -6,14 +6,15 @@
 
         routes: {
             "teams/:id/team_edit_page": "showTeamEditPage",
-            "" : "index"
+            "projects" : "index"
         },
 
         index: function() {
             console.log("I am Router");
         },
         
-        showTeamEditPage: function() {
+        showTeamEditPage: function(id) {
+            
         }
 
     });
