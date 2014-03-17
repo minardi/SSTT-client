@@ -266,8 +266,8 @@ ________________________________________________*/
 }
 
 .task {
-    padding-top: 5px;
-    overflow-y: auto;
+    position: relative;
+    padding: 5px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     display: inline-block;
@@ -279,9 +279,33 @@ ________________________________________________*/
 
 .task:hover {
     box-shadow: 0 0 20px rgba(20,100,20,0.9);
+}
+
+
+.arrow-left, .arrow-right {
+    opacity: 0.5;
+    position: absolute;
+    height: 100%;
+    line-height: 45px;
     cursor: pointer;
 }
 
+.arrow-left:hover, .arrow-right:hover {
+    opacity: 1;
+}
+
+.arrow-left {
+    top: 0;
+    left: 0;
+    border-right: 2px solid rgba(0,0,0,0.6);
+    
+}
+
+.arrow-right {
+    top: 0;
+    right: 0;
+    border-left: 2px solid rgba(0,0,0,0.6);
+}
 /*TeamEditPage block
 _________________________________________________*/
 a {
