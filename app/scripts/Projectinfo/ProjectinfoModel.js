@@ -2,7 +2,9 @@
 
 (function(module) {
 
-    module.Model = Backbone.Model.extend({       
+    module.Model = Backbone.Model.extend({
+
+        urlRoot: "projects/info",
 
         defaults: {
             title: "",

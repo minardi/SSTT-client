@@ -10,9 +10,10 @@
             "ProjectPage:ProjectChecked": "showProjectInfo"          
         },
 
-        showProjectInfo: function(project_model) {      
-            this.project = project_model;          
-            this.render();
+        showProjectInfo: function(project_id) {      
+            this.project = new module.Model({id: project_id});
+            this.project.fetch();
+            this.project.on("sync", this.render, this);
         },
 
         render: function() {

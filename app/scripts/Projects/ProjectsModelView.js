@@ -12,16 +12,17 @@
         
         events: {
             "dblclick": "selectProject",
-            "click": "showProjectInfo",
+            "click": "showProjectInfo"
         },
+
 
         selectProject: function() {
             mediator.pub("ProjectPage:ProjectSelected", this.model.id);
         },
         
         showProjectInfo: function() {
-            mediator.pub("ProjectPage:ProjectChecked", this.model);
-            this.$el.siblings().removeClass("active-tab"); 
+            mediator.pub("ProjectPage:ProjectChecked", this.model.id);
+            this.$el.siblings().removeClass("active-tab");
             this.$el.addClass("active-tab"); 
         },
 
@@ -29,6 +30,9 @@
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
+
+
+
 
     });
 
