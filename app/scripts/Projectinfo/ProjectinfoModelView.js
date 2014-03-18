@@ -17,8 +17,12 @@
         },
 
         render: function() {
+            var right_for_project = {
+                id: this.project.id,
+                right: ((this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm")
+            };
             this.$el.html(this.template(this.project.toJSON()));
-            mediator.pub("ProjectInfo:Checked", this.project);
+            mediator.pub("ProjectInfo:Checked", right_for_project);
             return this;
         }
   });

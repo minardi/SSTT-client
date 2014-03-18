@@ -19,8 +19,9 @@
             "DashBoard:ActiveBackFromTeamEditPage": "toTeamPage",
         },
 
-        setProject: function(project) {
-            this.project = project;
+        setProject: function(info) {
+            this.current_right = info.right;
+            this.current_project_id = info.id;
             this.current_page = "project_page";
             this.render();
         },
@@ -45,16 +46,15 @@
             this.render();
         },
 
-        render: function(project) {
+        render: function() {
             this.$el.find(".dashboard").remove();
             this.$el.append(this.template);
-            //this.current_right = (this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm";
             this.collection.each(this.renderOne, this);
             return this;
         },
 
         renderOne: function (btn_model) {
-            btn_model.set("project_id", this.project.id);
+            btn_model.set("project_id", this.current_project_id);
             if (this.canRender(btn_model.get("permition"))) {
                 var btn = new module.ModelView({
                         model: btn_model,
