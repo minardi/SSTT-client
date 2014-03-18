@@ -5,7 +5,7 @@
     module.Router = Backbone.Router.extend({
 
         routes: {
-            "" : "index"
+       		"": "index"
         },
 
         index: function() {
