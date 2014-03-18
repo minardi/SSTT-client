@@ -18,6 +18,7 @@
 
         render: function() {
             this.$el.html(this.template(this.project.toJSON()));
+            mediator.pub("ProjectInfo:Checked", this.project);
             return this;
         }
   });
