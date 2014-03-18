@@ -6,6 +6,8 @@
 
         silent: false,
 
+        element: $("b-main"),
+
         initialize: function() {
             mediator.sub("ProjectPage:ProjectChecked", this.toProject, this);
             mediator.sub("ProjectPage:ProjectSelected", this.toScrumPage, this);
@@ -26,7 +28,12 @@
 
         routes: {
             "": "index",
-       		"project-:id": "projectChecked"
+       		"project-:id": "projectChecked",
+            "project-:id/scrum-page": "projectSelected"
+        },
+
+        index: function() {
+            console.log("I am Router");           
         },
 
         projectChecked: function(project_id) {
@@ -34,16 +41,15 @@
             mediator.pub("ProjectPage:ProjectChecked", project_id);
         },
 
-        index: function() {
-            console.log("I am Router");           
+        projectSelected: function(project_id) {
+            console.log("scrum");
+            //mediator.pub("ProjectPage:ProjectSelected", project_id);
         },
-
-        toProject: function(project_id) {
-            console.log(this.silent);
+        
+        toProject: function(project_id) {            
             if (this.silent) {
                 this.silent = false;
-            } else {
-                console.log("1");
+            } else {                
                 this.navigate("project-" + project_id);    
             }
         },
@@ -51,7 +57,7 @@
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
 
-            this.navigate("project-" + project_id + "/scrum-page", {trigger: true});
+            this.navigate("project-" + project_id + "/scrum-page");
         },
 
         toPlanning: function() {
