@@ -48,7 +48,7 @@
         render: function(project) {
             this.$el.find(".dashboard").remove();
             this.$el.append(this.template);
-            this.current_right = (this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm";
+            //this.current_right = (this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm";
             this.collection.each(this.renderOne, this);
             return this;
         },
