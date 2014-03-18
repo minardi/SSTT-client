@@ -22,10 +22,15 @@
         },
 
         routes: {
-            "teams/:id/team_edit_page": "showTeamEditPage",
+            "project-:id/team-page": "loadTeamPage",
             "projects" : "index"
         },
-
+        
+        loadTeamPage: function(id) {
+            //mediator.pub("DashBoard:ActiveTeam", id);
+            console.log("ok");
+        },
+        
         index: function() {
             console.log("I am Router");           
         },
