@@ -62,6 +62,6 @@ $(function() {
     sstt.user_candidates = new app.UserCandidates.CollectionView();
 
     sstt.router = new app.Routing.Router();
-    Backbone.history.start();
+    Backbone.history.start({pushState: true});
 
 });
