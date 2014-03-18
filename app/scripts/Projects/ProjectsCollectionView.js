@@ -25,7 +25,7 @@
         show: function() {
             this.$el.removeClass("hiddenProjects");
         },
-
+        
         render: function() {
             this.$el.append(this.template());
             this.projectsCollection.each(this.renderOne, this);

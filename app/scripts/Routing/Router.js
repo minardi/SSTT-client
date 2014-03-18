@@ -4,6 +4,8 @@
 
     module.Router = Backbone.Router.extend({
 
+        silent: false,
+
         initialize: function() {
             mediator.sub("ProjectPage:ProjectChecked", this.toProject, this);
             mediator.sub("ProjectPage:ProjectSelected", this.toScrumPage, this);
@@ -22,15 +24,27 @@
         },
 
         routes: {
-       		"": "index"
+            "": "index",
+       		"project-:id": "projectChecked"
+        },
+
+        projectChecked: function(project_id) {
+            this.silent = true;
+            mediator.pub("ProjectPage:ProjectChecked", project_id);
         },
 
         index: function() {
             console.log("I am Router");           
         },
 
-        toProject: function(model) {
-            this.navigate("project-" + model.get("id"));
+        toProject: function(project_id) {
+            console.log(this.silent);
+            if (this.silent) {
+                this.silent = false;
+            } else {
+                console.log("1");
+                this.navigate("project-" + project_id);    
+            }
         },
 
         toScrumPage: function(project_id) {
