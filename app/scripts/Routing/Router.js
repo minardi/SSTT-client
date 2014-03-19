@@ -4,9 +4,9 @@
 
     module.Router = Backbone.Router.extend({
 
-        silent: false,
+        silent: false,  
 
-        element: $("b-main"),
+        element: $('.b-main#ScrumPage'),      
 
         initialize: function() {
             mediator.sub("ProjectPage:ProjectChecked", this.toProject, this);
@@ -29,7 +29,12 @@
         routes: {
             "": "index",
        		"project-:id": "projectChecked",
-            "project-:id/scrum-page": "projectSelected"
+            "project-:id/team-page": "teamPageOpen", 
+            "project-:id/team-:id/team-edit-page": "teamEditPageOpen",
+            "project-:id/team-:id/team-edit-page/:role": "teamEditPageTabOpen"
+            //"project-:id/scrum-page": "projectSelected",
+            //"project-:id/scrum-page/planning": "planningBoardSelected",
+            //"project-:id/scrum-page/scrum-board": "scrumBoardSelected"
         },
 
         index: function() {
@@ -41,10 +46,36 @@
             mediator.pub("ProjectPage:ProjectChecked", project_id);
         },
 
-        projectSelected: function(project_id) {
-            console.log("scrum");
-            //mediator.pub("ProjectPage:ProjectSelected", project_id);
+        teamPageOpen: function(project_id) {            
+            mediator.pub("DashBoard:ActiveTeam", project_id);
         },
+
+        teamEditPageOpen: function(project_id, team_id) {
+            console.log("team_edit");
+
+            //mediator.pub("TeamPage:TeamSelected", team_id);
+        },
+
+        teamEditPageTabOpen: function(project_id, team_id, role) {
+            console.log(role);
+            mediator.pub("TeamEditPage:TabSelected", role);
+        },
+
+        /*projectSelected: function(project_id) {
+            console.log("scrum");
+            mediator.pub("ScrumPage:PlanningBoardSelected", this.element, project_id);
+        },
+
+        planningBoardSelected: function (project_id) {
+            mediator.pub("ScrumPage:PlanningBoardSelected", this.element, project_id);
+        },
+        
+        scrumBoardSelected: function(project_id) {
+            console.log(project_id);
+            console.log("board");
+            mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
+        },
+        */
         
         toProject: function(project_id) {            
             if (this.silent) {
@@ -57,15 +88,15 @@
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
 
-            this.navigate("project-" + project_id + "/scrum-page");
+            this.navigate("project-" + project_id + "/scrum-page", {trigger: true});
         },
 
         toPlanning: function() {
-            this.navigate(this.urls["scrum_url"] + "/planning");
+            this.navigate(this.urls["scrum_url"] + "/planning", {trigger: true});
         },
 
         toScrumBoard: function() {
-            this.navigate(this.urls["scrum_url"] + "/scrum-board");
+            this.navigate(this.urls["scrum_url"] + "/scrum-board", {trigger: true});
 
         },
         
@@ -76,17 +107,17 @@
         toTeamPage: function(project_id) {
             this.urls["project_url"] = "project-" + project_id;
 
-            this.navigate("project-" + project_id + "/team-page");
+            this.navigate("project-" + project_id + "/team-page", {trigger: true});                 
         },
 
         toTeamEditPage: function(team_id) {
             this.urls["team_url"] = this.urls["project_url"] + "/team-" + team_id + "/team-edit-page";
 
-            this.navigate(this.urls["project_url"] + "/team-" + team_id + "/team-edit-page");
+            this.navigate(this.urls["project_url"] + "/team-" + team_id + "/team-edit-page", {trigger: true});
         },
 
         toTeamEditPageTab: function(tab_selected) {
-            this.navigate(this.urls["team_url"] + "/" + tab_selected);
+            this.navigate(this.urls["team_url"] + "/" + tab_selected, {trigger: true});
         }     
 
     });
