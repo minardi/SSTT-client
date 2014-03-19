@@ -23,20 +23,32 @@
             "team_url": ""
         }, 
 
-
         routes: {
             "": "index",
-       		"project-:id": "projectChecked"
+       		"project-:id": "projectChecked",
+            "project-:id/team-page": "teamPageLoad",
+             "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",
+             "project-:id/scrum-page": "scrumPageLoad"
         },
-
+        
+        scrumPageLoad: function(project_id) {
+            mediator.pub("ProjectPage:ProjectSelected", project_id)
+        },
+        
+        teamEditPageLoad: function(project_id, team_id) {
+            this.projectChecked(project_id);
+            this.teamPageLoad(project_id);
+            //mediator.pub("DashBoard:ActiveTeam", project_id);
+            mediator.pub("TeamPage:TeamSelected", team_id);
+        },
+        
+        teamPageLoad: function(project_id) {
+            mediator.pub("DashBoard:ActiveTeam", project_id);
+        },
+        
         projectChecked: function(project_id) {
             this.silent = true;
             mediator.pub("ProjectPage:ProjectChecked", project_id);
-        },
-        
-        loadTeamPage: function(id) {
-            //mediator.pub("DashBoard:ActiveTeam", id);
-            console.log("ok");
         },
         
         index: function() {
@@ -56,11 +68,11 @@
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
 
-            this.navigate("project-" + project_id + "/scrum-page", {trigger: true});
+            this.navigate("project-" + project_id + "/scrum-page");
         },
 
         toPlanning: function() {
-            this.navigate(this.urls["scrum_url"] + "/planning");
+           this.navigate(this.urls["scrum_url"] + "/planning");
         },
 
         toScrumBoard: function() {
@@ -74,7 +86,7 @@
 
         toTeamPage: function(project_id) {
             this.urls["project_url"] = "project-" + project_id;
-
+            console.log("1111");
             this.navigate("project-" + project_id + "/team-page");
         },
 
