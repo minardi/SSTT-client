@@ -23,20 +23,21 @@
             "team_url": ""
         }, 
 
-
         routes: {
             "": "index",
-       		"project-:id": "projectChecked"
+       		"project-:id": "projectChecked",
+            "project-:id/team-page": "teamPageLoaded"
         },
-
+        
+        teamPageLoaded: function(project_id) {
+            console.log('team pageworks');
+            
+            mediator.pub("DashBoard:ActiveTeam", project_id);
+        },
+        
         projectChecked: function(project_id) {
             this.silent = true;
             mediator.pub("ProjectPage:ProjectChecked", project_id);
-        },
-        
-        loadTeamPage: function(id) {
-            //mediator.pub("DashBoard:ActiveTeam", id);
-            console.log("ok");
         },
         
         index: function() {
