@@ -26,12 +26,28 @@
         routes: {
             "": "index",
        		"project-:id": "projectChecked",
-            "project-:id/team-page": "teamPageLoaded"
+            "project-:id/team-page": "teamPageLoaded",
+            "project-:id/team-page": "teamPageLoad",
+            "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",
+            "project-:id/scrum-page": "scrumPageLoad"         
         },
         
         teamPageLoaded: function(project_id) {
-            console.log('team pageworks');
-            
+            console.log('team pageworks');        
+        },
+        
+        scrumPageLoad: function(project_id) {
+            mediator.pub("ProjectPage:ProjectSelected", project_id)
+        },
+        
+        teamEditPageLoad: function(project_id, team_id) {
+            this.projectChecked(project_id);
+            this.teamPageLoad(project_id);
+            //mediator.pub("DashBoard:ActiveTeam", project_id);
+            mediator.pub("TeamPage:TeamSelected", team_id);
+        },
+        
+        teamPageLoad: function(project_id) {
             mediator.pub("DashBoard:ActiveTeam", project_id);
         },
         
@@ -57,11 +73,11 @@
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
 
-            this.navigate("project-" + project_id + "/scrum-page", {trigger: true});
+            this.navigate("project-" + project_id + "/scrum-page");
         },
 
         toPlanning: function() {
-            this.navigate(this.urls["scrum_url"] + "/planning");
+           this.navigate(this.urls["scrum_url"] + "/planning");
         },
 
         toScrumBoard: function() {
@@ -75,7 +91,7 @@
 
         toTeamPage: function(project_id) {
             this.urls["project_url"] = "project-" + project_id;
-
+            console.log("1111");
             this.navigate("project-" + project_id + "/team-page");
         },
 
