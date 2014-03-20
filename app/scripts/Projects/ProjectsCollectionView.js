@@ -20,6 +20,7 @@
 
         hide: function() {
             this.$el.addClass("hiddenProjects");
+            this.stopListening();
         },
 
         show: function() {

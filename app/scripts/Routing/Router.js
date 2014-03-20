@@ -4,7 +4,7 @@
 
     module.Router = Backbone.Router.extend({
 
-        silent: false,
+        silent: false,             
 
         initialize: function() {
             mediator.sub("ProjectPage:ProjectChecked", this.toProject, this);
@@ -25,23 +25,40 @@
 
         routes: {
             "": "index",
-       		"project-:id": "projectChecked",
+       		"project-:id": "projectChecked",       
+            "project-:id/scrum-page": "scrumPageLoad",            
+            "project-:id/scrum-page/planning": "planningLoad",
+            "project-:id/scrum-page/scrum-board": "scrumBoardLoad",
+            "project-:id/scrum-page/statistics": "statisticsLoad",
             "project-:id/team-page": "teamPageLoad",
-            "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",
-            "project-:id/scrum-page": "scrumPageLoad"         
+            "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",         
+            "project-:id/team-:id/team-edit-page/:role": "teamEditPageTabLoad"                    
         },
-       
+        
+        projectChecked: function(project_id) {
+            this.silent = true;
+            mediator.pub("ProjectPage:ProjectChecked", project_id);
+        },
+
         scrumPageLoad: function(project_id) {
             mediator.pub("ProjectPage:ProjectSelected", project_id)
         },
-        
-        teamEditPageLoad: function(project_id, team_id) {
-            this.projectChecked(project_id);
-            this.teamPageLoad(project_id);
-            //mediator.pub("DashBoard:ActiveTeam", project_id);
-            mediator.pub("TeamPage:TeamSelected", team_id);
+
+        planningLoad: function(project_id) {
+            this.scrumPageLoad(project_id);            
+            mediator.pub("goToPlanning");
+        },
+
+        scrumBoardLoad: function(project_id) {
+            this.scrumPageLoad(project_id);
+            mediator.pub("goToScrumBoard");
         },
         
+        statisticsLoad: function(project_id) {
+            this.scrumPageLoad(project_id);
+            mediator.pub("goToStatistics");
+        },
+
         teamPageLoad: function(project_id) {
             mediator.pub("DashBoard:ActiveTeam", project_id);
         },
@@ -54,10 +71,21 @@
         index: function() {          
         },
 
-        toProject: function(project_id) {
+        teamEditPageLoad: function(project_id, team_id) {            
+            this.projectChecked(project_id);
+            this.teamPageLoad(project_id);
+            mediator.pub("TeamPage:TeamSelected", team_id);
+        },       
+            
+        teamEditPageTabLoad: function(project_id, team_id, role) {
+            this.teamEditPageLoad(project_id, team_id);
+            mediator.pub("TeamEditPage:TabSelected", role);
+        },
+              
+        toProject: function(project_id) {            
             if (this.silent) {
                 this.silent = false;
-            } else {
+            } else {                
                 this.navigate("project-" + project_id);    
             }
         },
