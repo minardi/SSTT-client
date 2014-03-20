@@ -70,7 +70,7 @@
             "project-:id/scrum-page/": {
                 "planning": "goToPlanning",
                 "scrum-board": "goToScrumBoard",
-                "statistics": "statisticsLoad"
+                "statistics": "goToStatistics"
             }
         },      
 
