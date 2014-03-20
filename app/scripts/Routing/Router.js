@@ -16,7 +16,50 @@
             mediator.sub("TeamPage:TeamSelected", this.toTeamEditPage, this);
             mediator.sub("TeamEditPage:TabSelected", this.toTeamEditPageTab, this);           
         },
+        
+        toProject: function(project_id) {            
+            if (this.silent) {
+                this.silent = false;
+            } else {                
+                this.navigate("project-" + project_id);    
+            }
+        },
 
+        toScrumPage: function(project_id) {
+            this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
+
+            this.navigate("project-" + project_id + "/scrum-page");
+        },
+
+        toPlanning: function() {
+           this.navigate(this.urls["scrum_url"] + "/planning");
+        },
+
+        toScrumBoard: function() {
+        console.log("router navigate");
+            this.navigate(this.urls["scrum_url"] + "/scrum-board");
+        },
+        
+        toStatistics: function() {
+            this.navigate(this.urls["scrum_url"] + "/statistics");
+        },
+
+        toTeamPage: function(project_id) {
+            this.urls["project_url"] = "project-" + project_id;
+            
+            this.navigate("project-" + project_id + "/team-page");
+        },
+
+        toTeamEditPage: function(team_id) {
+            this.urls["team_url"] = this.urls["project_url"] + "/team-" + team_id + "/team-edit-page";
+
+            this.navigate(this.urls["project_url"] + "/team-" + team_id + "/team-edit-page");
+        },
+
+        toTeamEditPageTab: function(tab_selected) {
+            this.navigate(this.urls["team_url"] + "/" + tab_selected);
+        },
+        
         urls: {
             "project_url": "",
             "scrum_url": "",
@@ -27,11 +70,11 @@
             "": "index",
        		"project-:id": "projectChecked",       
             "project-:id/scrum-page": "scrumPageLoad",            
-            "project-:id/scrum-page/planning": "planningLoad",
+            "project-:id/scrum-page(/:tab)": "planningLoad",
             "project-:id/scrum-page/scrum-board": "scrumBoardLoad",
             "project-:id/scrum-page/statistics": "statisticsLoad",
             "project-:id/team-page": "teamPageLoad",
-            "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",         
+            "project-:id/team-:id/team-edit-page": "teamEditPageLoad",         
             "project-:id/team-:id/team-edit-page/:role": "teamEditPageTabLoad"                    
         },
         
@@ -72,50 +115,9 @@
         teamEditPageTabLoad: function(project_id, team_id, role) {
             this.teamEditPageLoad(project_id, team_id);
             mediator.pub("TeamEditPage:TabSelected", role);
-        },
+        }
               
-        toProject: function(project_id) {            
-            if (this.silent) {
-                this.silent = false;
-            } else {                
-                this.navigate("project-" + project_id);    
-            }
-        },
-
-        toScrumPage: function(project_id) {
-            this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
-
-            this.navigate("project-" + project_id + "/scrum-page");
-        },
-
-        toPlanning: function() {
-           this.navigate(this.urls["scrum_url"] + "/planning");
-        },
-
-        toScrumBoard: function() {
-            this.navigate(this.urls["scrum_url"] + "/scrum-board");
-
-        },
         
-        toStatistics: function() {
-            this.navigate(this.urls["scrum_url"] + "/statistics");
-        },
-
-        toTeamPage: function(project_id) {
-            this.urls["project_url"] = "project-" + project_id;
-            
-            this.navigate("project-" + project_id + "/team-page");
-        },
-
-        toTeamEditPage: function(team_id) {
-            this.urls["team_url"] = this.urls["project_url"] + "/team-" + team_id + "/team-edit-page";
-
-            this.navigate(this.urls["project_url"] + "/team-" + team_id + "/team-edit-page");
-        },
-
-        toTeamEditPageTab: function(tab_selected) {
-            this.navigate(this.urls["team_url"] + "/" + tab_selected);
-        }     
 
     });
 
