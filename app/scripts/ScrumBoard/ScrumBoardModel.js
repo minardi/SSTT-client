@@ -3,7 +3,8 @@
 (function (module) {
 
     module.Model = Backbone.Model.extend({
-
+        urlRoot: "/tasks",
+        
         defaults: {
             title: "",
             status: "",
