@@ -17,63 +17,6 @@
             mediator.sub("TeamEditPage:TabSelected", this.toTeamEditPageTab, this);           
         },
 
-        urls: {
-            "project_url": "",
-            "scrum_url": "",
-            "team_url": ""
-        }, 
-
-        routes: {
-            "": "index",
-       		"project-:id": "projectChecked",       
-            "project-:id/scrum-page": "scrumPageLoad",            
-            "project-:id/scrum-page/planning": "planningLoad",
-            "project-:id/scrum-page/scrum-board": "scrumBoardLoad",
-            "project-:id/scrum-page/statistics": "statisticsLoad",
-            "project-:id/team-page": "teamPageLoad",
-            "project-:p_id/team-:t_id/team-edit-page": "teamEditPageLoad",         
-            "project-:id/team-:id/team-edit-page/:role": "teamEditPageTabLoad"                    
-        },
-        
-        projectChecked: function(project_id) {
-            this.silent = true;
-            mediator.pub("ProjectPage:ProjectChecked", project_id);
-        },
-
-        scrumPageLoad: function(project_id) {
-            mediator.pub("ProjectPage:ProjectSelected", project_id)
-        },
-
-        planningLoad: function(project_id) {
-            this.scrumPageLoad(project_id);            
-            mediator.pub("goToPlanning");
-        },
-
-        scrumBoardLoad: function(project_id) {
-            this.scrumPageLoad(project_id);
-            mediator.pub("goToScrumBoard");
-        },
-        
-        statisticsLoad: function(project_id) {
-            this.scrumPageLoad(project_id);
-            mediator.pub("goToStatistics");
-        },
-
-        teamPageLoad: function(project_id) {
-            mediator.pub("DashBoard:ActiveTeam", project_id);
-        },
-        
-        teamEditPageLoad: function(project_id, team_id) {            
-            this.projectChecked(project_id);
-            this.teamPageLoad(project_id);
-            mediator.pub("TeamPage:TeamSelected", team_id);
-        },       
-            
-        teamEditPageTabLoad: function(project_id, team_id, role) {
-            this.teamEditPageLoad(project_id, team_id);
-            mediator.pub("TeamEditPage:TabSelected", role);
-        },
-              
         toProject: function(project_id) {            
             if (this.silent) {
                 this.silent = false;
@@ -115,8 +58,63 @@
 
         toTeamEditPageTab: function(tab_selected) {
             this.navigate(this.urls["team_url"] + "/" + tab_selected);
-        }     
+        },  
+       
+        urls: {
+            "project_url": "",
+            "scrum_url": "",
+            "team_url": ""
+        }, 
 
+        hash_of_routes: {
+            "project-:id/scrum-page/": {
+                "planning": "goToPlanning",
+                "scrum-board": "goToScrumBoard",
+                "statistics": "statisticsLoad"
+            }
+        },      
+
+        routes: {
+            "": "index",
+       		"project-:id": "projectChecked",      
+            "project-:id/scrum-page(/:tab)": "makeRoute",          
+            "project-:id/team-page": "teamPageLoad",
+            "project-:id/team-:id/team-edit-page(/:role)": "teamEditPageTabLoad"       
+        }, 
+                
+        projectChecked: function(project_id) {
+            this.silent = true;
+            mediator.pub("ProjectPage:ProjectChecked", project_id);
+        },
+
+        scrumPageLoad: function(project_id) {
+            mediator.pub("ProjectPage:ProjectSelected", project_id);
+        },
+
+        makeRoute: function(project_id, tab) {            
+            this.scrumPageLoad(project_id);
+            mediator.pub(this.hash_of_routes["project-:id/scrum-page/"][tab]);          
+        },
+    
+        teamPageLoad: function(project_id) {
+            mediator.pub("DashBoard:ActiveTeam", project_id);
+        },
+        
+        teamEditPageLoad: function(project_id, team_id) {            
+            this.projectChecked(project_id);
+            this.teamPageLoad(project_id);
+            mediator.pub("TeamPage:TeamSelected", team_id);
+        },       
+            
+        teamEditPageTabLoad: function(project_id, team_id, role) {
+            if(role) {
+                this.teamEditPageLoad(project_id, team_id);
+                mediator.pub("TeamEditPage:TabSelected", role);
+            } else {
+                this.teamEditPageLoad(project_id, team_id);
+            }          
+        }             
+        
     });
 
 })(app.Routing);
