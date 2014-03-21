@@ -3,6 +3,11 @@
 (function(module) {
 
     module.CollectionView = Backbone.View.extend({
+        
+        initialize: function() {
+            //mediator.subscribeOnce("DashBoard:ActiveTeam", this.init, this);
+            //mediator.subscribeOnce("DashBoard:ActiveBack", this.removeTeamPage, this);
+        },
 
         template: JST['app/scripts/Teams/TeamsCollectionTpl.ejs'],
 
@@ -35,6 +40,7 @@
 
         hide: function() {
             this.$el.addClass("hiddenTeams");
+            this.stopListening();
         },
 
         removeTeamPage: function() {

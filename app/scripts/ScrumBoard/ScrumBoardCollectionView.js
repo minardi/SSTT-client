@@ -21,7 +21,7 @@
             this.collection = new module.Collection(project_id);                            
         },   
             
-        setElementAndRender: function(content_el) {               
+        setElementAndRender: function(content_el) {  
             this.setElement(content_el);
             this.collection.fetch();   
             this.collection.on('sync', this.renderEach, this);                           
