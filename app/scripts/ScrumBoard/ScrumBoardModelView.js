@@ -50,6 +50,7 @@
                 new_status_index--;
             };
             this.model.set("status", state[new_status_index]);
+            this.model.save();
             mediator.pub("ScrumBoard:moveTask", this.model);
             this.remove();
         }
