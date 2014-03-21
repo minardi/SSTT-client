@@ -15,9 +15,9 @@
             "click": "showProjectInfo"
         },
 
-
         selectProject: function() {
-            mediator.pub("ProjectPage:ProjectSelected", this.model.id);
+            mediator.pub("ProjectPage:ProjectSelected", this.model.id);           
+            mediator.pub("ProjectPage:ProjectSelectedRole", this.model.get("role"));
         },
         
         showProjectInfo: function() {
@@ -30,10 +30,7 @@
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
-
-
-
-
+        
     });
 
 })(app.Projects);

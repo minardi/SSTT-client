@@ -22,7 +22,7 @@
                 right: ((this.project.get("pm").user_id == sstt.user.getId())? "pm": "not_pm")
             };
             this.$el.html(this.template(this.project.toJSON()));
-            mediator.pub("ProjectInfo:Checked", right_for_project);
+            mediator.pub("ProjectInfo:Checked", right_for_project);            
             return this;
         }
   });
