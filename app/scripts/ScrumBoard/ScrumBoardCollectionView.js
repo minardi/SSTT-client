@@ -17,7 +17,6 @@
         },   
             
         setElementAndRender: function(content_el) {   
-            console.log("scrum", content_el);
             this.setElement(content_el);
             this.collection.fetch();   
             this.collection.on('sync', this.renderEach, this);                           

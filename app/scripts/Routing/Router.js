@@ -16,29 +16,7 @@
             mediator.sub("TeamPage:TeamSelected", this.toTeamEditPage, this);
             mediator.sub("TeamEditPage:TabSelected", this.toTeamEditPageTab, this);           
         },
-        
-        scrumPageLoad: function(project_id) {
-            mediator.pub("ProjectPage:ProjectSelected", project_id)
-        },
 
-        planningLoad: function(project_id) {
-            this.scrumPageLoad(project_id);            
-            mediator.pub("goToPlanning");
-        },
-
-        scrumBoardLoad: function(project_id) {
-            this.scrumPageLoad(project_id);
-            mediator.pub("goToScrumBoard");
-        },
-        
-        statisticsLoad: function(project_id) {
-            this.scrumPageLoad(project_id);
-            mediator.pub("goToStatistics");
-        },
-        
-        index: function() {          
-        },
-  
         toProject: function(project_id) {            
             if (this.silent) {
                 this.silent = false;
@@ -68,6 +46,7 @@
 
         toTeamPage: function(project_id) {
             this.urls["project_url"] = "project-" + project_id;
+            
             this.navigate("project-" + project_id + "/team-page");
         },
 

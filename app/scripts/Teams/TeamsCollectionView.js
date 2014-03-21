@@ -3,6 +3,11 @@
 (function(module) {
 
     module.CollectionView = Backbone.View.extend({
+        
+        initialize: function() {
+            //mediator.subscribeOnce("DashBoard:ActiveTeam", this.init, this);
+            //mediator.subscribeOnce("DashBoard:ActiveBack", this.removeTeamPage, this);
+        },
 
         template: JST['app/scripts/Teams/TeamsCollectionTpl.ejs'],
 
