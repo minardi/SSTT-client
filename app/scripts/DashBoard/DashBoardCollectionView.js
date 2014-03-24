@@ -87,7 +87,7 @@
 
             if (permition.not.page) {
                 _.each(permition.not.right, function(el) {
-                        if (el === this.current_rigth) {
+                        if (el === this.current_right) {
                             answer = false;
                         }
                     }

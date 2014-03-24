@@ -17,7 +17,7 @@
         },
 
         render: function() {
-            this.$el.append(this.template());
+            this.$el.html(this.template());
             this.$users_list = this.$el.find(".users-list");
             this.collection.each(this.renderOne, this);
             return this;

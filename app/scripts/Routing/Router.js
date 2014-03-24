@@ -26,18 +26,24 @@
         },
 
         toScrumPage: function(project_id) {
-            this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
-
-            this.navigate("project-" + project_id + "/scrum-page");
+                this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
+                if (this.silent) {
+                    this.silent = false;
+                } else {  
+                    this.navigate("project-" + project_id + "/scrum-page");
+                }
         },
 
         toPlanning: function() {
-           this.navigate(this.urls["scrum_url"] + "/planning");
+           if (this.silent) {
+                    this.silent = false;
+                } else {
+                   this.navigate(this.urls["scrum_url"] + "/planning");
+                }
         },
 
         toScrumBoard: function() {
             this.navigate(this.urls["scrum_url"] + "/scrum-board");
-
         },
         
         toStatistics: function() {
@@ -51,9 +57,9 @@
         },
 
         toTeamEditPage: function(team_id) {
-            this.urls["team_url"] = this.urls["project_url"] + "/team-" + team_id + "/team-edit-page";
+            this.urls["team_url"] = this.urls["project_url"] + "/team-page/" +"edit-team-" + team_id;
 
-            this.navigate(this.urls["project_url"] + "/team-" + team_id + "/team-edit-page");
+            this.navigate(this.urls["team_url"] );
         },
 
         toTeamEditPageTab: function(tab_selected) {
@@ -67,7 +73,14 @@
         }, 
 
         hash_of_routes: {
-            "project-:id/scrum-page/": {
+            "scrum-page": "ProjectPage:ProjectSelected",
+            "scrum-page/": {
+                "planning": "goToPlanning",
+                "scrum-board": "goToScrumBoard",
+                "statistics": "goToStatistics"
+            },
+             "team-page": "DashBoard:ActiveTeam",
+             "team-page/": {
                 "planning": "goToPlanning",
                 "scrum-board": "goToScrumBoard",
                 "statistics": "goToStatistics"
@@ -76,24 +89,40 @@
 
         routes: {
             "": "index",
-       		"project-:id": "projectChecked",      
-            "project-:id/scrum-page(/:tab)": "makeRoute",          
+       		//"project-:id": "projectChecked",
+            "project-:id/(:page(/:tab))": "pageLoad",            
+            //"project-:id/scrum-page(/:tab)": "makeRoute",          
             "project-:id/team-page": "teamPageLoad",
-            "project-:id/team-:id/team-edit-page(/:role)": "teamEditPageTabLoad"       
+            "project-:id/team-page/edit-team-:id(/:role)": "teamEditPageTabLoad"       
         }, 
                 
-        projectChecked: function(project_id) {
+        /*projectChecked: function(project_id) {
             this.silent = true;
             mediator.pub("ProjectPage:ProjectChecked", project_id);
         },
-
+*/
+        pageLoad: function(project_id, page, tab) {
+               this.silent = true;
+               mediator.pub("ProjectPage:ProjectChecked", project_id);
+               
+               if (page) {   
+                   mediator.pub(this.hash_of_routes[page], project_id);
+                   if (tab) {
+                        mediator.pub(this.hash_of_routes[page+"/"][tab], tab);
+                    } 
+                 }              
+        },
+        
+        
         scrumPageLoad: function(project_id) {
             mediator.pub("ProjectPage:ProjectSelected", project_id);
         },
 
-        makeRoute: function(project_id, tab) {            
+        makeRoute: function(project_id, tab) {                           
             this.scrumPageLoad(project_id);
-            mediator.pub(this.hash_of_routes["project-:id/scrum-page/"][tab]);          
+            if (tab) {
+                mediator.pub(this.hash_of_routes["scrum-page"][tab]);          
+            }                 
         },
     
         teamPageLoad: function(project_id) {
