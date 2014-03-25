@@ -19,38 +19,49 @@
 
         toProject: function(project_id) {            
             if (this.silent) {
-                this.silent = false;
-            } else {                
+                //this.silent = false;
+            } else {
+                console.log("toProject");               
                 this.navigate("project-" + project_id);    
             }
         },
 
         toScrumPage: function(project_id) {
-                this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
+            this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
                 if (this.silent) {
-                    this.silent = false;
-                } else {  
+                    //this.silent = false;
+                } else {                     
                     this.navigate("project-" + project_id + "/scrum-page");
+                    console.log(this.urls[scrum_url]);
                 }
         },
 
         toPlanning: function() {
-           if (this.silent) {
-                    this.silent = false;
-                } else {
-                   this.navigate(this.urls["scrum_url"] + "/planning");
-                }
+            console.log("planning");
+            if (this.silent) {
+                console.log("true");
+                //this.silent = false;
+            } else {
+                console.log("false");
+                this.navigate(this.urls["scrum_url"] + "/planning");
+            }
         },
 
         toScrumBoard: function() {
-            this.navigate(this.urls["scrum_url"] + "/scrum-board");
+            console.log("scrum-board");
+            if (this.silent) {
+                //this.silent = false;
+            } else {
+                console.log("scrum-url", this.urls[scrum_url]);
+                this.navigate(this.urls["scrum_url"] + "/scrum-board");
+            }
         },
         
         toStatistics: function() {
             this.navigate(this.urls["scrum_url"] + "/statistics");
         },
 
-        toTeamPage: function(project_id) {
+        toTeamPage: function(project_id) {            
             this.urls["project_url"] = "project-" + project_id;
             
             this.navigate("project-" + project_id + "/team-page");
@@ -79,58 +90,49 @@
                 "scrum-board": "goToScrumBoard",
                 "statistics": "goToStatistics"
             },
-             "team-page": "DashBoard:ActiveTeam",
-             "team-page/": {
+             "team-page": "DashBoard:ActiveTeam"
+             /*"team-page/": {
                 "planning": "goToPlanning",
                 "scrum-board": "goToScrumBoard",
                 "statistics": "goToStatistics"
-            }
+            }*/
         },      
 
         routes: {
-            "": "index",
-       		//"project-:id": "projectChecked",
-            "project-:id/(:page(/:tab))": "pageLoad",            
-            //"project-:id/scrum-page(/:tab)": "makeRoute",          
-            "project-:id/team-page": "teamPageLoad",
-            "project-:id/team-page/edit-team-:id(/:role)": "teamEditPageTabLoad"       
+            "": "index",       		
+            "project-:id/(:page(/:tab)(:team_id)(/:role))": "pageLoad"          
+            //"project-:id/team-page": "teamPageLoad",
+            //"project-:id/team-page/edit-team-:id(/:role)": "teamEditPageTabLoad"       
         }, 
-                
-        /*projectChecked: function(project_id) {
+       
+        pageLoad: function(project_id, page, tab, team_id, role) {            
             this.silent = true;
-            mediator.pub("ProjectPage:ProjectChecked", project_id);
-        },
-*/
-        pageLoad: function(project_id, page, tab) {
-               this.silent = true;
-               mediator.pub("ProjectPage:ProjectChecked", project_id);
-               
-               if (page) {   
-                   mediator.pub(this.hash_of_routes[page], project_id);
-                   if (tab) {
-                        mediator.pub(this.hash_of_routes[page+"/"][tab], tab);
-                    } 
-                 }              
-        },
-        
-        
-        scrumPageLoad: function(project_id) {
-            mediator.pub("ProjectPage:ProjectSelected", project_id);
-        },
-
-        makeRoute: function(project_id, tab) {                           
-            this.scrumPageLoad(project_id);
-            if (tab) {
-                mediator.pub(this.hash_of_routes["scrum-page"][tab]);          
-            }                 
-        },
-    
+            mediator.pub("ProjectPage:ProjectChecked", project_id);               
+            if (page === "scrum-page") {  
+                //this.silent = true; 
+                mediator.pub(this.hash_of_routes[page], project_id);
+                if (tab) {
+                    //this.silent = true;
+                    mediator.pub(this.hash_of_routes[page+"/"][tab], tab);
+                }                 
+            } else if (page === "team-page")  {
+                mediator.pub(this.hash_of_routes[page], project_id);
+                if (tab && team_id) {
+                    mediator.pub("TeamPage:TeamSelected", team_id);
+                    if (role) {
+                        mediator.pub("TeamEditPage:TabSelected", role);
+                    }
+                }
+            }
+            this.silent = false;           
+        },       
+                
         teamPageLoad: function(project_id) {
             mediator.pub("DashBoard:ActiveTeam", project_id);
         },
         
         teamEditPageLoad: function(project_id, team_id) {            
-            this.projectChecked(project_id);
+            //this.projectChecked(project_id);
             this.teamPageLoad(project_id);
             mediator.pub("TeamPage:TeamSelected", team_id);
         },       
