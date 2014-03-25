@@ -32,7 +32,7 @@
                     //this.silent = false;
                 } else {                     
                     this.navigate("project-" + project_id + "/scrum-page");
-                    console.log(this.urls[scrum_url]);
+                    console.log(this.urls["scrum_url"]);
                 }
         },
 
@@ -52,7 +52,7 @@
             if (this.silent) {
                 //this.silent = false;
             } else {
-                console.log("scrum-url", this.urls[scrum_url]);
+                console.log("scrum-url", this.urls["scrum_url"]);
                 this.navigate(this.urls["scrum_url"] + "/scrum-board");
             }
         },
@@ -63,14 +63,17 @@
 
         toTeamPage: function(project_id) {            
             this.urls["project_url"] = "project-" + project_id;
-            
-            this.navigate("project-" + project_id + "/team-page");
+            console.log("toTeamPage");
+            if (! this.silent) {
+                 this.navigate("project-" + project_id + "/team-page");
+            }
         },
 
         toTeamEditPage: function(team_id) {
             this.urls["team_url"] = this.urls["project_url"] + "/team-page/" +"edit-team-" + team_id;
-
-            this.navigate(this.urls["team_url"] );
+            if (! this.silent) {
+                this.navigate(this.urls["team_url"] );
+            }
         },
 
         toTeamEditPageTab: function(tab_selected) {
@@ -86,44 +89,46 @@
         hash_of_routes: {
             "scrum-page": "ProjectPage:ProjectSelected",
             "scrum-page/": {
-                "planning": "goToPlanning",
-                "scrum-board": "goToScrumBoard",
-                "statistics": "goToStatistics"
+                "/planning": "goToPlanning",
+                "/scrum-board": "goToScrumBoard",
+                "/statistics": "goToStatistics"
             },
-             "team-page": "DashBoard:ActiveTeam"
-             /*"team-page/": {
-                "planning": "goToPlanning",
-                "scrum-board": "goToScrumBoard",
-                "statistics": "goToStatistics"
-            }*/
+             "team-page": "DashBoard:ActiveTeam",
+             "team-page/": {
+                "/edit": "TeamPage:TeamSelected"                
+            }
         },      
 
         routes: {
             "": "index",       		
-            "project-:id/(:page(/:tab)(:team_id)(/:role))": "pageLoad"          
+           "project-:id/(:page(/edit-team-:id))": "pageLoad",         
+            "project-:id/(:page(/:tab))": "pageLoad"          
             //"project-:id/team-page": "teamPageLoad",
             //"project-:id/team-page/edit-team-:id(/:role)": "teamEditPageTabLoad"       
         }, 
        
         pageLoad: function(project_id, page, tab, team_id, role) {            
             this.silent = true;
-            mediator.pub("ProjectPage:ProjectChecked", project_id);               
-            if (page === "scrum-page") {  
-                //this.silent = true; 
+            mediator.pub("ProjectPage:ProjectChecked", project_id);             
+                       
                 mediator.pub(this.hash_of_routes[page], project_id);
-                if (tab) {
-                    //this.silent = true;
-                    mediator.pub(this.hash_of_routes[page+"/"][tab], tab);
-                }                 
-            } else if (page === "team-page")  {
-                mediator.pub(this.hash_of_routes[page], project_id);
-                if (tab && team_id) {
+                if (tab) {   
+                    console.log("!", tab, isNaN(Number(tab)));      
+                    if (isNaN(Number(tab))) {
+                        mediator.pub(this.hash_of_routes[page+"/"][tab]);
+                    } else {                                                   
+                        mediator.pub(this.hash_of_routes[page+"/"]["/edit"], tab);
+                    }
+                }                
+             
+               
+                /*if (tab && team_id) {
                     mediator.pub("TeamPage:TeamSelected", team_id);
                     if (role) {
                         mediator.pub("TeamEditPage:TabSelected", role);
-                    }
-                }
-            }
+                    }*/
+                
+            
             this.silent = false;           
         },       
                 

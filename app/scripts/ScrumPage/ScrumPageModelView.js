@@ -32,6 +32,7 @@
         },
 
         showScrum: function() {
+        console.log("hello from scrumPage");
             mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
         },
 
