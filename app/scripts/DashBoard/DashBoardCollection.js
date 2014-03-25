@@ -7,7 +7,9 @@
         model: module.Model,
 
         initialize: function() {
-
+        /*    this.url = "/buttons";
+            this.fetch();
+            console.log(this);*/
             this.add([
                 {
                     content: "Back",
@@ -65,7 +67,7 @@
                         "not": ""
                     }
                 } 
-            ])
+            ]);
         }
 
     });
