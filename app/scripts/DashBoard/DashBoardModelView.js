@@ -6,7 +6,7 @@
 
         tagName: "button",
 
-        template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],
+        //template: JST["app/scripts/DashBoard/DashBoardTpl.ejs"],
 
         events: {
             "click": "action"

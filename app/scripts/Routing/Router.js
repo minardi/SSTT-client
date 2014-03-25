@@ -38,12 +38,20 @@
            if (this.silent) {
                     this.silent = false;
                 } else {
+                   console.log("planning");
+                   console.log(this.urls["scrum_url"]);
                    this.navigate(this.urls["scrum_url"] + "/planning");
                 }
         },
 
         toScrumBoard: function() {
-            this.navigate(this.urls["scrum_url"] + "/scrum-board");
+            if (this.silent) {
+                    this.silent = false;
+                } else {
+                   console.log("scrumboard");
+                   this.navigate(this.urls["scrum_url"] + "/scrum-board");
+                }
+            //this.navigate(this.urls["scrum_url"] + "/scrum-board");
         },
         
         toStatistics: function() {
@@ -103,12 +111,11 @@
 */
         pageLoad: function(project_id, page, tab) {
                this.silent = true;
-               mediator.pub("ProjectPage:ProjectChecked", project_id);
-               
-               if (page) {   
+               mediator.pub("ProjectPage:ProjectChecked", project_id);               
+               if (page) {                                  
                    mediator.pub(this.hash_of_routes[page], project_id);
-                   if (tab) {
-                        mediator.pub(this.hash_of_routes[page+"/"][tab], tab);
+                   if (tab) {s
+                        mediator.pub(this.hash_of_routes[page+"/"][tab], tab);                        
                     } 
                  }              
         },
@@ -130,7 +137,7 @@
         },
         
         teamEditPageLoad: function(project_id, team_id) {            
-            this.projectChecked(project_id);
+            //this.projectChecked(project_id);
             this.teamPageLoad(project_id);
             mediator.pub("TeamPage:TeamSelected", team_id);
         },       
