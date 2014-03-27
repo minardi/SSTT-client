@@ -18,70 +18,54 @@
         },
 
         toProject: function(project_id) {            
-            if (this.silent) {                
-                this.silent = false;                
-            } else {                               
-                this.navigate("project-" + project_id);    
+            if (!this.silent) {           
+                this.navigate("project-" + project_id, {replace: this.silent});
             }
         },
 
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
-                if (this.silent) {
-                    this.silent = false;
-                } else {                     
-                    this.navigate("project-" + project_id + "/scrum-page");                    
-                }
+                if (!this.silent) {
+                    this.navigate("project-" + project_id + "/scrum-page", {replace: this.silent});
+                } 
         },
 
         toPlanning: function() {            
-            if (this.silent) { 
-                this.silent = false;             
-            } else {
-                this.navigate(this.urls["scrum_url"] + "/planning");
-            }
+            if (!this.silent) {             
+                this.navigate(this.urls["scrum_url"] + "/planning", {replace: this.silent});
+            } 
         },
 
         toScrumBoard: function() { 
-            if (this.silent) {
-                this.silent = false;
-            } else {                              
-                this.navigate(this.urls["scrum_url"] + "/scrum-board");
+            if (!this.silent) {
+                this.navigate(this.urls["scrum_url"] + "/scrum-board", {replace: this.silent});
             }
         },
         
         toStatistics: function() {
-            if (this.silent) {
-                this.silent = false;
-            } else {  
-                this.navigate(this.urls["scrum_url"] + "/statistics");
-            }
+            if (!this.silent) {
+                this.navigate(this.urls["scrum_url"] + "/statistics", {replace: this.silent});
+            } 
         },
 
         toTeamPage: function(project_id) {            
             this.urls["project_url"] = "project-" + project_id;           
-            if (this.silent) {
-                this.silent = false;
-            } else {
-                this.navigate("project-" + project_id + "/team-page");
-            }
+            if (!this.silent) {
+                this.navigate("project-" + project_id + "/team-page", {replace: this.silent});
+            } 
         },
 
         toTeamEditPage: function(team_id) {           
             this.urls["team_url"] = this.urls["project_url"] + "/team-page/" + team_id;
-            if (this.silent) {
-                this.silent = false;
-            } else {
-                this.navigate(this.urls["team_url"] );
-            }
+            if (!this.silent) {
+                this.navigate(this.urls["team_url"], {replace: this.silent});
+            } 
         },
 
         toTeamEditPageTab: function(tab_selected) {
-            if (this.silent) {
-                this.silent = false;
-            } else {
-                this.navigate(this.urls["team_url"] + "/" + tab_selected);
-            }
+            if (!this.silent) {
+                this.navigate(this.urls["team_url"] + "/" + tab_selected, {replace: this.silent});
+            } 
         },  
        
         urls: {
@@ -106,39 +90,27 @@
         },        
         
         makeRoute: function(project_id, page, tab, role) {            
-            //this.silent = true; 
-        if (project_id) { 
-            //this.silent = true;          
-            console.log("checked", project_id);
-            mediator.pub("ProjectPage:ProjectChecked", project_id);
-                                              
-            if (page === "scrum-page") {
-                //this.silent = true;
-                console.log("scrum", project_id, page);               
-                mediator.pub(this.hash_of_routes[page], project_id);
-                if (tab) {
-                    //this.silent = true;    
-                    console.log("scrumtab", tab);                
-                    mediator.pub(this.hash_of_routes[page+"/"]["/"+tab]);
-                }
-            } else if (page === "team-page") { 
-                //this.silent = true;
-                console.log("team", project_id, page);               
-                mediator.pub(this.hash_of_routes[page], project_id);
-                if (tab) {
-                    //this.silent = true;
-                    console.log("teamid", tab);
-                    mediator.pub("TeamPage:TeamSelected", tab);
-                    if (role) {
-                        //this.silent = true;
-                        console.log("teamtab", role);
-                        mediator.pub("TeamEditPage:TabSelected", role);
+            this.silent = true; 
+            if (project_id) {                      
+                mediator.pub("ProjectPage:ProjectChecked", project_id);
+                mediator.pub("DashBoard:ActiveBack");                                              
+                if (page === "scrum-page") {                              
+                    mediator.pub(this.hash_of_routes[page], project_id);
+                    if (tab) {                    
+                        mediator.pub(this.hash_of_routes[page+"/"]["/"+tab]);
                     }
-                }
-            }                      
-        }  
-    }
-     
+                } else if (page === "team-page") {                              
+                    mediator.pub(this.hash_of_routes[page], project_id);
+                    if (tab) {                   
+                        mediator.pub("TeamPage:TeamSelected", tab);
+                        if (role) {                        
+                            mediator.pub("TeamEditPage:TabSelected", role);
+                        }
+                    }
+                }                      
+            }  
+            this.silent = false;
+        }   
     });
 
 })(app.Routing);

@@ -24,12 +24,14 @@
         },
 
         show: function() {
+            this.render();
             this.$el.removeClass("hiddenProjects");
         },
         
         render: function() {
+            this.$el.find(".project-page").remove();
             this.$el.append(this.template());
-            this.projectsCollection.each(this.renderOne, this);
+            this.projectsCollection.each(this.renderOne, this);            
             return this;
         },
 
