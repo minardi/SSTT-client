@@ -4,9 +4,9 @@
     module.ModelView = Backbone.View.extend({
         
         initialize: function() {
-            mediator.subscribeOnce("DashBoard:ActiveTeam", this.removeScrumPage, this);
-            mediator.subscribeOnce("DashBoard:ActiveBack", this.removeScrumPage, this);
-            mediator.subscribeOnce("ProjectPage:ProjectSelected", this.renderDefaultTab, this);
+            //mediator.subscribeOnce("DashBoard:ActiveTeam", this.removeScrumPage, this);
+            //mediator.subscribeOnce("DashBoard:ActiveBack", this.removeScrumPage, this);
+            //mediator.subscribeOnce("ProjectPage:ProjectSelected", this.renderDefaultTab, this);
         },
 
         template: JST["app/scripts/ScrumPage/ScrumPageTpl.ejs"],
@@ -18,9 +18,9 @@
         },
 
         subscriptions: {
-            //"ProjectPage:ProjectSelected": "renderDefaultTab",
-            //"DashBoard:ActiveTeam": "removeScrumPage",
-            //"DashBoard:ActiveBack": "removeScrumPage",
+            "ProjectPage:ProjectSelected": "renderDefaultTab",
+            "DashBoard:ActiveTeam": "removeScrumPage",
+            "DashBoard:ActiveBack": "removeScrumPage",
             "goToPlanning": "showPlanning",
             "goToScrumBoard": "showScrum",
             "goToStatistics": "showStat"
@@ -31,8 +31,7 @@
             mediator.pub("ScrumPage:PlanningBoardSelected", this.element, this.model.get("id_of_project"));
         },
 
-        showScrum: function() {
-        console.log("hello from scrumPage");
+        showScrum: function() {        
             mediator.pub("ScrumPage:ScrumBoardSelected", this.element);
         },
 
@@ -43,8 +42,8 @@
         renderDefaultTab: function(project_id) {
             this.model.set({id_of_project: project_id});
             this.render();
-            this.element = this.$el.find("#ScrumPage"),
-            this.showPlanning();
+            this.element = this.$el.find("#ScrumPage");
+            //this.showPlanning();
         },
         
          render: function() {

@@ -33,7 +33,7 @@
         render: function(team_id) {            
             this.$el.append(this.template());           
             mediator.pub("TeamEditPage:Open", { element: this.$el, team_id: team_id });            
-            this.showWatchers();
+            //this.showWatchers();
             return this;
         },   
                

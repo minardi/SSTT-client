@@ -40,7 +40,7 @@
 
         hide: function() {
             this.$el.addClass("hiddenTeams");
-            this.stopListening();
+            //this.stopListening();
         },
 
         removeTeamPage: function() {

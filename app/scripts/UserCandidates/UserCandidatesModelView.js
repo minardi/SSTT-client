@@ -31,6 +31,7 @@
 
         setRole: function(current_role) {
             this.role = current_role;
+            console.log("user", this.role);
         },
 
         render: function() {

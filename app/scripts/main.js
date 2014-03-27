@@ -19,7 +19,7 @@ var sstt = {},
 
 $(function() {
     "use strict";
-
+    sstt.router = new app.Routing.Router();
     sstt.user = new app.User.ModelView({
         el: $(".user"),
         user_content: current_user_content
@@ -28,7 +28,7 @@ $(function() {
     sstt.project = new app.Projects.CollectionView({
         el: $(".b-main")
     });
-
+    
     sstt.scrum_page = new app.ScrumPage.ModelView({
         el: $(".b-main"),
         model: new app.ScrumPage.Model()
@@ -37,7 +37,7 @@ $(function() {
     sstt.project_info = new app.Projectinfo.ModelView({
         el: $(".b-sidebar")
     });
-
+    
     sstt.product_backlog = new app.ProductBacklogStories.CollectionView();
 
     sstt.sprint_backlog = new app.SprintBacklogStories.CollectionView();
@@ -60,8 +60,7 @@ $(function() {
     });
 
     sstt.user_candidates = new app.UserCandidates.CollectionView();
-
-    sstt.router = new app.Routing.Router();
+    
     //Backbone.history.start({pushState: true});
     Backbone.history.start();
 

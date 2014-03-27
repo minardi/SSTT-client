@@ -18,10 +18,9 @@
         },
 
         toProject: function(project_id) {            
-            if (this.silent) {
-                //this.silent = false;
-            } else {
-                console.log("toProject");               
+            if (this.silent) {                
+                this.silent = false;                
+            } else {                               
                 this.navigate("project-" + project_id);    
             }
         },
@@ -29,55 +28,60 @@
         toScrumPage: function(project_id) {
             this.urls["scrum_url"] = "project-" + project_id + "/scrum-page";
                 if (this.silent) {
-                    //this.silent = false;
+                    this.silent = false;
                 } else {                     
-                    this.navigate("project-" + project_id + "/scrum-page");
-                    console.log(this.urls["scrum_url"]);
+                    this.navigate("project-" + project_id + "/scrum-page");                    
                 }
         },
 
-        toPlanning: function() {
-            console.log("planning");
-            if (this.silent) {
-                console.log("true");
-                //this.silent = false;
+        toPlanning: function() {            
+            if (this.silent) { 
+                this.silent = false;             
             } else {
-                console.log("false");
                 this.navigate(this.urls["scrum_url"] + "/planning");
             }
         },
 
-        toScrumBoard: function() {
-            console.log("scrum-board");
+        toScrumBoard: function() { 
             if (this.silent) {
-                //this.silent = false;
-            } else {
-                console.log("scrum-url", this.urls["scrum_url"]);
+                this.silent = false;
+            } else {                              
                 this.navigate(this.urls["scrum_url"] + "/scrum-board");
             }
         },
         
         toStatistics: function() {
-            this.navigate(this.urls["scrum_url"] + "/statistics");
-        },
-
-        toTeamPage: function(project_id) {            
-            this.urls["project_url"] = "project-" + project_id;
-            console.log("toTeamPage");
-            if (! this.silent) {
-                 this.navigate("project-" + project_id + "/team-page");
+            if (this.silent) {
+                this.silent = false;
+            } else {  
+                this.navigate(this.urls["scrum_url"] + "/statistics");
             }
         },
 
-        toTeamEditPage: function(team_id) {
-            this.urls["team_url"] = this.urls["project_url"] + "/team-page/" +"edit-team-" + team_id;
-            if (! this.silent) {
+        toTeamPage: function(project_id) {            
+            this.urls["project_url"] = "project-" + project_id;           
+            if (this.silent) {
+                this.silent = false;
+            } else {
+                this.navigate("project-" + project_id + "/team-page");
+            }
+        },
+
+        toTeamEditPage: function(team_id) {           
+            this.urls["team_url"] = this.urls["project_url"] + "/team-page/" + team_id;
+            if (this.silent) {
+                this.silent = false;
+            } else {
                 this.navigate(this.urls["team_url"] );
             }
         },
 
         toTeamEditPageTab: function(tab_selected) {
-            this.navigate(this.urls["team_url"] + "/" + tab_selected);
+            if (this.silent) {
+                this.silent = false;
+            } else {
+                this.navigate(this.urls["team_url"] + "/" + tab_selected);
+            }
         },  
        
         urls: {
@@ -93,64 +97,48 @@
                 "/scrum-board": "goToScrumBoard",
                 "/statistics": "goToStatistics"
             },
-             "team-page": "DashBoard:ActiveTeam",
-             "team-page/": {
-                "/edit": "TeamPage:TeamSelected"                
-            }
+            "team-page": "DashBoard:ActiveTeam"             
         },      
 
         routes: {
-            "": "index",       		
-           "project-:id/(:page(/edit-team-:id))": "pageLoad",         
-            "project-:id/(:page(/:tab))": "pageLoad"          
-            //"project-:id/team-page": "teamPageLoad",
-            //"project-:id/team-page/edit-team-:id(/:role)": "teamEditPageTabLoad"       
-        }, 
-       
-        pageLoad: function(project_id, page, tab, team_id, role) {            
-            this.silent = true;
-            mediator.pub("ProjectPage:ProjectChecked", project_id);             
-                       
+            "": "index",       		            
+            "(project-:id)(/:page)(/:tab)(/:role)": "makeRoute"       
+        },        
+        
+        makeRoute: function(project_id, page, tab, role) {            
+            //this.silent = true; 
+        if (project_id) { 
+            //this.silent = true;          
+            console.log("checked", project_id);
+            mediator.pub("ProjectPage:ProjectChecked", project_id);
+                                              
+            if (page === "scrum-page") {
+                //this.silent = true;
+                console.log("scrum", project_id, page);               
                 mediator.pub(this.hash_of_routes[page], project_id);
-                if (tab) {   
-                    console.log("!", tab, isNaN(Number(tab)));      
-                    if (isNaN(Number(tab))) {
-                        mediator.pub(this.hash_of_routes[page+"/"][tab]);
-                    } else {                                                   
-                        mediator.pub(this.hash_of_routes[page+"/"]["/edit"], tab);
-                    }
-                }                
-             
-               
-                /*if (tab && team_id) {
-                    mediator.pub("TeamPage:TeamSelected", team_id);
+                if (tab) {
+                    //this.silent = true;    
+                    console.log("scrumtab", tab);                
+                    mediator.pub(this.hash_of_routes[page+"/"]["/"+tab]);
+                }
+            } else if (page === "team-page") { 
+                //this.silent = true;
+                console.log("team", project_id, page);               
+                mediator.pub(this.hash_of_routes[page], project_id);
+                if (tab) {
+                    //this.silent = true;
+                    console.log("teamid", tab);
+                    mediator.pub("TeamPage:TeamSelected", tab);
                     if (role) {
+                        //this.silent = true;
+                        console.log("teamtab", role);
                         mediator.pub("TeamEditPage:TabSelected", role);
-                    }*/
-                
-            
-            this.silent = false;           
-        },       
-                
-        teamPageLoad: function(project_id) {
-            mediator.pub("DashBoard:ActiveTeam", project_id);
-        },
-        
-        teamEditPageLoad: function(project_id, team_id) {            
-            //this.projectChecked(project_id);
-            this.teamPageLoad(project_id);
-            mediator.pub("TeamPage:TeamSelected", team_id);
-        },       
-            
-        teamEditPageTabLoad: function(project_id, team_id, role) {
-            if(role) {
-                this.teamEditPageLoad(project_id, team_id);
-                mediator.pub("TeamEditPage:TabSelected", role);
-            } else {
-                this.teamEditPageLoad(project_id, team_id);
-            }          
-        }             
-        
+                    }
+                }
+            }                      
+        }  
+    }
+     
     });
 
 })(app.Routing);
